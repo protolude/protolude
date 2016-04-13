@@ -105,6 +105,8 @@ import Data.List as X (
   , reverse
   , replicate
   , take
+  , zipWith
+  , zip
   )
 import Data.Map as X (Map)
 import Data.Set as X (Set)
@@ -122,6 +124,10 @@ import Control.Monad.State as X (
   , gets
   , modify
   , withState
+
+  , runState
+  , execState
+  , evalState
 
   , runStateT
   , execStateT
@@ -213,6 +219,7 @@ import Data.String.Conv as X (
   , toS
   , toSL
   , Leniency(..)
+  , StringConv
   )
 
 -- Printf
