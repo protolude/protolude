@@ -17,7 +17,6 @@ import GHC.Enum as X
 import GHC.Real as X
 import GHC.Float as X
 import GHC.Show as X
-import GHC.Types as X
 import GHC.Exts as X (
     Constraint
   , Ptr
@@ -34,6 +33,12 @@ import System.IO as X (
   , putStr
   , putStrLn
   )
+
+#if ( __GLASGOW_HASKELL__ >= 800 )
+import GHC.Types as X hiding (Any)
+#else
+import GHC.Types as X
+#endif
 
 infixr 0 $!
 
