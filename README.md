@@ -44,7 +44,7 @@ Usage
 
 ```haskell
 {-# LANGUAGE NoImplicitPrelude #-}
-
+{-# LANGUAGE NoOverloadedStrings #-}
 import Protolude
 ```
 
