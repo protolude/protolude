@@ -5,6 +5,7 @@
 * Switch exported `(<>)` to be from `Data.Monoid` instead of Semigroup.
 * Expose `putByteString` and `putLByteString` monomorphic versions of `putStrLn` functions
 * Export `genericLength` and other generic list return functions.
+* Rename `msg` to `fatalErrorMessage`.
 
 0.1.9
 ====

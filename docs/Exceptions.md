@@ -64,7 +64,7 @@ throwError :: MonadError e m => e -> m a
 #### Panic
 
 ```haskell
-data FatalError = FatalError {msg :: Text}
+data FatalError = FatalError {fatalErrorMessage :: Text}
 ```
 
 ```haskell
