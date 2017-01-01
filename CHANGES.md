@@ -1,4 +1,4 @@
-0.1.11
+0.2
 ====
 
 * Expose `Symbol` and `Nat` types from `GHC.TypeLits` by default.
@@ -6,6 +6,8 @@
 * Expose `putByteString` and `putLByteString` monomorphic versions of `putStrLn` functions
 * Export `genericLength` and other generic list return functions.
 * Rename `msg` to `fatalErrorMessage`.
+* Export `ExceptT`, `ReaderT`, and `StateT` constructors.
+* Export `NonEmpty` type and constructor for GHC 8.0.
 
 0.1.9
 ====
