@@ -28,6 +28,7 @@ import GHC.Real as X
 import GHC.Float as X (
     Float(..)
   , Double(..)
+  , Floating (..)
   , showFloat
   , showSignedFloat
   )

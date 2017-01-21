@@ -20,3 +20,5 @@ stack build --resolver lts-7.11
 stack build --resolver lts-7.12
 stack build --resolver lts-7.13
 stack build --resolver lts-7.14
+stack build --resolver lts-7.15
+stack build --resolver lts-7.16
