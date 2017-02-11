@@ -23,6 +23,8 @@ module Protolude (
   guardedA,
   LText,
   LByteString,
+  liftIO1,
+  liftIO2,
 #if !MIN_VERSION_base(4,8,0)
   (&),
 #endif
@@ -566,6 +568,7 @@ throwTo tid e = liftIO (Control.Exception.throwTo tid e)
 foreach :: Functor f => f a -> (a -> b) -> f b
 foreach = flip fmap
 
+-- | Do nothing returning unit inside applicative.
 pass :: Applicative f => f ()
 pass = pure ()
 
@@ -574,6 +577,14 @@ guarded p x = X.bool empty (pure x) (p x)
 
 guardedA :: (Functor f, Alternative t) => (a -> f Bool) -> a -> f (t a)
 guardedA p x = X.bool empty (pure x) <$> p x
+
+-- | Lift an 'IO' operation with 1 argument into another monad
+liftIO1 :: MonadIO m => (a -> IO b) -> a -> m b
+liftIO1 = (.) liftIO
+
+-- | Lift an 'IO' operation with 2 arguments into another monad
+liftIO2 :: MonadIO m => (a -> b -> IO c) -> a -> b -> m c
+liftIO2 = ((.).(.)) liftIO
 
 show :: (Show a, StringConv String b) => a -> b
 show x = toS (PBase.show x)
