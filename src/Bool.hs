@@ -7,10 +7,13 @@ module Bool (
 , ifM
 , guardM
 , bool
+, (<&&>)
+, (<||>)
 ) where
 
-import Data.Bool (Bool)
+import Data.Bool (Bool, (&&), (||))
 import Data.Function (flip)
+import Control.Applicative(Applicative, liftA2)
 import Control.Monad (Monad, MonadPlus, when, unless, guard, (>>=), (=<<))
 
 bool :: a -> a -> Bool -> a
@@ -29,3 +32,15 @@ ifM p x y = p >>= \b -> if b then x else y
 
 guardM :: MonadPlus m => m Bool -> m ()
 guardM f = guard =<< f
+
+infixr 3 <&&> -- same as (&&)
+-- | '&&' lifted to an Applicative.
+(<&&>) :: Applicative a => a Bool -> a Bool -> a Bool
+(<&&>) = liftA2 (&&)
+{-# INLINE (<&&>) #-}
+
+infixr 2 <||> -- same as (||)
+-- | '||' lifted to an Applicative.
+(<||>) :: Applicative a => a Bool -> a Bool -> a Bool
+(<||>) = liftA2 (||)
+{-# INLINE (<||>) #-}
