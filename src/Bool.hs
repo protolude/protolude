@@ -7,14 +7,16 @@ module Bool (
 , ifM
 , guardM
 , bool
+, (&&^)
+, (||^)
 , (<&&>)
 , (<||>)
 ) where
 
-import Data.Bool (Bool, (&&), (||))
+import Data.Bool (Bool(..), (&&), (||))
 import Data.Function (flip)
 import Control.Applicative(Applicative, liftA2)
-import Control.Monad (Monad, MonadPlus, when, unless, guard, (>>=), (=<<))
+import Control.Monad (Monad, MonadPlus, return, when, unless, guard, (>>=), (=<<))
 
 bool :: a -> a -> Bool -> a
 bool f t p = if p then t else f
@@ -33,14 +35,30 @@ ifM p x y = p >>= \b -> if b then x else y
 guardM :: MonadPlus m => m Bool -> m ()
 guardM f = guard =<< f
 
-infixr 3 <&&> -- same as (&&)
--- | '&&' lifted to an Applicative.
-(<&&>) :: Applicative a => a Bool -> a Bool -> a Bool
-(<&&>) = liftA2 (&&)
-{-# INLINE (<&&>) #-}
+-- | The '||' operator lifted to a monad. If the first
+--   argument evaluates to 'True' the second argument will not
+--   be evaluated.
+infixr 2 ||^ -- same as (||)
+(||^) :: Monad m => m Bool -> m Bool -> m Bool
+(||^) a b = ifM a (return True) b
 
-infixr 2 <||> -- same as (||)
+infixr 2 <||>
 -- | '||' lifted to an Applicative.
+-- Unlike '||^' the operator is __not__ short-circuiting.
 (<||>) :: Applicative a => a Bool -> a Bool -> a Bool
 (<||>) = liftA2 (||)
 {-# INLINE (<||>) #-}
+
+-- | The '&&' operator lifted to a monad. If the first
+--   argument evaluates to 'False' the second argument will not
+--   be evaluated.
+infixr 3 &&^ -- same as (&&)
+(&&^) :: Monad m => m Bool -> m Bool -> m Bool
+(&&^) a b = ifM a b (return False)
+
+infixr 3 <&&>
+-- | '&&' lifted to an Applicative.
+-- Unlike '&&^' the operator is __not__ short-circuiting.
+(<&&>) :: Applicative a => a Bool -> a Bool -> a Bool
+(<&&>) = liftA2 (&&)
+{-# INLINE (<&&>) #-}
