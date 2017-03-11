@@ -57,6 +57,29 @@ decodeUtf8' :: ByteString -> Either UnicodeException Text
 decodeUtf8With :: OnDecodeError -> ByteString -> Text
 ```
 
+#### UnicodeException
+
+```haskell
+data UnicodeException
+  = DecodeError [Char] (Maybe Word8)
+  | EncodeError [Char] (Maybe Char)
+```
+
+Strictness
+----------
+
+#### fromStrict
+
+```haskell
+fromStrict :: Text -> LText
+```
+
+#### toStrict
+
+```haskell
+toStrict :: LText -> Text
+```
+
 Conversion
 ----------
 
@@ -67,9 +90,13 @@ class StringConv a b where
 data Leniency = Lenient | Strict
 ```
 
+#### toS
+
 ```haskell
 toS :: StringConv a b => a -> b
 ```
+
+#### toSL
 
 ```haskell
 toSL :: StringConv a b => a -> b
