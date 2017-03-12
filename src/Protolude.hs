@@ -188,6 +188,7 @@ import Data.List as X (
   , tails
   , zipWith
   , zip
+  , unzip
   , genericLength
   , genericTake
   , genericDrop
