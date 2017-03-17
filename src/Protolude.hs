@@ -373,9 +373,9 @@ import GHC.Generics as X (
   , D1
   , C1
   , S1
-  , (:+:)
-  , (:*:)
-  , (:.:)
+  , (:+:)(..)
+  , (:*:)(..)
+  , (:.:)(..)
   , Rec0
   , Constructor(..)
   , Datatype(..)
