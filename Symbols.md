@@ -525,6 +525,8 @@
 * head
 * headDef
 * headMay
+* hPutStr
+* hPutStrLn
 * identity
 * ifM
 * imagPart
