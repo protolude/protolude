@@ -28,6 +28,7 @@ module Protolude (
 #if !MIN_VERSION_base(4,8,0)
   (&),
 #endif
+  die,
 ) where
 
 -- Protolude module exports.
@@ -430,14 +431,12 @@ import Data.Text.Encoding.Error as X (
 
 -- IO
 import System.Environment as X (getArgs)
+import qualified System.Exit 
 import System.Exit as X (
     ExitCode(..)
   , exitWith
   , exitFailure
   , exitSuccess
-#if MIN_VERSION_base(4,8,0)
-  , die
-#endif
   )
 import System.IO as X (
     Handle
@@ -594,3 +593,11 @@ show x = toS (PBase.show x)
 {-# SPECIALIZE show :: Show  a => a -> ByteString  #-}
 {-# SPECIALIZE show :: Show  a => a -> LByteString  #-}
 {-# SPECIALIZE show :: Show  a => a -> String  #-}
+
+#if MIN_VERSION_base(4,8,0)
+die :: Text -> IO ()
+die err = System.Exit.die (toS err)
+#else
+die :: Text -> IO ()
+die err = hPutStrLn stderr err >> exitFailure
+#endif

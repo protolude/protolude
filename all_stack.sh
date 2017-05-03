@@ -28,3 +28,11 @@ stack build --resolver lts-8.2
 stack build --resolver lts-8.3
 stack build --resolver lts-8.4
 stack build --resolver lts-8.5
+stack build --resolver lts-8.6
+stack build --resolver lts-8.7
+stack build --resolver lts-8.8
+stack build --resolver lts-8.9
+stack build --resolver lts-8.10
+stack build --resolver lts-8.11
+stack build --resolver lts-8.12
+stack build --resolver lts-8.13
