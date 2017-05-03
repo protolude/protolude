@@ -516,7 +516,9 @@ import Control.Concurrent.Async as X (
   , concurrently
   )
 
+import Foreign.Ptr as X (IntPtr, WordPtr)
 import Foreign.Storable as X (Storable)
+import Foreign.StablePtr as X (StablePtr)
 
 -- Read instances hiding unsafe builtins (read)
 import Text.Read as X (

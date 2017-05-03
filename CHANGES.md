@@ -18,6 +18,7 @@
 * Mask `Type` export from `Data.Kind`.
 * Wrap `die` to take `Text` argument instead of `[Char]`.
 * Export constructors `GHC.Generics`: `(:+:)`, `(:*:)`, and `(:.:)`.
+* Expose `StablePtr`, `IntPtr` and `WordPtr` types.
 
 0.1.9
 ====
