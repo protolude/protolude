@@ -17,6 +17,7 @@
 * Export `maximumMay` and `minimumMay`.
 * Mask `Type` export from `Data.Kind`.
 * Wrap `die` to take `Text` argument instead of `[Char]`.
+* Export constructors `GHC.Generics`: `(:+:)`, `(:*:)`, and `(:.:)`.
 
 0.1.9
 ====

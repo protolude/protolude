@@ -107,6 +107,16 @@ tracks Stack LTS resolver.
 | hashable      | 1.2      | 1.3      |
 | transformers  | 0.4      | 0.6      |
 
+Structure
+---------
+
+Protolude's main modules are the following:
+
+* [Protolude.hs](https://github.com/sdiehl/protolude/blob/master/src/Protolude.hs)
+* [Base.hs](https://github.com/sdiehl/protolude/blob/master/src/Base.hs)
+* [Show.hs](https://github.com/sdiehl/protolude/blob/master/src/Show.hs)
+* [Conv.hs](https://github.com/sdiehl/protolude/blob/master/src/Conv.hs)
+
 FAQs
 ----
 
