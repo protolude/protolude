@@ -78,6 +78,8 @@ import Safe as X (
   , lastMay
   , foldr1May
   , foldl1May
+  , maximumMay
+  , minimumMay
   , atMay
   , atDef
   )

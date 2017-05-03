@@ -14,6 +14,9 @@
 * Restrict exported symbols from ``async`` to set available in 2.0.
 * Add `(&&^)`, `(||^)`, `(<&&>)`, `(<||>)`
 * Expose `unzip`.
+* Export `maximumMay` and `minimumMay`.
+* Mask `Type` export from `Data.Kind`.
+* Wrap `die` to take `Text` argument instead of `[Char]`.
 
 0.1.9
 ====
