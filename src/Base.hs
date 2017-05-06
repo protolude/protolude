@@ -51,6 +51,7 @@ import GHC.Base as X (
   , ord
   , maxInt
   , minInt
+  , until
   )
 
 -- Exported for lifting into new functions.
