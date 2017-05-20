@@ -6,6 +6,7 @@ module Either (
 , maybeToRight
 , leftToMaybe
 , rightToMaybe
+, maybeEmpty
 , maybeToEither
 ) where
 
@@ -26,5 +27,9 @@ maybeToRight l = maybe (Left l) Right
 maybeToLeft :: r -> Maybe l -> Either l r
 maybeToLeft r = maybe (Right r) Left
 
-maybeToEither :: Monoid b => (a -> b) -> Maybe a -> b
-maybeToEither = maybe mempty
+maybeEmpty :: Monoid b => (a -> b) -> Maybe a -> b
+maybeEmpty = maybe mempty
+
+maybeToEither :: e -> Maybe a -> Either e a
+maybeToEither e Nothing = Left e
+maybeToEither _ (Just a) = Right a
