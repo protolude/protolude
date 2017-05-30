@@ -40,6 +40,6 @@ import GHC.Types
 import GHC.Exception
 
 error :: Text -> a
-error s = throw (ErrorCall s)
+error s = throw (ErrorCall (unpack s))
 
 #endif
