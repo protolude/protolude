@@ -49,8 +49,6 @@ import Base as Base hiding (
     putStr           -- Overriden by Show.putStr
   , putStrLn         -- Overriden by Show.putStrLn
   , print            -- Overriden by Protolude.print
-  , error            -- Overriden by Debug.error
-  , undefined        -- Overriden by Debug.undefined
   , show             -- Overriden by Protolude.show
   , showFloat        -- Custom Show instances deprecated.
   , showList         -- Custom Show instances deprecated.

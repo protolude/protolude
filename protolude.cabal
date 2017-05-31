@@ -50,6 +50,8 @@ library
     Functor
     Semiring
     Bifunctor
+    CallStack
+    Error
     Panic
 
   default-extensions:
