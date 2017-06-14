@@ -16,7 +16,7 @@ module Protolude (
   print,
   throwIO,
   throwTo,
-  foreach,
+  foreach, (<&>),
   show,
   pass,
   guarded,
@@ -569,6 +569,13 @@ throwTo tid e = liftIO (Control.Exception.throwTo tid e)
 
 foreach :: Functor f => f a -> (a -> b) -> f b
 foreach = flip fmap
+
+-- | Infix version of foreach.
+--
+-- @<&>@ is to '<$>' what '&' is to '$'.
+infixl 4 <&>
+(<&>) :: Functor f => f a -> (a -> b) -> f b
+(<&>) = foreach
 
 -- | Do nothing returning unit inside applicative.
 pass :: Applicative f => f ()
