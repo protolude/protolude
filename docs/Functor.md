@@ -35,6 +35,7 @@ void :: Functor f => f a -> f ()
 
 ```haskell
 foreach :: Functor f => f a -> (a -> b) -> f b
+(<&>)   :: Functor f => f a -> (a -> b) -> f b
 ```
 
 

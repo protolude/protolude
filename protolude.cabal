@@ -1,6 +1,6 @@
 name:                protolude
 version:             0.2
-synopsis:            A sensible set of defaults for writing custom Preludes.
+synopsis:            A small prelude.
 description:         A sensible set of defaults for writing custom Preludes.
 homepage:            https://github.com/sdiehl/protolude
 license:             MIT
@@ -22,7 +22,8 @@ tested-with:
   GHC == 7.10.1,
   GHC == 7.10.2,
   GHC == 7.10.3,
-  GHC == 8.0.1
+  GHC == 8.0.1,
+  GHC == 8.2.1
 Bug-Reports:         https://github.com/sdiehl/protolude/issues
 
 description:
@@ -50,6 +51,8 @@ library
     Functor
     Semiring
     Bifunctor
+    CallStack
+    Error
     Panic
 
   default-extensions:
@@ -63,7 +66,7 @@ library
     -fwarn-implicit-prelude
 
   build-depends:       
-    base             >= 4.6  && <4.10,
+    base             >= 4.6  && <4.11,
     array            >= 0.4  && <0.6,
     ghc-prim         >= 0.3  && <0.6,
     async            >= 2.0  && <2.2,

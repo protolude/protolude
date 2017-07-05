@@ -16,7 +16,7 @@ module Protolude (
   print,
   throwIO,
   throwTo,
-  foreach,
+  foreach, (<&>),
   show,
   pass,
   guarded,
@@ -49,8 +49,6 @@ import Base as Base hiding (
     putStr           -- Overriden by Show.putStr
   , putStrLn         -- Overriden by Show.putStrLn
   , print            -- Overriden by Protolude.print
-  , error            -- Overriden by Debug.error
-  , undefined        -- Overriden by Debug.undefined
   , show             -- Overriden by Protolude.show
   , showFloat        -- Custom Show instances deprecated.
   , showList         -- Custom Show instances deprecated.
@@ -571,6 +569,13 @@ throwTo tid e = liftIO (Control.Exception.throwTo tid e)
 
 foreach :: Functor f => f a -> (a -> b) -> f b
 foreach = flip fmap
+
+-- | Infix version of foreach.
+--
+-- @<&>@ is to '<$>' what '&' is to '$'.
+infixl 4 <&>
+(<&>) :: Functor f => f a -> (a -> b) -> f b
+(<&>) = foreach
 
 -- | Do nothing returning unit inside applicative.
 pass :: Applicative f => f ()

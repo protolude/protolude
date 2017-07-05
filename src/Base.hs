@@ -32,10 +32,6 @@ import GHC.Float as X (
   , showFloat
   , showSignedFloat
   )
-import GHC.Err as X (
-    undefined
-  , error
-  )
 import GHC.Show as X (
     Show(..)
   )

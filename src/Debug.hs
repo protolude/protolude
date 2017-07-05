@@ -3,7 +3,6 @@
 
 module Debug (
   undefined,
-  error,
   trace,
   traceM,
   traceId,
@@ -18,6 +17,7 @@ import Data.Text (Text, unpack)
 import Control.Monad (Monad, return)
 
 import qualified Base as P
+import Error (error)
 import Show (Print, putStrLn)
 
 import System.IO.Unsafe (unsafePerformIO)
@@ -33,10 +33,6 @@ traceIO :: Print b => b -> a -> P.IO a
 traceIO string expr = do
     putStrLn string
     return expr
-
-{-# WARNING error "'error' remains in code" #-}
-error :: Text -> a
-error s = P.error (unpack s)
 
 {-# WARNING traceShow "'traceShow' remains in code" #-}
 traceShow :: P.Show a => a -> b -> b
@@ -59,7 +55,7 @@ traceId :: Text -> Text
 traceId s = trace s s
 
 notImplemented :: a
-notImplemented = P.error "Not implemented"
+notImplemented = error "Not implemented"
 
 undefined :: a
-undefined = P.undefined
+undefined = error "Prelude.undefined"
