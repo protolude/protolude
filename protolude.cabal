@@ -1,6 +1,6 @@
 name:                protolude
 version:             0.2
-synopsis:            A sensible set of defaults for writing custom Preludes.
+synopsis:            A small prelude.
 description:         A sensible set of defaults for writing custom Preludes.
 homepage:            https://github.com/sdiehl/protolude
 license:             MIT
