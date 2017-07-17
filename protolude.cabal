@@ -35,10 +35,10 @@ Source-Repository head
 library
   exposed-modules:     
     Protolude
+    Unsafe
 
   other-modules:
     Exceptions
-    Unsafe
     Base
     Applicative
     Bool

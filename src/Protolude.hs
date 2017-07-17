@@ -604,9 +604,9 @@ show x = toS (PBase.show x)
 {-# SPECIALIZE show :: Show  a => a -> String  #-}
 
 #if MIN_VERSION_base(4,8,0)
-die :: Text -> IO ()
+die :: Text -> IO a
 die err = System.Exit.die (toS err)
 #else
-die :: Text -> IO ()
+die :: Text -> IO a
 die err = hPutStrLn stderr err >> exitFailure
 #endif
