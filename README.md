@@ -92,9 +92,9 @@ tracks Stack LTS resolver.
 
 | Dependencies  | Lower    | Upper    |
 | -----------   | -------- | -------- |
-| array         | 0.4      | 0.5      |
+| array         | 0.4      | 0.6      |
 | async         | 2.0      | 2.2      |
-| base          | 4.6      | 4.10     |
+| base          | 4.6      | 4.11     |
 | bytestring    | 0.10     | 0.11     |
 | containers    | 0.5      | 0.6      |
 | deepseq       | 1.3      | 1.5      |
