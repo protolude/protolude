@@ -29,6 +29,7 @@ import GHC.Float as X (
     Float(..)
   , Double(..)
   , Floating (..)
+  , RealFloat(..)
   , showFloat
   , showSignedFloat
   )
