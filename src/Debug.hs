@@ -18,20 +18,21 @@ import Control.Monad (Monad, return)
 
 import qualified Base as P
 import Error (error)
-import Show (Print, putStrLn)
+import Show (Print, hPutStrLn)
 
+import System.IO(stderr)
 import System.IO.Unsafe (unsafePerformIO)
 
 {-# WARNING trace "'trace' remains in code" #-}
 trace :: Print b => b -> a -> a
 trace string expr = unsafePerformIO (do
-    putStrLn string
+    hPutStrLn stderr string
     return expr)
 
 {-# WARNING traceIO "'traceIO' remains in code" #-}
 traceIO :: Print b => b -> a -> P.IO a
 traceIO string expr = do
-    putStrLn string
+    hPutStrLn stderr string
     return expr
 
 {-# WARNING traceShow "'traceShow' remains in code" #-}
