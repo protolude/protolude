@@ -37,8 +37,6 @@ library
     Protolude
     Unsafe
     Debug
-
-  other-modules:
     Protolude.Exceptions
     Protolude.Base
     Protolude.Applicative
