@@ -2,13 +2,13 @@
 {-# LANGUAGE Trustworthy #-}
 {-# LANGUAGE NoImplicitPrelude #-}
 
-module Exceptions (
+module Protolude.Exceptions (
   hush,
   note,
   tryIO,
 ) where
 
-import Base (IO)
+import Protolude.Base (IO)
 import Data.Function ((.))
 import Control.Monad.Trans (liftIO)
 import Control.Monad.IO.Class (MonadIO)

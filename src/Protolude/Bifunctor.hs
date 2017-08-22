@@ -1,7 +1,7 @@
 {-# LANGUAGE Safe #-}
 {-# LANGUAGE NoImplicitPrelude #-}
 
-module Bifunctor (
+module Protolude.Bifunctor (
   Bifunctor(..)
 ) where
 

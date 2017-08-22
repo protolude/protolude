@@ -5,7 +5,7 @@
 {-# LANGUAGE TypeSynonymInstances #-}
 {-# LANGUAGE ExtendedDefaultRules #-}
 
-module Show (
+module Protolude.Show (
   Print(..),
   putText,
   putLText,
@@ -13,8 +13,8 @@ module Show (
   putLByteString,
 ) where
 
-import qualified Base
 import qualified System.IO as Base
+import qualified Protolude.Base as Base
 import Data.Function ((.))
 
 import Control.Monad.IO.Class (MonadIO, liftIO)

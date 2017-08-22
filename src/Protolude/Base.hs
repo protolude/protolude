@@ -4,7 +4,7 @@
 {-# LANGUAGE NoImplicitPrelude #-}
 {-# LANGUAGE ExplicitNamespaces #-}
 
-module Base (
+module Protolude.Base (
   module X,
   ($!),
 ) where

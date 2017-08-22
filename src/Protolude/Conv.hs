@@ -2,7 +2,7 @@
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE TypeSynonymInstances #-}
 
-module Conv (
+module Protolude.Conv (
   StringConv (..)
 , toS
 , toSL
@@ -17,7 +17,7 @@ import Data.Text.Encoding.Error   as T
 import Data.Text.Lazy             as LT
 import Data.Text.Lazy.Encoding    as LT
 
-import Base
+import Protolude.Base
 import Data.Eq (Eq(..))
 import Data.Ord (Ord(..))
 import Data.Function ((.), id)

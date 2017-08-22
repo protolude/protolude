@@ -1,7 +1,7 @@
 {-# LANGUAGE Safe #-}
 {-# LANGUAGE NoImplicitPrelude #-}
 
-module List (
+module Protolude.List (
   head,
   ordNub,
   sortOn,

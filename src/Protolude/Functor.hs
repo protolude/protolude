@@ -2,7 +2,7 @@
 {-# LANGUAGE Safe #-}
 {-# LANGUAGE NoImplicitPrelude #-}
 
-module Functor (
+module Protolude.Functor (
   Functor(..),
   ($>),
   (<$>),

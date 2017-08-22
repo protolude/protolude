@@ -1,7 +1,7 @@
 {-# LANGUAGE Safe #-}
 {-# LANGUAGE NoImplicitPrelude #-}
 
-module Either (
+module Protolude.Either (
   maybeToLeft
 , maybeToRight
 , leftToMaybe

@@ -1,7 +1,7 @@
 {-# LANGUAGE Safe #-}
 {-# LANGUAGE NoImplicitPrelude #-}
 
-module Semiring (
+module Protolude.Semiring (
   Semiring(..),
   zero,
 ) where

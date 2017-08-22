@@ -3,7 +3,7 @@
 {-# LANGUAGE ImplicitParams #-}
 {-# LANGUAGE ConstraintKinds #-}
 
-module CallStack
+module Protolude.CallStack
 ( HasCallStack
 ) where
 

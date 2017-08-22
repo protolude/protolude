@@ -16,9 +16,9 @@ module Debug (
 import Data.Text (Text, unpack)
 import Control.Monad (Monad, return)
 
-import qualified Base as P
-import Error (error)
-import Show (Print, hPutStrLn)
+import qualified Protolude.Base as P
+import Protolude.Error (error)
+import Protolude.Show (Print, hPutStrLn)
 
 import System.IO(stderr)
 import System.IO.Unsafe (unsafePerformIO)

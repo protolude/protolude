@@ -1,7 +1,7 @@
 {-# LANGUAGE Safe #-}
 {-# LANGUAGE NoImplicitPrelude #-}
 
-module Applicative (
+module Protolude.Applicative (
   orAlt,
   orEmpty,
   eitherA,

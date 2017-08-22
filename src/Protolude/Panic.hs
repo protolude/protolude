@@ -6,15 +6,15 @@
 {-# OPTIONS_GHC -fno-warn-redundant-constraints #-}
 #endif
 
-module Panic (
+module Protolude.Panic (
   FatalError(..),
   panic,
 ) where
 
-import Base (Show)
+import Protolude.Base (Show)
+import Protolude.CallStack (HasCallStack)
 import Data.Text (Text)
 import Data.Typeable (Typeable)
-import CallStack (HasCallStack)
 import Control.Exception as X
 
 -- | Uncatchable exceptions thrown and never caught.

@@ -32,20 +32,20 @@ module Protolude (
 ) where
 
 -- Protolude module exports.
-import List as X
-import Show as X
-import Bool as X
 import Debug as X
-import Monad as X
-import Functor as X
-import Either as X
-import Applicative as X
-import Conv as X
-import Panic as X
-import Exceptions as X
-import Semiring as X
+import Protolude.List as X
+import Protolude.Show as X
+import Protolude.Bool as X
+import Protolude.Monad as X
+import Protolude.Functor as X
+import Protolude.Either as X
+import Protolude.Applicative as X
+import Protolude.Conv as X
+import Protolude.Panic as X
+import Protolude.Exceptions as X
+import Protolude.Semiring as X
 
-import Base as Base hiding (
+import Protolude.Base as Base hiding (
     putStr           -- Overriden by Show.putStr
   , putStrLn         -- Overriden by Show.putStrLn
   , print            -- Overriden by Protolude.print
@@ -56,7 +56,7 @@ import Base as Base hiding (
   , showSignedFloat  -- Custom Show instances deprecated.
   , showsPrec        -- Custom Show instances deprecated.
   )
-import qualified Base as PBase
+import qualified Protolude.Base as PBase
 
 -- Used for 'show', not exported.
 import Data.String (String)
@@ -155,10 +155,10 @@ import Control.DeepSeq as X (
 import Data.Tuple as X (
     fst
   , snd
-  , curry 
+  , curry
   , uncurry
   , swap
-  ) 
+  )
 
 import Data.List as X (
     splitAt
@@ -325,7 +325,7 @@ import Data.Word as X (
 
 import Data.Either as X (
     Either(..)
-  , either 
+  , either
   , lefts
   , rights
   , partitionEithers
@@ -431,7 +431,7 @@ import Data.Text.Encoding.Error as X (
 
 -- IO
 import System.Environment as X (getArgs)
-import qualified System.Exit 
+import qualified System.Exit
 import System.Exit as X (
     ExitCode(..)
   , exitWith
@@ -475,7 +475,7 @@ import Control.Monad.STM as X (
   , retry
   , orElse
   , check
-  , throwSTM 
+  , throwSTM
   , catchSTM
   )
 import Control.Concurrent as X hiding (
@@ -494,7 +494,7 @@ import Control.Concurrent.Async as X (
   , wait
   , poll
   , waitCatch
-  , cancel 
+  , cancel
   , cancelWith
   , asyncThreadId
   , waitAny

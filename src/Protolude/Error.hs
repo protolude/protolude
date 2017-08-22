@@ -8,7 +8,7 @@
 {-# OPTIONS_GHC -fno-warn-redundant-constraints #-}
 #endif
 
-module Error
+module Protolude.Error
 ( error
 ) where
 
@@ -19,7 +19,7 @@ import Data.Text (Text, unpack)
 -- Full stack trace.
 
 import GHC.Types (RuntimeRep)
-import CallStack (HasCallStack)
+import Protolude.CallStack (HasCallStack)
 import GHC.Exception (errorCallWithCallStackException)
 
 error :: forall (r :: RuntimeRep) . forall (a :: TYPE r) . HasCallStack => Text -> a

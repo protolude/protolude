@@ -1,7 +1,7 @@
 {-# LANGUAGE Safe #-}
 {-# LANGUAGE NoImplicitPrelude #-}
 
-module Bool (
+module Protolude.Bool (
   whenM
 , unlessM
 , ifM

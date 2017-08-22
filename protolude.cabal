@@ -39,21 +39,21 @@ library
     Debug
 
   other-modules:
-    Exceptions
-    Base
-    Applicative
-    Bool
-    List
-    Monad
-    Show
-    Conv
-    Either
-    Functor
-    Semiring
-    Bifunctor
-    CallStack
-    Error
-    Panic
+    Protolude.Exceptions
+    Protolude.Base
+    Protolude.Applicative
+    Protolude.Bool
+    Protolude.List
+    Protolude.Monad
+    Protolude.Show
+    Protolude.Conv
+    Protolude.Either
+    Protolude.Functor
+    Protolude.Semiring
+    Protolude.Bifunctor
+    Protolude.CallStack
+    Protolude.Error
+    Protolude.Panic
 
   default-extensions:
     NoImplicitPrelude

@@ -2,7 +2,7 @@
 {-# LANGUAGE Trustworthy #-}
 {-# LANGUAGE NoImplicitPrelude #-}
 
-module Monad (
+module Protolude.Monad (
     Monad((>>=), return)
   , MonadPlus(..)
 
@@ -40,7 +40,7 @@ module Monad (
   , (<$!>)
   ) where
 
-import Base (seq)
+import Protolude.Base (seq)
 import Data.List (concat)
 import Control.Monad
 
