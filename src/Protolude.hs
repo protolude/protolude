@@ -138,7 +138,7 @@ import Data.Semigroup as X (
 import Data.Monoid as X
 
 #if !MIN_VERSION_base(4,8,0)
-import Bifunctor as X (Bifunctor(..))
+import Protolude.Bifunctor as X (Bifunctor(..))
 #else
 import Data.Bifunctor as X (Bifunctor(..))
 #endif
