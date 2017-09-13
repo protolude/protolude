@@ -113,9 +113,7 @@ import GHC.TypeLits as X (
   )
 #endif
 
--- Pending GHC 8.2 we'll expose these.
-
-{-
+#if ( __GLASGOW_HASKELL__ >= 802 )
 import GHC.Records as X (
     HasField(..)
   )
@@ -124,7 +122,7 @@ import Data.Kind as X (
     type (*)
   , type Type
   )
--}
+#endif
 
 #endif
 
