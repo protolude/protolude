@@ -27,7 +27,7 @@ import qualified Data.Text.IO as T
 import qualified Data.Text.Lazy as TL
 import qualified Data.Text.Lazy.IO as TL
 
-import System.IO (Handle, stdout)
+import System.IO (Handle, stdout, stderr)
 
 
 class Print a where
@@ -37,6 +37,8 @@ class Print a where
   hPutStrLn :: MonadIO m => Handle -> a -> m ()
   putStrLn :: MonadIO m => a -> m ()
   putStrLn = hPutStrLn stdout
+  putErrLn ::  MonadIO m => a -> m ()
+  putErrLn = hPutStrLn stderr
 
 instance Print T.Text where
   hPutStr = \h -> liftIO . T.hPutStr h
