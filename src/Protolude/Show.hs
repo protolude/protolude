@@ -8,7 +8,7 @@
 module Protolude.Show (
   Print(..),
   putText,
-  putErr,
+  putErrText,
   putLText,
   putByteString,
   putLByteString,
@@ -78,6 +78,6 @@ putLByteString :: MonadIO m => BL.ByteString -> m ()
 putLByteString = putStrLn
 {-# SPECIALIZE putLByteString :: BL.ByteString -> Base.IO () #-}
 
-putErr :: MonadIO m => T.Text -> m ()
-putErr = putErrLn
-{-# SPECIALIZE putErr :: T.Text -> Base.IO () #-}
+putErrText :: MonadIO m => T.Text -> m ()
+putErrText = putErrLn
+{-# SPECIALIZE putErrText :: T.Text -> Base.IO () #-}
