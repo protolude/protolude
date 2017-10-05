@@ -3,6 +3,9 @@
 {-# LANGUAGE PolyKinds #-}
 {-# LANGUAGE ImplicitParams #-}
 {-# LANGUAGE ExistentialQuantification #-}
+#if ( __GLASGOW_HASKELL__ >= 800 )
+{-# LANGUAGE TypeInType #-}
+#endif
 
 #if MIN_VERSION_base(4,9,0)
 {-# OPTIONS_GHC -fno-warn-redundant-constraints #-}
