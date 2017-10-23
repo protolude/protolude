@@ -1,5 +1,6 @@
 {-# LANGUAGE Trustworthy #-}
 {-# LANGUAGE NoImplicitPrelude #-}
+{-# OPTIONS_GHC -fno-warn-warnings-deprecations #-}
 
 module Debug (
   undefined,
@@ -55,8 +56,10 @@ traceM s = trace (unpack s) (return ())
 traceId :: Text -> Text
 traceId s = trace s s
 
+{-# WARNING notImplemented "'notImplemented' remains in code" #-}
 notImplemented :: a
 notImplemented = error "Not implemented"
 
+{-# WARNING undefined "'undefined' remains in code" #-}
 undefined :: a
 undefined = error "Prelude.undefined"
