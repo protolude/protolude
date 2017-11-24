@@ -287,7 +287,9 @@ import Control.Monad.Except as X (
   , Except
   , ExceptT(ExceptT)
   , throwError
+  , throwE
   , catchError
+  , catchE
   , runExcept
   , runExceptT
   )
