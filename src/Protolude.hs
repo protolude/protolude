@@ -281,15 +281,19 @@ import Control.Monad.Reader as X (
   , runReader
   , runReaderT
   )
+  )
+
+import Control.Monad.Trans.Except as X (
+    throwE
+  , catchE
+  )
 
 import Control.Monad.Except as X (
     MonadError
   , Except
   , ExceptT(ExceptT)
   , throwError
-  , throwE
   , catchError
-  , catchE
   , runExcept
   , runExceptT
   )
