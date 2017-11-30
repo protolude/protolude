@@ -281,7 +281,6 @@ import Control.Monad.Reader as X (
   , runReader
   , runReaderT
   )
-  )
 
 import Control.Monad.Trans.Except as X (
     throwE
