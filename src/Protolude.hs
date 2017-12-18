@@ -295,6 +295,10 @@ import Control.Monad.Except as X (
   , catchError
   , runExcept
   , runExceptT
+  , mapExcept
+  , mapExceptT
+  , withExcept
+  , withExceptT
   )
 
 import Control.Monad.Trans as X (
