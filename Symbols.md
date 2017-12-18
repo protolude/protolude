@@ -781,6 +781,7 @@
 * runStateT
 * scaleFloat
 * scanl
+* scanl'
 * scanr
 * second
 * selName
