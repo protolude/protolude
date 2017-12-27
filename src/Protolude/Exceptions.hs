@@ -22,7 +22,7 @@ hush :: Alternative m => Either e a -> m a
 hush (Left _)  = empty
 hush (Right x) = pure x
 
--- To suppress redundenet applicative constraint warning on GHC 8.0
+-- To suppress redundant applicative constraint warning on GHC 8.0
 #if ( __GLASGOW_HASKELL__ >= 800 )
 note :: (MonadError e m) => e -> Maybe a -> m a
 note err = maybe (throwError err) pure
