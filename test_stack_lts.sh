@@ -9,3 +9,9 @@ STACK_YAML=stack-7.10.yaml stack build  --no-terminal
 
 echo -e "\e[92mLTS 8.0"
 STACK_YAML=stack-8.0.yaml  stack build  --no-terminal
+
+echo -e "\e[92mLTS 9.0"
+STACK_YAML=stack-9.0.yaml  stack build  --no-terminal
+
+echo -e "\e[92mLTS 10.0"
+STACK_YAML=stack-10.0.yaml  stack build  --no-terminal

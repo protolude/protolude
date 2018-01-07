@@ -11,6 +11,7 @@ copyright:           2016-2017 Stephen Diehl
 category:            Prelude
 build-type:          Simple
 cabal-version:       >=1.10
+bug-reports:         https://github.com/sdiehl/protolude/issues
 tested-with:         
   GHC == 7.6.1,
   GHC == 7.6.2,
@@ -24,7 +25,6 @@ tested-with:
   GHC == 7.10.3,
   GHC == 8.0.1,
   GHC == 8.2.1
-Bug-Reports:         https://github.com/sdiehl/protolude/issues
 
 description:
     A sensible set of defaults for writing custom Preludes.
@@ -80,7 +80,7 @@ library
 
   if impl(ghc >= 7.8.0)
     build-depends:
-      safe             >= 0.3  && <0.3.16
+      safe             >= 0.3  && <0.4
   else
     build-depends:
       safe             >= 0.3  && <0.3.10
