@@ -172,4 +172,4 @@ License
 -------
 
 Released under the MIT License.
-Copyright (c) 2016-2017, Stephen Diehl
+Copyright (c) 2016-2018, Stephen Diehl
