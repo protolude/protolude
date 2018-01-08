@@ -1,3 +1,15 @@
+0.2.1
+====
+
+* Add `transformers-compat` for old versions of transformers that require
+  `throwE`, `catchE`.
+* Fix `safe` version bounds for new versions.
+* Add `mapExceptT and `withExceptT`.
+* Export `scanl'`.
+* Add `putErrLn`.
+* Export `RealFloat`.
+* Expose `GHC.Records` exports for GHC 8.2 and above.
+
 0.2
 ====
 
