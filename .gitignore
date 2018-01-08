@@ -1,4 +1,4 @@
-*.sw[pon]
+*.sw[ponmkl]
 .stack-work
 dist
 .cabal-sandbox
