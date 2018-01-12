@@ -1,13 +1,14 @@
 0.2.1
 ====
 
+* Exposes `throwE` and `catchE`.
 * Add `transformers-compat` for old versions of transformers that require
   `throwE`, `catchE`.
 * Fix `safe` version bounds for new versions.
 * Add `mapExceptT and `withExceptT`.
-* Export `scanl'`.
+* Export `scanl'` and provide shim for backwards compatability.
 * Add `putErrLn`.
-* Export `RealFloat`.
+* Expose `RealFloat`.
 * Expose `GHC.Records` exports for GHC 8.2 and above.
 
 0.2
