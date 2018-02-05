@@ -96,6 +96,7 @@ import GHC.Stack as X (
   , prettyCallStack
   , withFrozenCallStack
   )
+#endif
 
 #if ( __GLASGOW_HASKELL__ >= 710 )
 import GHC.TypeLits as X (
@@ -117,13 +118,13 @@ import GHC.TypeLits as X (
 import GHC.Records as X (
     HasField(..)
   )
+#endif
 
+#if ( __GLASGOW_HASKELL__ >= 800 )
 import Data.Kind as X (
     type (*)
   , type Type
   )
-#endif
-
 #endif
 
 -- Default Prelude defines this at the toplevel module, so we do as well.
