@@ -24,10 +24,9 @@ tested-with:
   GHC == 7.10.2,
   GHC == 7.10.3,
   GHC == 8.0.1,
-  GHC == 8.2.1
+  GHC == 8.2.1,
+  GHC == 8.4.1
 
-description:
-    A sensible set of defaults for writing custom Preludes.
 Source-Repository head
     type: git
     location: git@github.com:sdiehl/protolude.git
@@ -64,7 +63,7 @@ library
     -fwarn-implicit-prelude
 
   build-depends:       
-    base                >= 4.6  && <4.11,
+    base                >= 4.6  && <4.12,
     array               >= 0.4  && <0.6,
     ghc-prim            >= 0.3  && <0.6,
     async               >= 2.0  && <2.3,

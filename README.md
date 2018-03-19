@@ -41,6 +41,8 @@ Supports:
  * GHC 7.10.3
  * GHC 8.0.1
  * GHC 8.0.2
+ * GHC 8.2.1
+ * GHC 8.4.1
  * GHC HEAD
 
 Usage
@@ -90,22 +92,22 @@ libraries that are universally common across most real-world projects. Lower and
 upper bounds are fully specified and compatible with both vanilla Cabal and
 tracks Stack LTS resolver.
 
-| Dependencies  | Lower    | Upper    |
-| -----------   | -------- | -------- |
-| array         | 0.4      | 0.6      |
-| async         | 2.0      | 2.2      |
-| base          | 4.6      | 4.11     |
-| bytestring    | 0.10     | 0.11     |
-| containers    | 0.5      | 0.6      |
-| deepseq       | 1.3      | 1.5      |
-| ghc-prim      | 0.3      | 0.6      |
-| integer-gmp   | 1.0      | 1.0      |
-| mtl           | 2.1      | 2.3      |
-| safe          | 0.3      | 0.4      |
-| stm           | 2.4      | 2.5      |
-| text          | 1.2      | 1.3      |
-| hashable      | 1.2      | 1.3      |
-| transformers  | 0.4      | 0.6      |
+| Dependencies        | Lower (>=) | Upper (<) |
+| -----------         |   -------- |  -------- |
+| array               |        0.4 |       0.6 |
+| async               |        2.0 |       2.3 |
+| base                |        4.6 |      4.12 |
+| bytestring          |       0.10 |      0.11 |
+| containers          |        0.5 |       0.6 |
+| deepseq             |        1.3 |       1.5 |
+| ghc-prim            |        0.3 |       0.6 |
+| hashable            |        1.2 |       1.3 |
+| mtl                 |        2.1 |       2.3 |
+| safe                |        0.3 |       0.4 |
+| stm                 |        2.4 |       2.5 |
+| text                |        1.2 |       1.3 |
+| transformers        |        0.4 |       0.6 |
+|                     |            |           |
 
 Structure
 ---------
