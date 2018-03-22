@@ -65,7 +65,7 @@ import Data.String (String)
 import Data.String as X (IsString)
 
 -- Maybe'ized version of partial functions
-import Safe as X (
+import Protolude.Safe as X (
     headMay
   , headDef
   , initMay
@@ -78,8 +78,11 @@ import Safe as X (
   , lastMay
   , foldr1May
   , foldl1May
+  , foldl1May'
   , maximumMay
   , minimumMay
+  , maximumDef
+  , minimumDef
   , atMay
   , atDef
   )

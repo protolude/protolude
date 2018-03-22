@@ -12,6 +12,7 @@ module Debug (
   traceShowId,
   traceShowM,
   notImplemented,
+  witness,
 ) where
 
 import Data.Text (Text, unpack)
@@ -63,3 +64,6 @@ notImplemented = error "Not implemented"
 {-# WARNING undefined "'undefined' remains in code" #-}
 undefined :: a
 undefined = error "Prelude.undefined"
+
+witness :: a
+witness = error "Type witness should not be evaluated"
