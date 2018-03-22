@@ -32,47 +32,24 @@ import Data.Char (Char)
 import Data.Bool (Bool, otherwise)
 import Data.Maybe (Maybe(..), fromMaybe)
 import Data.Either (Either(..))
-import Data.Function (($), (.))
+import Data.Function ((.))
 import Data.List (null, head, last, tail, init, maximum, minimum, foldr1, foldl1, foldl1', (++))
 
 import GHC.Num ((-))
 import GHC.Show (show)
 
+liftMay :: (a -> Bool) -> (a -> b) -> (a -> Maybe b)
+liftMay test f val = if test val then Nothing else Just (f val)
+
 -------------------------------------------------------------------------------
 -- Head
 -------------------------------------------------------------------------------
 
-liftMay :: (a -> Bool) -> (a -> b) -> (a -> Maybe b)
-liftMay test func val = if test val then Nothing else Just $ func val
-
-headMay, lastMay :: [a] -> Maybe a
+headMay :: [a] -> Maybe a
 headMay = liftMay null head
-lastMay = liftMay null last
 
-headDef, lastDef :: a -> [a] -> a
+headDef :: a -> [a] -> a
 headDef def = fromMaybe def . headMay
-lastDef def = fromMaybe def . lastMay
-
--------------------------------------------------------------------------------
--- Maximum
--------------------------------------------------------------------------------
-
-minimumMay, maximumMay :: Ord a => [a] -> Maybe a
-minimumMay = liftMay null minimum
-maximumMay = liftMay null maximum
-
-minimumDef, maximumDef :: Ord a => a -> [a] -> a
-minimumDef def = fromMaybe def . minimumMay
-maximumDef def = fromMaybe def . maximumMay
-
--------------------------------------------------------------------------------
--- Foldr
--------------------------------------------------------------------------------
-
-foldr1May, foldl1May, foldl1May' :: (a -> a -> a) -> [a] -> Maybe a
-foldr1May = liftMay null . foldr1
-foldl1May = liftMay null . foldl1
-foldl1May' = liftMay null . foldl1'
 
 -------------------------------------------------------------------------------
 -- Init
@@ -101,17 +78,53 @@ tailSafe :: [a] -> [a]
 tailSafe = tailDef []
 
 -------------------------------------------------------------------------------
+-- Last
+-------------------------------------------------------------------------------
+
+lastMay :: [a] -> Maybe a
+lastMay = liftMay null last
+
+lastDef :: a -> [a] -> a
+lastDef def = fromMaybe def . lastMay
+
+-------------------------------------------------------------------------------
+-- Maximum
+-------------------------------------------------------------------------------
+
+minimumMay, maximumMay :: Ord a => [a] -> Maybe a
+minimumMay = liftMay null minimum
+maximumMay = liftMay null maximum
+
+minimumDef, maximumDef :: Ord a => a -> [a] -> a
+minimumDef def = fromMaybe def . minimumMay
+maximumDef def = fromMaybe def . maximumMay
+
+-------------------------------------------------------------------------------
+-- Foldr
+-------------------------------------------------------------------------------
+
+foldr1May, foldl1May, foldl1May' :: (a -> a -> a) -> [a] -> Maybe a
+foldr1May = liftMay null . foldr1
+
+-------------------------------------------------------------------------------
+-- Foldl
+-------------------------------------------------------------------------------
+
+foldl1May = liftMay null . foldl1
+foldl1May' = liftMay null . foldl1'
+
+-------------------------------------------------------------------------------
 -- At
 -------------------------------------------------------------------------------
 
 at_ :: [a] -> Int -> Either [Char] a
 at_ ys o
-  | o < 0 = Left $ "index must not be negative, index=" ++ show o
+  | o < 0 = Left ("index must not be negative, index=" ++ show o)
   | otherwise = f o ys
   where
     f 0 (x:_) = Right x
     f i (_:xs) = f (i-1) xs
-    f i [] = Left $ "index too large, index=" ++ show o ++ ", length=" ++ show (o-i)
+    f i [] = Left ("index too large, index=" ++ show o ++ ", length=" ++ show (o-i))
 
 atMay :: [a] -> Int -> Maybe a
 atMay xs i = case xs `at_` i of
