@@ -25,6 +25,7 @@ import GHC.Types (RuntimeRep)
 import Protolude.CallStack (HasCallStack)
 import GHC.Exception (errorCallWithCallStackException)
 
+{-# WARNING error "'error' remains in code" #-}
 error :: forall (r :: RuntimeRep) . forall (a :: TYPE r) . HasCallStack => Text -> a
 error s = raise# (errorCallWithCallStackException (unpack s) ?callstack)
 
@@ -33,6 +34,7 @@ error s = raise# (errorCallWithCallStackException (unpack s) ?callstack)
 
 import GHC.Exception (errorCallException)
 
+{-# WARNING error "'error' remains in code" #-}
 error :: Text -> a
 error s = raise# (errorCallException (unpack s))
 
@@ -42,6 +44,7 @@ error s = raise# (errorCallException (unpack s))
 import GHC.Types
 import GHC.Exception
 
+{-# WARNING error "'error' remains in code" #-}
 error :: Text -> a
 error s = throw (ErrorCall (unpack s))
 

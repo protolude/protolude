@@ -1,3 +1,4 @@
+{-# LANGUAGE BangPatterns #-}
 {-# LANGUAGE CPP #-}
 {-# LANGUAGE Trustworthy #-}
 {-# LANGUAGE FlexibleContexts #-}
@@ -27,6 +28,7 @@ module Protolude (
   liftIO2,
 #if !MIN_VERSION_base(4,8,0)
   (&),
+  scanl',
 #endif
   die,
 ) where
@@ -63,7 +65,7 @@ import Data.String (String)
 import Data.String as X (IsString)
 
 -- Maybe'ized version of partial functions
-import Safe as X (
+import Protolude.Safe as X (
     headMay
   , headDef
   , initMay
@@ -76,8 +78,11 @@ import Safe as X (
   , lastMay
   , foldr1May
   , foldl1May
+  , foldl1May'
   , maximumMay
   , minimumMay
+  , maximumDef
+  , minimumDef
   , atMay
   , atDef
   )
@@ -177,6 +182,9 @@ import Data.List as X (
   , subsequences
   , permutations
   , scanl
+#if MIN_VERSION_base(4,8,0)
+  , scanl'
+#endif
   , scanr
   , iterate
   , repeat
@@ -196,6 +204,12 @@ import Data.List as X (
   , genericSplitAt
   , genericReplicate
   )
+
+#if !MIN_VERSION_base(4,8,0)
+-- These imports are required for the scanl' rewrite rules
+import GHC.Exts (build)
+import Data.List (tail)
+#endif
 
 -- Hashing
 import Data.Hashable as X (
@@ -282,6 +296,11 @@ import Control.Monad.Reader as X (
   , runReaderT
   )
 
+import Control.Monad.Trans.Except as X (
+    throwE
+  , catchE
+  )
+
 import Control.Monad.Except as X (
     MonadError
   , Except
@@ -290,6 +309,10 @@ import Control.Monad.Except as X (
   , catchError
   , runExcept
   , runExceptT
+  , mapExcept
+  , mapExceptT
+  , withExcept
+  , withExceptT
   )
 
 import Control.Monad.Trans as X (
@@ -609,4 +632,33 @@ die err = System.Exit.die (toS err)
 #else
 die :: Text -> IO a
 die err = hPutStrLn stderr err >> exitFailure
+#endif
+
+#if !MIN_VERSION_base(4,8,0)
+-- This is a literal copy of the implementation in GHC.List in base-4.10.1.0.
+
+-- | A strictly accumulating version of 'scanl'
+{-# NOINLINE [1] scanl' #-}
+scanl'           :: (b -> a -> b) -> b -> [a] -> [b]
+scanl' = scanlGo'
+  where
+    scanlGo'           :: (b -> a -> b) -> b -> [a] -> [b]
+    scanlGo' f !q ls    = q : (case ls of
+                            []   -> []
+                            x:xs -> scanlGo' f (f q x) xs)
+
+{-# RULES
+"scanl'"  [~1] forall f a bs . scanl' f a bs =
+  build (\c n -> a `c` foldr (scanlFB' f c) (flipSeqScanl' n) bs a)
+"scanlList'" [1] forall f a bs .
+    foldr (scanlFB' f (:)) (flipSeqScanl' []) bs a = tail (scanl' f a bs)
+ #-}
+
+{-# INLINE [0] scanlFB' #-}
+scanlFB' :: (b -> a -> b) -> (b -> c -> c) -> a -> (b -> c) -> b -> c
+scanlFB' f c = \b g -> \x -> let !b' = f x b in b' `c` g b'
+
+{-# INLINE [0] flipSeqScanl' #-}
+flipSeqScanl' :: a -> b -> a
+flipSeqScanl' a !_b = a
 #endif

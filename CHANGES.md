@@ -1,3 +1,26 @@
+0.2.2
+=====
+
+* Add explicit `witness` function for use as type witness without warnings.
+  Makes undefined semantically distinguishable from type witnesses.
+* Backwards compatible `Protolude.Safe` module for explicit handling of partial
+  list operations.
+* Export `minimumDef`, `maximumDef`.
+* Looser lower-bound on Data.Kind export for GHC 8.0.x.
+
+0.2.1
+====
+
+* Exposes `throwE` and `catchE`.
+* Add `transformers-compat` for old versions of transformers that require
+  `throwE`, `catchE`.
+* Fix `safe` version bounds for new versions.
+* Add `mapExceptT and `withExceptT`.
+* Export `scanl'` and provide shim for backwards compatability.
+* Add `putErrLn`.
+* Expose `RealFloat`.
+* Expose `GHC.Records` exports for GHC 8.2 and above.
+
 0.2
 ====
 
