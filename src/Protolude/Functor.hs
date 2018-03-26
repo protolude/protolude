@@ -7,10 +7,17 @@ module Protolude.Functor (
   ($>),
   (<$>),
   (<<$>>),
+  (<&>),
   void,
+  foreach,
 ) where
 
 import Data.Function ((.))
+import Data.Function (flip)
+
+#if MIN_VERSION_base(4,11,0)
+import Data.Functor ((<$>))
+#endif
 
 #if MIN_VERSION_base(4,7,0)
 import Data.Functor (
@@ -25,7 +32,6 @@ import Data.Functor (
   , (<$>)
   )
 
-import Data.Function (flip)
 
 infixl 4 $>
 
@@ -40,3 +46,16 @@ infixl 4 <<$>>
 
 (<<$>>) :: (Functor f, Functor g) => (a -> b) -> f (g a) -> f (g b)
 (<<$>>) = fmap . fmap
+
+foreach :: Functor f => f a -> (a -> b) -> f b
+foreach = flip fmap
+
+#if !MIN_VERSION_base(4,11,0)
+-- | Infix version of foreach.
+--
+-- @<&>@ is to '<$>' what '&' is to '$'.
+
+infixl 1 <&>
+(<&>) :: Functor f => f a -> (a -> b) -> f b
+(<&>) = foreach
+#endif
