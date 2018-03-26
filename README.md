@@ -103,7 +103,6 @@ tracks Stack LTS resolver.
 | ghc-prim            |        0.3 |       0.6 |
 | hashable            |        1.2 |       1.3 |
 | mtl                 |        2.1 |       2.3 |
-| safe                |        0.3 |       0.4 |
 | stm                 |        2.4 |       2.5 |
 | text                |        1.2 |       1.3 |
 | transformers        |        0.4 |       0.6 |
