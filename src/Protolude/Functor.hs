@@ -16,7 +16,7 @@ import Data.Function ((.))
 import Data.Function (flip)
 
 #if MIN_VERSION_base(4,11,0)
-import Data.Functor ((<$>))
+import Data.Functor ((<&>))
 #endif
 
 #if MIN_VERSION_base(4,7,0)
