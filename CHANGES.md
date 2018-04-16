@@ -1,3 +1,8 @@
+0.2.3
+=====
+
+* Expose `fromLeft` and `fromRight`.
+
 0.2.2
 =====
 
