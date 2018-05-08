@@ -408,7 +408,6 @@
 * `eqInteger`
 * `eqInteger#`
 * `eqT`
-* `error`
 * `evalState`
 * `evalStateT`
 * `evaluate`
