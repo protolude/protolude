@@ -53,7 +53,7 @@ foreach = flip fmap
 #if !MIN_VERSION_base(4,11,0)
 -- | Infix version of foreach.
 --
--- @<&>@ is to '<$>' what '&' is to '$'.
+-- '<&>' is to '<$>' what '&' is to '$'.
 
 infixl 1 <&>
 (<&>) :: Functor f => f a -> (a -> b) -> f b
