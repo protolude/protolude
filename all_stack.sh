@@ -60,3 +60,16 @@ stack build --resolver lts-9.20
 stack build --resolver lts-10.0
 stack build --resolver lts-10.1
 stack build --resolver lts-10.2
+stack build --resolver lts-11.0
+stack build --resolver lts-11.1
+stack build --resolver lts-11.2
+stack build --resolver lts-11.3
+stack build --resolver lts-11.4
+stack build --resolver lts-11.5
+stack build --resolver lts-11.6
+stack build --resolver lts-11.7
+stack build --resolver lts-11.8
+stack build --resolver lts-11.10
+stack build --resolver lts-11.11
+stack build --resolver lts-11.12
+stack build --resolver lts-11.13
