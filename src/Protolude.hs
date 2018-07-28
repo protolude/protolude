@@ -492,8 +492,10 @@ import qualified Control.Exception
 import Control.Monad.STM as X (
     STM
   , atomically
+#if ( __GLASGOW_HASKELL__ < 806 )
   , always
   , alwaysSucceeds
+#endif
   , retry
   , orElse
   , check
