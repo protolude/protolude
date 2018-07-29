@@ -122,8 +122,10 @@ import GHC.Records as X (
 
 #if ( __GLASGOW_HASKELL__ >= 800 )
 import Data.Kind as X (
-    type (*)
-  , type Type
+  type Type
+#if ( __GLASGOW_HASKELL__ < 806 )
+  , type (*)
+#endif
   )
 #endif
 
