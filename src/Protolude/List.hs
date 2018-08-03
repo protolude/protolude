@@ -7,10 +7,11 @@ module Protolude.List (
   sortOn,
   list,
   product,
-  sum
+  sum,
+  groupBy,
 ) where
 
-import Data.List (sortBy)
+import Data.List (sortBy, groupBy)
 import Data.Maybe (Maybe(..))
 import Data.Ord (Ord, comparing)
 import Data.Foldable (Foldable, foldr, foldl')
