@@ -73,3 +73,14 @@ stack build --resolver lts-11.10
 stack build --resolver lts-11.11
 stack build --resolver lts-11.12
 stack build --resolver lts-11.13
+stack build --resolver lts-12.0
+stack build --resolver lts-12.1
+stack build --resolver lts-12.2
+stack build --resolver lts-12.3
+stack build --resolver lts-12.4
+stack build --resolver lts-12.5
+stack build --resolver lts-12.6
+stack build --resolver lts-12.7
+stack build --resolver lts-12.8
+stack build --resolver lts-12.9
+stack build --resolver lts-12.10

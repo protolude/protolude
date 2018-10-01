@@ -18,3 +18,6 @@ STACK_YAML=stack-10.0.yaml  stack build  --no-terminal
 
 echo -e "\e[92mLTS 11.0"
 STACK_YAML=stack-11.0.yaml  stack build  --no-terminal
+
+echo -e "\e[92mLTS 12.0"
+STACK_YAML=stack-12.0.yaml  stack build  --no-terminal
