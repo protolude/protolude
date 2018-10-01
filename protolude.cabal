@@ -1,5 +1,5 @@
 name:                protolude
-version:             0.2.2
+version:             0.2.4
 synopsis:            A small prelude.
 description:         A sensible set of defaults for writing custom Preludes.
 homepage:            https://github.com/sdiehl/protolude
@@ -25,7 +25,8 @@ tested-with:
   GHC == 7.10.3,
   GHC == 8.0.1,
   GHC == 8.2.1,
-  GHC == 8.4.1
+  GHC == 8.4.1,
+  GHC == 8.6.1
 extra-source-files: README.md CHANGES.md
 
 Source-Repository head

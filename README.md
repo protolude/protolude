@@ -96,14 +96,14 @@ tracks Stack LTS resolver.
 | -----------         |   -------- |  -------- |
 | array               |        0.4 |       0.6 |
 | async               |        2.0 |       2.3 |
-| base                |        4.6 |      4.12 |
+| base                |        4.6 |      4.13 |
 | bytestring          |       0.10 |      0.11 |
-| containers          |        0.5 |       0.6 |
+| containers          |        0.5 |       0.7 |
 | deepseq             |        1.3 |       1.5 |
 | ghc-prim            |        0.3 |       0.6 |
 | hashable            |        1.2 |       1.3 |
 | mtl                 |        2.1 |       2.3 |
-| stm                 |        2.4 |       2.5 |
+| stm                 |        2.4 |       2.6 |
 | text                |        1.2 |       1.3 |
 | transformers        |        0.4 |       0.6 |
 |                     |            |           |
