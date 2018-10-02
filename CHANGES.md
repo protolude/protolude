@@ -1,12 +1,9 @@
-0.2.4
-=====
-
-* GHC 8.6.1 support
-
 0.2.3
 =====
 
+* GHC 8.6.1 support
 * Expose `fromLeft` and `fromRight`.
+* Mask `always` and `alwaysSucceeds` from STM export for stm-2.5.
 
 0.2.2
 =====
