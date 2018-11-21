@@ -84,3 +84,11 @@ stack build --resolver lts-12.7
 stack build --resolver lts-12.8
 stack build --resolver lts-12.9
 stack build --resolver lts-12.10
+stack build --resolver lts-12.11
+stack build --resolver lts-12.12
+stack build --resolver lts-12.13
+stack build --resolver lts-12.14
+stack build --resolver lts-12.16
+stack build --resolver lts-12.17
+stack build --resolver lts-12.18
+stack build --resolver lts-12.19
