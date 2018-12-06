@@ -92,3 +92,5 @@ stack build --resolver lts-12.16
 stack build --resolver lts-12.17
 stack build --resolver lts-12.18
 stack build --resolver lts-12.19
+stack build --resolver lts-12.20
+stack build --resolver lts-12.21
