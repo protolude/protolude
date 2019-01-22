@@ -23,7 +23,7 @@
   `throwE`, `catchE`.
 * Fix `safe` version bounds for new versions.
 * Add `mapExceptT and `withExceptT`.
-* Export `scanl'` and provide shim for backwards compatability.
+* Export `scanl'` and provide shim for backwards compatibility.
 * Add `putErrLn`.
 * Expose `RealFloat`.
 * Expose `GHC.Records` exports for GHC 8.2 and above.
