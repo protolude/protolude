@@ -151,7 +151,7 @@ import GHC.Show (Show(..))
 Automatic deriving of ``Show`` for your types is still supported since the class
 is in scope by default.
 
-* **Partial functions like ``undefined`` and ``error`` raise compiler warnings on
+* **Partial functions like ``undefined`` raise compiler warnings on
   usage.**
 
 This is by design. For fatal uncatchable errors use the provided ``panic``
