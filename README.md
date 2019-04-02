@@ -173,4 +173,4 @@ License
 -------
 
 Released under the MIT License.
-Copyright (c) 2016-2018, Stephen Diehl
+Copyright (c) 2016-2019, Stephen Diehl
