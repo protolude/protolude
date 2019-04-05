@@ -417,7 +417,13 @@ import qualified Data.ByteString.Lazy
 import Data.ByteString as X (ByteString)
 
 -- Text
-import Data.Text as X (Text)
+import Data.Text as X (
+    Text
+  , lines
+  , words
+  , unlines
+  , unwords
+  )
 import qualified Data.Text.Lazy
 
 import Data.Text.IO as X (
