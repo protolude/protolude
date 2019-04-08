@@ -27,7 +27,7 @@ import GHC.Exception (errorCallWithCallStackException)
 
 {-# WARNING error "'error' remains in code" #-}
 error :: forall (r :: RuntimeRep) . forall (a :: TYPE r) . HasCallStack => Text -> a
-error s = raise# (errorCallWithCallStackException (unpack s) ?callstack)
+error s = raise# (errorCallWithCallStackException (unpack s) ?callStack)
 
 #elif MIN_VERSION_base(4,7,0)
 -- Basic Call Stack with callsite.
