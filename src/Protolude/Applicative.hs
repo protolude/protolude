@@ -31,5 +31,7 @@ purer = pure . pure
 liftAA2 :: (Applicative f, Applicative g) => (a -> b -> c) -> f (g a) -> f (g b) -> f (g c)
 liftAA2 = liftA2 . liftA2
 
+infixl 4 <<*>>
+
 (<<*>>) :: (Applicative f, Applicative g)  => f (g (a -> b)) -> f (g a) -> f (g b)
 (<<*>>) = liftA2 (<*>)
