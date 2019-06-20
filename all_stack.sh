@@ -109,3 +109,15 @@ stack build --resolver lts-13.11
 stack build --resolver lts-13.12
 stack build --resolver lts-13.13
 stack build --resolver lts-13.14
+stack build --resolver lts-13.15
+stack build --resolver lts-13.16
+stack build --resolver lts-13.17
+stack build --resolver lts-13.18
+stack build --resolver lts-13.19
+stack build --resolver lts-13.20
+stack build --resolver lts-13.21
+stack build --resolver lts-13.22
+stack build --resolver lts-13.23
+stack build --resolver lts-13.24
+stack build --resolver lts-13.25
+stack build --resolver lts-13.26
