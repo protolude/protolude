@@ -80,9 +80,7 @@ import Protolude
 Exported Functions
 ------------------
 
-The list of exports is given in the [Symbols.md](./Symbols.md) file. Haddock
-unfortunately breaks in the presence of module reexports and is unable to render
-documentation.
+The list of exports can be browsed [here](http://hackage.haskell.org/package/protolude-0.2.3/docs/Protolude.html).
 
 Dependencies
 ------------
