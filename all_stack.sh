@@ -121,3 +121,12 @@ stack build --resolver lts-13.23
 stack build --resolver lts-13.24
 stack build --resolver lts-13.25
 stack build --resolver lts-13.26
+stack build --resolver lts-14.0
+stack build --resolver lts-14.1
+stack build --resolver lts-14.2
+stack build --resolver lts-14.3
+stack build --resolver lts-14.4
+stack build --resolver lts-14.5
+stack build --resolver lts-14.6
+stack build --resolver lts-14.7
+stack build --resolver lts-14.8

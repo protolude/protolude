@@ -5,3 +5,4 @@ dist
 cabal.sandbox.config
 *.hi
 *.o
+stack.yaml.lock
