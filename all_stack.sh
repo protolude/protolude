@@ -130,3 +130,9 @@ stack build --resolver lts-14.5
 stack build --resolver lts-14.6
 stack build --resolver lts-14.7
 stack build --resolver lts-14.8
+stack build --resolver lts-14.9
+stack build --resolver lts-14.10
+stack build --resolver lts-14.11
+stack build --resolver lts-14.12
+stack build --resolver lts-14.13
+stack build --resolver lts-14.14
