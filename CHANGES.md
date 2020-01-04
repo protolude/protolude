@@ -1,3 +1,9 @@
+0.3.0
+=====
+
+* GHC 8.10.1 support
+* Migrated `Debug` and Unsafe to `Protolude.Debug` and `Protolude.Unsafe`.
+
 0.2.4
 =====
 
