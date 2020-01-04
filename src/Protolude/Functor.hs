@@ -12,9 +12,7 @@ module Protolude.Functor (
   foreach,
 ) where
 
-import Data.Function ((.))
-import Data.Function (flip)
-
+import Data.Function ((.), flip)
 #if MIN_VERSION_base(4,11,0)
 import Data.Functor ((<&>))
 #endif
