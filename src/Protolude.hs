@@ -544,7 +544,27 @@ import Data.Complex as Complex (
   , phase
   , conjugate
   )
-import Data.Char as Char (chr)
+import Data.Char as Char (
+    Char
+  , ord
+  , chr
+  , digitToInt
+  , intToDigit
+  , toUpper
+  , toLower
+  , toTitle
+  , isAscii
+  , isLetter
+  , isDigit
+  , isHexDigit
+  , isPrint
+  , isAlpha
+  , isAlphaNum
+  , isUpper
+  , isLower
+  , isSpace
+  , isControl
+  )
 import Data.Bool as Bool (
   Bool(True, False),
   (&&),
@@ -552,7 +572,17 @@ import Data.Bool as Bool (
   not,
   otherwise
   )
-import Data.Maybe as Maybe hiding (fromJust)
+import Data.Maybe as Maybe (
+    Maybe(Nothing, Just)
+  , maybe
+  , isJust
+  , isNothing
+  , fromMaybe
+  , listToMaybe
+  , maybeToList
+  , catMaybes
+  , mapMaybe
+  )
 
 import Data.Function as Function (
     const
