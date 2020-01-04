@@ -1,4 +1,4 @@
-name: Haskell CI
+name: Cabal CI
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: ghc ${{ matrix.ghc }}
+    name: cabal ${{ matrix.ghc }}
     runs-on: ubuntu-16.04
     strategy:
       matrix:

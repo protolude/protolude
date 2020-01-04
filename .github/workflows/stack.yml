@@ -7,18 +7,19 @@ on:
 
 jobs:
   build:
+    name: stack ${{ matrix.resolver }}
     strategy:
       matrix:
         os: [ubuntu-latest, macOS-latest]
         # use this to specify what resolvers and ghc to use
         plan:
-        - { build: stack, resolver: "--resolver lts-9"  }    # ghc-8.0.2
-        - { build: stack, resolver: "--resolver lts-10"  }   # ghc-8.2.2
-        - { build: stack, resolver: "--resolver lts-11"  }   # ghc-8.2.2
-        - { build: stack, resolver: "--resolver lts-12"  }   # ghc-8.4.4
-        - { build: stack, resolver: "--resolver lts-13"  }   # redundant because lts-14 checks ghc-8.6 already
-        - { build: stack, resolver: "--resolver lts-14"  }   # ghc-8.6.5
-        - { build: stack, resolver: "--resolver nightly" }
+        - { build: stack, resolver: "lts-9"  }    # ghc-8.0.2
+        - { build: stack, resolver: "lts-10"  }   # ghc-8.2.2
+        - { build: stack, resolver: "lts-11"  }   # ghc-8.2.2
+        - { build: stack, resolver: "lts-12"  }   # ghc-8.4.4
+        - { build: stack, resolver: "lts-13"  }   # redundant because lts-14 checks ghc-8.6 already
+        - { build: stack, resolver: "lts-14"  }   # ghc-8.6.5
+        - { build: stack, resolver: "nightly" }
         # - { build: stack, resolver: ""                   }
         # use this to include any dependencies from OS package managers
         include: []
@@ -56,7 +57,7 @@ jobs:
         set -ex
         case "$BUILD" in
           stack)
-            stack --no-terminal --install-ghc $ARGS test --bench --only-dependencies
+            stack --no-terminal --install-ghc --resolver $ARGS test --bench --only-dependencies
             ;;
           cabal)
             cabal --version
@@ -75,7 +76,7 @@ jobs:
         set -ex
         case "$BUILD" in
           stack)
-            stack --no-terminal $ARGS test --bench --no-run-benchmarks --haddock --no-haddock-deps
+            stack --no-terminal --resolver $ARGS test --bench --no-run-benchmarks --haddock --no-haddock-deps
             ;;
           cabal)
             PACKAGES=$(stack --install-ghc query locals | grep '^ *path' | sed 's@^ *path:@@')
