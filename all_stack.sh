@@ -1,6 +1,5 @@
 set -e
 
-stack build --resolver lts-2.0
 stack build --resolver lts-3.0
 stack build --resolver lts-4.0
 stack build --resolver lts-5.0
