@@ -33,7 +33,7 @@ module Protolude (
   -- * Panic functions
   module Panic,
   -- * Exception functions
-  module Exceptions,
+  module Exception,
   -- * Semiring functions
   module Semiring,
 
@@ -126,8 +126,8 @@ module Protolude (
   unsnoc,
   applyN,
   print,
-  throwIO,
-  throwTo,
+  Protolude.throwIO,
+  Protolude.throwTo,
   show,
   pass,
   guarded,
@@ -152,7 +152,7 @@ import Protolude.Either as Either
 import Protolude.Applicative as Applicative
 import Protolude.Conv as Conv
 import Protolude.Panic as Panic
-import Protolude.Exceptions as Exceptions
+import Protolude.Exceptions as Exception
 import Protolude.Semiring as Semiring
 
 import Protolude.Base as Base hiding (
@@ -697,15 +697,72 @@ import Control.Monad.ST as ST (
   )
 
 -- Concurrency and Parallelism
-import Control.Exception as Exception hiding (
-    throw    -- Impure throw is forbidden.
-  , throwIO
-  , throwTo
-  , assert
+import Control.Exception as Exception (
+    Exception,
+    toException,
+    fromException,
+#if !MIN_VERSION_base(4,8,0)
+    displayException,
+#endif
+    SomeException(..)
+  , IOException
+  , ArithException
+  , ArrayException
+  , AssertionFailed
+#if MIN_VERSION_base(4,7,0)
+  , SomeAsyncException
+  , asyncExceptionToException
+  , asyncExceptionFromException
+#endif
+  , AsyncException
+  , NonTermination
+  , NestedAtomically
+  , BlockedIndefinitelyOnMVar
+  , BlockedIndefinitelyOnSTM
+#if MIN_VERSION_base(4,8,0)
+  , AllocationLimitExceeded
+#endif
+#if MIN_VERSION_base(4,10,0)
+  , CompactionFailed
+#endif
+  , Deadlock
+  , NoMethodError
+  , PatternMatchFail
+  , RecConError
+  , RecSelError
+  , RecUpdError
+  , ErrorCall
+#if MIN_VERSION_base(4,9,0)
+  , TypeError
+#endif
+  , ioError
+  , catch
+  , catches
   , Handler(..)
+  , catchJust
+  , handle
+  , handleJust
+  , try
+  , tryJust
+  , evaluate
+  , mapException
+  , mask
+  , mask_
+  , uninterruptibleMask
+  , uninterruptibleMask_
+  , MaskingState(..)
+  , getMaskingState
+#if MIN_VERSION_base(4,9,0)
+  , interruptible
+#endif
+  , allowInterrupt
+  , bracket
+  , bracket_
+  , bracketOnError
+  , finally
+  , onException
   )
-
-import qualified Control.Exception
+import qualified Control.Exception as PException
 
 import Control.Monad.STM as STM (
     STM
@@ -804,10 +861,10 @@ print :: (Trans.MonadIO m, PBase.Show a) => a -> m ()
 print = liftIO . PBase.print
 
 throwIO :: (Trans.MonadIO m, Exception e) => e -> m a
-throwIO = liftIO . Control.Exception.throwIO
+throwIO = liftIO . PException.throwIO
 
 throwTo :: (Trans.MonadIO m, Exception e) => ThreadId -> e -> m ()
-throwTo tid e = liftIO (Control.Exception.throwTo tid e)
+throwTo tid e = liftIO (PException.throwTo tid e)
 
 -- | Do nothing returning unit inside applicative.
 pass :: Applicative f => f ()

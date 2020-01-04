@@ -5,7 +5,7 @@
 {-# LANGUAGE ExplicitNamespaces #-}
 
 module Protolude.Base (
-  module X,
+  module Base,
   ($!),
 ) where
 
@@ -13,19 +13,19 @@ module Protolude.Base (
 #if defined(__GLASGOW_HASKELL__) && ( __GLASGOW_HASKELL__ >= 600 )
 
 -- Base GHC types
-import GHC.Num as X (
+import GHC.Num as Base (
     Num(..)
   , Integer
   , subtract
   )
-import GHC.Enum as X (
+import GHC.Enum as Base (
     Bounded(..)
   , Enum(..)
   , boundedEnumFrom
   , boundedEnumFromThen
   )
-import GHC.Real as X
-import GHC.Float as X (
+import GHC.Real as Base
+import GHC.Float as Base (
     Float(..)
   , Double(..)
   , Floating (..)
@@ -33,15 +33,15 @@ import GHC.Float as X (
   , showFloat
   , showSignedFloat
   )
-import GHC.Show as X (
+import GHC.Show as Base (
     Show(..)
   )
-import GHC.Exts as X (
+import GHC.Exts as Base (
     Constraint
   , Ptr
   , FunPtr
   )
-import GHC.Base as X (
+import GHC.Base as Base (
     (++)
   , seq
   , asTypeOf
@@ -52,13 +52,13 @@ import GHC.Base as X (
   )
 
 -- Exported for lifting into new functions.
-import System.IO as X (
+import System.IO as Base (
     print
   , putStr
   , putStrLn
   )
 
-import GHC.Types as X (
+import GHC.Types as Base (
     Bool
   , Char
   , Int
@@ -71,22 +71,22 @@ import GHC.Types as X (
   )
 
 #if ( __GLASGOW_HASKELL__ >= 710 )
-import GHC.StaticPtr as X (StaticPtr)
+import GHC.StaticPtr as Base (StaticPtr)
 #endif
 
 #if ( __GLASGOW_HASKELL__ >= 800 )
-import GHC.OverloadedLabels as X (
+import GHC.OverloadedLabels as Base (
     IsLabel(..)
   )
 
-import GHC.ExecutionStack as X (
+import GHC.ExecutionStack as Base (
     Location(..)
   , SrcLoc(..)
   , getStackTrace
   , showStackTrace
   )
 
-import GHC.Stack as X (
+import GHC.Stack as Base (
     CallStack
   , type HasCallStack
   , callStack
@@ -99,7 +99,7 @@ import GHC.Stack as X (
 #endif
 
 #if ( __GLASGOW_HASKELL__ >= 710 )
-import GHC.TypeLits as X (
+import GHC.TypeLits as Base (
     Symbol
   , SomeSymbol(..)
   , Nat
@@ -115,13 +115,13 @@ import GHC.TypeLits as X (
 #endif
 
 #if ( __GLASGOW_HASKELL__ >= 802 )
-import GHC.Records as X (
+import GHC.Records as Base (
     HasField(..)
   )
 #endif
 
 #if ( __GLASGOW_HASKELL__ >= 800 )
-import Data.Kind as X (
+import Data.Kind as Base (
   type Type
 #if ( __GLASGOW_HASKELL__ < 805 )
   , type (*)

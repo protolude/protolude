@@ -67,7 +67,7 @@ library
     -fwarn-implicit-prelude
 
   build-depends:       
-    base                >= 4.6  && <4.14,
+    base                >= 4.6  && <4.12,
     array               >= 0.4  && <0.6,
     ghc-prim            >= 0.3  && <0.6,
     async               >= 2.0  && <2.3,
