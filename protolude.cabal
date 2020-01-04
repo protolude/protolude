@@ -64,7 +64,6 @@ library
 
   ghc-options:
     -Wall
-    -Werror
     -fwarn-implicit-prelude
 
   build-depends:       

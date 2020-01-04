@@ -15,12 +15,12 @@ module Protolude.Error
 ( error
 ) where
 
-import GHC.Prim
 import Data.Text (Text, unpack)
 
 #if MIN_VERSION_base(4,9,0)
 -- Full stack trace.
 
+import GHC.Prim (TYPE, raise#)
 import GHC.Types (RuntimeRep)
 import Protolude.CallStack (HasCallStack)
 import GHC.Exception (errorCallWithCallStackException)
