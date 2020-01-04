@@ -16,7 +16,6 @@ jobs:
     - name: Install dependencies
       run: |
         cabal update
-        cabal new-install
     - name: Build
       run: |
         cabal new-build
