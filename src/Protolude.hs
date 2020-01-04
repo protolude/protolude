@@ -364,9 +364,13 @@ import Data.IntSet as X (IntSet)
 import Data.Typeable as Typeable (
     TypeRep
   , Typeable
-  , typeRep
+  , typeOf
   , cast
+  , gcast
+#if MIN_VERSION_base(4,7,0)
+  , typeRep
   , eqT
+#endif
   )
 
 #if MIN_VERSION_base(4,7,0)
