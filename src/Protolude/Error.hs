@@ -32,6 +32,7 @@ error s = raise# (errorCallWithCallStackException (unpack s) ?callStack)
 #elif MIN_VERSION_base(4,7,0)
 -- Basic Call Stack with callsite.
 
+import GHC.Prim (raise#)
 import GHC.Exception (errorCallException)
 
 {-# WARNING error "'error' remains in code" #-}
