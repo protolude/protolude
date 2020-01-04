@@ -76,6 +76,7 @@ module Protolude (
 #endif
 
   -- * Monads
+  module Fail,
   module State,
   module Reader,
   module Except,
@@ -402,6 +403,10 @@ import Data.Void as Typelevel (
   , vacuous
   )
 #endif
+
+import Control.Monad.Fail as Fail (
+    MonadFail
+  )
 
 -- Monad transformers
 import Control.Monad.State as State (
