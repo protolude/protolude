@@ -10,7 +10,6 @@ module Protolude (
   -- * Base functions
   module Base,
   -- * Function functions
-  --
   module Function,
   -- * Debug functions
   module Debug,
@@ -214,11 +213,37 @@ import Data.Ord as Ord (
   , comparing
   )
 import Data.Traversable as Traversable
-import Data.Foldable as Foldable hiding (
-    foldr1
-  , foldl1
-  , product
-  , sum
+import Data.Foldable as Foldable (
+    Foldable,
+    fold,
+    foldMap,
+    foldr,
+    foldr',
+    foldl,
+    foldl',
+    toList,
+    null,
+    length,
+    elem,
+    maximum,
+    minimum,
+    foldrM,
+    foldlM,
+    traverse_,
+    for_,
+    mapM_,
+    forM_,
+    sequence_,
+    msum,
+    concat,
+    concatMap,
+    and,
+    or,
+    any,
+    all,
+    maximumBy,
+    notElem,
+    find,
   )
 import Data.Functor.Identity as Functor (
     Identity(..)
@@ -473,7 +498,13 @@ import Data.Complex as Complex (
   , conjugate
   )
 import Data.Char as Char (chr)
-import Data.Bool as Bool hiding (bool)
+import Data.Bool as Bool (
+  Bool(True, False),
+  (&&),
+  (||),
+  not,
+  otherwise
+  )
 import Data.Maybe as Maybe hiding (fromJust)
 
 import Data.Function as Function (
@@ -675,8 +706,8 @@ x & f = f x
 identity :: a -> a
 identity x = x
 
-map :: Functor f => (a -> b) -> f a -> f b
-map = fmap
+map :: Functor.Functor f => (a -> b) -> f a -> f b
+map = Functor.fmap
 
 uncons :: [a] -> Maybe (a, [a])
 uncons [] = Nothing
@@ -708,8 +739,8 @@ pass = pure ()
 guarded :: (Alternative f) => (a -> Bool) -> a -> f a
 guarded p x = Bool.bool empty (pure x) (p x)
 
-guardedA :: (Functor f, Alternative t) => (a -> f Bool) -> a -> f (t a)
-guardedA p x = Bool.bool empty (pure x) <$> p x
+guardedA :: (Functor.Functor f, Alternative t) => (a -> f Bool) -> a -> f (t a)
+guardedA p x = Bool.bool empty (pure x) `Functor.fmap` p x
 
 -- | Lift an 'IO' operation with 1 argument into another monad
 liftIO1 :: MonadIO m => (a -> IO b) -> a -> m b
@@ -719,8 +750,8 @@ liftIO1 = (.) liftIO
 liftIO2 :: MonadIO m => (a -> b -> IO c) -> a -> b -> m c
 liftIO2 = ((.).(.)) liftIO
 
-show :: (Show a, StringConv String b) => a -> b
-show x = toS (PBase.show x)
+show :: (Show a, Conv.StringConv String b) => a -> b
+show x = Conv.toS (PBase.show x)
 {-# SPECIALIZE show :: Show  a => a -> Text  #-}
 {-# SPECIALIZE show :: Show  a => a -> LText  #-}
 {-# SPECIALIZE show :: Show  a => a -> ByteString  #-}
@@ -729,7 +760,7 @@ show x = toS (PBase.show x)
 
 #if MIN_VERSION_base(4,8,0)
 die :: Text -> IO a
-die err = System.Exit.die (toS err)
+die err = System.Exit.die (Conv.toS err)
 #else
 die :: Text -> IO a
 die err = hPutStrLn stderr err >> exitFailure
