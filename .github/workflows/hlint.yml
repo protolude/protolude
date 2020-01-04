@@ -44,7 +44,7 @@ jobs:
     - name: Install hlint
       run: |
         cabal update
-        sudo cabal new-install hlint --installdir=/usr/bin/
+        cabal new-install hlint --installdir=dist-newstyle
     - name: Run hlint
       run: |
-        hlint -g
+        dist-newstyle/hlint -g
