@@ -68,6 +68,8 @@ module Protolude (
   -- * Tuple functions
   module Tuple,
 
+  module Typeable,
+
 #if MIN_VERSION_base(4,7,0)
   -- * Typelevel programming
   module Typelevel,
@@ -359,17 +361,17 @@ import Data.Sequence as X (Seq)
 import Data.IntMap as X (IntMap)
 import Data.IntSet as X (IntSet)
 
-#if MIN_VERSION_base(4,7,0)
-import Data.Proxy as Typelevel (
-    Proxy(..)
-  )
-
-import Data.Typeable as X (
+import Data.Typeable as Typeable (
     TypeRep
   , Typeable
   , typeRep
   , cast
   , eqT
+  )
+
+#if MIN_VERSION_base(4,7,0)
+import Data.Proxy as Typelevel (
+    Proxy(..)
   )
 
 import Data.Type.Coercion as Typelevel (
@@ -463,9 +465,44 @@ import Data.Int as Int (
   , Int32
   , Int64
   )
-import Data.Bits as Bits hiding (
-    unsafeShiftL
-  , unsafeShiftR
+import Data.Bits as Bits (
+  Bits,
+  (.&.),
+  (.|.),
+  xor,
+  complement,
+  shift,
+  rotate,
+#if MIN_VERSION_base(4,7,0)
+  zeroBits,
+#endif
+  bit,
+  setBit,
+  clearBit,
+  complementBit,
+  testBit,
+#if MIN_VERSION_base(4,7,0)
+  bitSizeMaybe,
+#endif
+  bitSize,
+  isSigned,
+  shiftL,
+  shiftR,
+  rotateL,
+  rotateR,
+  popCount,
+#if MIN_VERSION_base(4,7,0)
+  FiniteBits,
+  finiteBitSize,
+  bitDefault,
+  testBitDefault,
+  popCountDefault,
+#endif
+#if MIN_VERSION_base(4,8,0)
+  toIntegralSized,
+  countLeadingZeros,
+  countTrailingZeros,
+#endif
   )
 import Data.Word as Bits (
     Word
