@@ -1,4 +1,4 @@
-set +e
+set -e
 
 stack build --resolver lts-2.0
 stack build --resolver lts-3.0

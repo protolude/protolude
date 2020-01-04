@@ -37,8 +37,8 @@ Source-Repository head
 library
   exposed-modules:     
     Protolude
-    Unsafe
-    Debug
+    Protolude.Unsafe
+    Protolude.Debug
     Protolude.Exceptions
     Protolude.Base
     Protolude.Applicative

@@ -7,8 +7,114 @@
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 module Protolude (
-  module X,
+  -- * Base functions
   module Base,
+  -- * Function functions
+  --
+  module Function,
+  -- * Debug functions
+  module Debug,
+  -- * List functions
+  module List,
+  -- * Show functions
+  module Show,
+  -- * Bool functions
+  module Bool,
+  -- * Monad functions
+  module Monad,
+  -- * Functor functions
+  module Functor,
+  -- * Either functions
+  module Either,
+  -- * Applicative functions
+  module Applicative,
+  -- * String conversion
+  module Conv,
+
+  -- * Panic functions
+  module Panic,
+  -- * Exception functions
+  module Exceptions,
+  -- * Semiring functions
+  module Semiring,
+
+  -- * String functions
+  module String,
+  -- * Safe functions
+  module Safe,
+  -- * Eq functions
+  module Eq,
+  -- * Ord functions
+  module Ord,
+  -- * Traversable functions
+  module Traversable,
+  -- * Foldable functions
+  module Foldable,
+  -- * Semigroup functions
+  module Semigroup,
+  -- * Monoid functions
+  module Monoid,
+  -- * Bifunctor functions
+  module Bifunctor,
+  -- * Bifunctor functions
+  module Hashable,
+
+  -- XXX: data structures
+
+  -- * Deepseq functions
+  module DeepSeq,
+
+  -- * Tuple functions
+  module Tuple,
+
+  -- * Typelevel programming
+  module Typelevel,
+
+  -- * Monads
+  module State,
+  module Reader,
+  module Except,
+  module Trans,
+  module ST,
+  module STM,
+
+  -- * Integers
+  module Int,
+  module Bits,
+
+  -- * Complex functions
+  module Complex,
+
+  -- * Char functions
+  module Char,
+
+  -- * Maybe functions
+  module Maybe,
+
+  -- * Generics functions
+  module Generics,
+
+  -- * ByteString functions
+  module ByteString,
+  LByteString,
+
+  -- * Text functions
+  module Text,
+  LText,
+
+  -- * System functions
+  module System,
+
+  -- * Concurrency functions
+  module Concurrency,
+
+  -- * Foreign functions
+  module Foreign,
+
+  -- * Foreign functions
+  module Read,
+
+  -- * Misc
   identity,
   map,
   uncons,
@@ -21,8 +127,6 @@ module Protolude (
   pass,
   guarded,
   guardedA,
-  LText,
-  LByteString,
   liftIO1,
   liftIO2,
 #if !MIN_VERSION_base(4,8,0)
@@ -33,18 +137,18 @@ module Protolude (
 ) where
 
 -- Protolude module exports.
-import Debug as X
-import Protolude.List as X
-import Protolude.Show as X
-import Protolude.Bool as X
-import Protolude.Monad as X
-import Protolude.Functor as X
-import Protolude.Either as X
-import Protolude.Applicative as X
-import Protolude.Conv as X
-import Protolude.Panic as X
-import Protolude.Exceptions as X
-import Protolude.Semiring as X
+import Protolude.Debug as Debug
+import Protolude.List as List
+import Protolude.Show as Show
+import Protolude.Bool as Bool
+import Protolude.Monad as Monad
+import Protolude.Functor as Functor
+import Protolude.Either as Either
+import Protolude.Applicative as Applicative
+import Protolude.Conv as Conv
+import Protolude.Panic as Panic
+import Protolude.Exceptions as Exceptions
+import Protolude.Semiring as Semiring
 
 import Protolude.Base as Base hiding (
     putStr           -- Overriden by Show.putStr
@@ -61,10 +165,10 @@ import qualified Protolude.Base as PBase
 
 -- Used for 'show', not exported.
 import Data.String (String)
-import Data.String as X (IsString)
+import Data.String as String (IsString)
 
 -- Maybe'ized version of partial functions
-import Protolude.Safe as X (
+import Protolude.Safe as Safe (
     headMay
   , headDef
   , initMay
@@ -87,7 +191,7 @@ import Protolude.Safe as X (
   )
 
 -- Applicatives
-import Control.Applicative as X (
+import Control.Applicative as Applicative (
     Applicative(..)
   , Alternative(..)
   , Const(..)
@@ -100,32 +204,32 @@ import Control.Applicative as X (
   )
 
 -- Base typeclasses
-import Data.Eq as X (
+import Data.Eq as Eq (
     Eq(..)
   )
-import Data.Ord as X (
+import Data.Ord as Ord (
     Ord(..)
   , Ordering(..)
   , Down(..)
   , comparing
   )
-import Data.Traversable as X
-import Data.Foldable as X hiding (
+import Data.Traversable as Traversable
+import Data.Foldable as Foldable hiding (
     foldr1
   , foldl1
   , product
   , sum
   )
-import Data.Functor.Identity as X (
+import Data.Functor.Identity as Functor (
     Identity(..)
   )
 
 #if MIN_VERSION_base(4,9,0)
-import Data.List.NonEmpty as X (
+import Data.List.NonEmpty as List (
     NonEmpty(..)
   , nonEmpty
   )
-import Data.Semigroup as X (
+import Data.Semigroup as Semigroup (
     Semigroup(sconcat, stimes)
   , WrappedMonoid
   , Option(..)
@@ -139,16 +243,16 @@ import Data.Semigroup as X (
   )
 #endif
 
-import Data.Monoid as X
+import Data.Monoid as Monoid
 
 #if !MIN_VERSION_base(4,8,0)
-import Protolude.Bifunctor as X (Bifunctor(..))
+import Protolude.Bifunctor as Bifunctor (Bifunctor(..))
 #else
-import Data.Bifunctor as X (Bifunctor(..))
+import Data.Bifunctor as Bifunctor (Bifunctor(..))
 #endif
 
 -- Deepseq
-import Control.DeepSeq as X (
+import Control.DeepSeq as DeepSeq (
     NFData(..)
   , ($!!)
   , deepseq
@@ -156,7 +260,7 @@ import Control.DeepSeq as X (
   )
 
 -- Data structures
-import Data.Tuple as X (
+import Data.Tuple as Tuple (
     fst
   , snd
   , curry
@@ -164,7 +268,7 @@ import Data.Tuple as X (
   , swap
   )
 
-import Data.List as X (
+import Data.List as List (
     splitAt
   , break
   , intercalate
@@ -211,7 +315,7 @@ import Data.List (tail)
 #endif
 
 -- Hashing
-import Data.Hashable as X (
+import Data.Hashable as Hashable (
     Hashable
   , hash
   , hashWithSalt
@@ -225,7 +329,7 @@ import Data.IntMap as X (IntMap)
 import Data.IntSet as X (IntSet)
 
 #if MIN_VERSION_base(4,7,0)
-import Data.Proxy as X (
+import Data.Proxy as Typelevel (
     Proxy(..)
   )
 
@@ -237,13 +341,13 @@ import Data.Typeable as X (
   , eqT
   )
 
-import Data.Type.Coercion as X (
+import Data.Type.Coercion as Typelevel (
     Coercion(..)
   , coerceWith
   , repr
   )
 
-import Data.Type.Equality as X (
+import Data.Type.Equality as Typelevel (
     (:~:)(..)
   , type (==)
   , sym
@@ -255,7 +359,7 @@ import Data.Type.Equality as X (
 #endif
 
 #if MIN_VERSION_base(4,8,0)
-import Data.Void as X (
+import Data.Void as Typelevel (
     Void
   , absurd
   , vacuous
@@ -263,7 +367,7 @@ import Data.Void as X (
 #endif
 
 -- Monad transformers
-import Control.Monad.State as X (
+import Control.Monad.State as State (
     MonadState
   , State
   , StateT(StateT)
@@ -283,7 +387,7 @@ import Control.Monad.State as X (
   , evalStateT
   )
 
-import Control.Monad.Reader as X (
+import Control.Monad.Reader as Reader (
     MonadReader
   , Reader
   , ReaderT(ReaderT)
@@ -295,12 +399,12 @@ import Control.Monad.Reader as X (
   , runReaderT
   )
 
-import Control.Monad.Trans.Except as X (
+import Control.Monad.Trans.Except as Except (
     throwE
   , catchE
   )
 
-import Control.Monad.Except as X (
+import Control.Monad.Except as Except (
     MonadError
   , Except
   , ExceptT(ExceptT)
@@ -314,25 +418,25 @@ import Control.Monad.Except as X (
   , withExceptT
   )
 
-import Control.Monad.Trans as X (
+import Control.Monad.Trans as Trans (
     MonadIO
   , lift
   , liftIO
   )
 
 -- Base types
-import Data.Int as X (
+import Data.Int as Int (
     Int
   , Int8
   , Int16
   , Int32
   , Int64
   )
-import Data.Bits as X hiding (
+import Data.Bits as Bits hiding (
     unsafeShiftL
   , unsafeShiftR
   )
-import Data.Word as X (
+import Data.Word as Bits (
     Word
   , Word8
   , Word16
@@ -345,7 +449,7 @@ import Data.Word as X (
 #endif
   )
 
-import Data.Either as X (
+import Data.Either as Either (
     Either(..)
   , either
   , lefts
@@ -357,7 +461,7 @@ import Data.Either as X (
 #endif
   )
 
-import Data.Complex as X (
+import Data.Complex as Complex (
     Complex(..)
   , realPart
   , imagPart
@@ -368,11 +472,11 @@ import Data.Complex as X (
   , phase
   , conjugate
   )
-import Data.Char as X (chr)
-import Data.Bool as X hiding (bool)
-import Data.Maybe as X hiding (fromJust)
+import Data.Char as Char (chr)
+import Data.Bool as Bool hiding (bool)
+import Data.Maybe as Maybe hiding (fromJust)
 
-import Data.Function as X (
+import Data.Function as Function (
     const
   , (.)
   , ($)
@@ -385,7 +489,7 @@ import Data.Function as X (
   )
 
 -- Genericss
-import GHC.Generics as X (
+import GHC.Generics as Generics (
     Generic(..)
   , Generic1
   , Rep
@@ -414,10 +518,10 @@ import GHC.Generics as X (
 
 -- ByteString
 import qualified Data.ByteString.Lazy
-import Data.ByteString as X (ByteString)
+import Data.ByteString as ByteString (ByteString)
 
 -- Text
-import Data.Text as X (
+import Data.Text as Text (
     Text
   , lines
   , words
@@ -426,7 +530,7 @@ import Data.Text as X (
   )
 import qualified Data.Text.Lazy
 
-import Data.Text.IO as X (
+import Data.Text.IO as Text (
     getLine
   , getContents
   , interact
@@ -435,19 +539,19 @@ import Data.Text.IO as X (
   , appendFile
   )
 
-import Data.Text.Lazy as X (
+import Data.Text.Lazy as Text (
     toStrict
   , fromStrict
   )
 
-import Data.Text.Encoding as X (
+import Data.Text.Encoding as Text (
     encodeUtf8
   , decodeUtf8
   , decodeUtf8'
   , decodeUtf8With
   )
 
-import Data.Text.Encoding.Error as X (
+import Data.Text.Encoding.Error as Text (
     OnDecodeError
   , OnError
   , UnicodeException
@@ -458,15 +562,15 @@ import Data.Text.Encoding.Error as X (
   )
 
 -- IO
-import System.Environment as X (getArgs)
+import System.Environment as System (getArgs)
 import qualified System.Exit
-import System.Exit as X (
+import System.Exit as System (
     ExitCode(..)
   , exitWith
   , exitFailure
   , exitSuccess
   )
-import System.IO as X (
+import System.IO as System (
     Handle
   , FilePath
   , IOMode(..)
@@ -478,14 +582,14 @@ import System.IO as X (
   )
 
 -- ST
-import Control.Monad.ST as X (
+import Control.Monad.ST as ST (
     ST
   , runST
   , fixST
   )
 
 -- Concurrency and Parallelism
-import Control.Exception as X hiding (
+import Control.Exception as Exception hiding (
     throw    -- Impure throw is forbidden.
   , throwIO
   , throwTo
@@ -495,7 +599,7 @@ import Control.Exception as X hiding (
 
 import qualified Control.Exception
 
-import Control.Monad.STM as X (
+import Control.Monad.STM as STM (
     STM
   , atomically
 #if !(MIN_VERSION_stm(2,5,0))
@@ -508,11 +612,11 @@ import Control.Monad.STM as X (
   , throwSTM
   , catchSTM
   )
-import Control.Concurrent as X hiding (
+import Control.Concurrent as Concurrency hiding (
     throwTo
   , yield
   )
-import Control.Concurrent.Async as X (
+import Control.Concurrent.Async as Concurrency (
     Async(..)
   , Concurrently(..)
   , async
@@ -544,12 +648,12 @@ import Control.Concurrent.Async as X (
   , concurrently
   )
 
-import Foreign.Ptr as X (IntPtr, WordPtr)
-import Foreign.Storable as X (Storable)
-import Foreign.StablePtr as X (StablePtr)
+import Foreign.Ptr as Foreign (IntPtr, WordPtr)
+import Foreign.Storable as Foreign (Storable)
+import Foreign.StablePtr as Foreign (StablePtr)
 
 -- Read instances hiding unsafe builtins (read)
-import Text.Read as X (
+import Text.Read as Read (
     Read
   , reads
   , readMaybe
@@ -579,22 +683,22 @@ uncons [] = Nothing
 uncons (x:xs) = Just (x, xs)
 
 unsnoc :: [x] -> Maybe ([x],x)
-unsnoc = foldr go Nothing
+unsnoc = Foldable.foldr go Nothing
   where
     go x mxs = Just (case mxs of
        Nothing -> ([], x)
        Just (xs, e) -> (x:xs, e))
 
 applyN :: Int -> (a -> a) -> a -> a
-applyN n f = X.foldr (.) identity (X.replicate n f)
+applyN n f = Foldable.foldr (.) identity (List.replicate n f)
 
-print :: (X.MonadIO m, PBase.Show a) => a -> m ()
+print :: (Trans.MonadIO m, PBase.Show a) => a -> m ()
 print = liftIO . PBase.print
 
-throwIO :: (X.MonadIO m, Exception e) => e -> m a
+throwIO :: (Trans.MonadIO m, Exception e) => e -> m a
 throwIO = liftIO . Control.Exception.throwIO
 
-throwTo :: (X.MonadIO m, Exception e) => ThreadId -> e -> m ()
+throwTo :: (Trans.MonadIO m, Exception e) => ThreadId -> e -> m ()
 throwTo tid e = liftIO (Control.Exception.throwTo tid e)
 
 -- | Do nothing returning unit inside applicative.
@@ -602,10 +706,10 @@ pass :: Applicative f => f ()
 pass = pure ()
 
 guarded :: (Alternative f) => (a -> Bool) -> a -> f a
-guarded p x = X.bool empty (pure x) (p x)
+guarded p x = Bool.bool empty (pure x) (p x)
 
 guardedA :: (Functor f, Alternative t) => (a -> f Bool) -> a -> f (t a)
-guardedA p x = X.bool empty (pure x) <$> p x
+guardedA p x = Bool.bool empty (pure x) <$> p x
 
 -- | Lift an 'IO' operation with 1 argument into another monad
 liftIO1 :: MonadIO m => (a -> IO b) -> a -> m b
