@@ -50,7 +50,9 @@ module Protolude (
   -- * Foldable functions
   module Foldable,
   -- * Semigroup functions
+#if MIN_VERSION_base(4,9,0)
   module Semigroup,
+#endif
   -- * Monoid functions
   module Monoid,
   -- * Bifunctor functions
@@ -66,8 +68,10 @@ module Protolude (
   -- * Tuple functions
   module Tuple,
 
+#if MIN_VERSION_base(4,7,0)
   -- * Typelevel programming
   module Typelevel,
+#endif
 
   -- * Monads
   module State,
