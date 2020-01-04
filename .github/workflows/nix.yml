@@ -3,6 +3,7 @@ name: Nix CI
 on: [pull_request]
 jobs:
   build:
+    name: nix
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
