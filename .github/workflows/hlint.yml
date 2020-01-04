@@ -25,7 +25,8 @@ jobs:
 
     - name: Install hlint
       run: |
-        cabal new-install hlint
+        cabal update
+        cabal new-install hlint --installdir=/usr/bin/
     - name: Run hlint
       run: |
         hlint -g
