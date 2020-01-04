@@ -222,8 +222,10 @@ import Data.Foldable as Foldable (
     foldl,
     foldl',
     toList,
+#if MIN_VERSION_base(4,8,0)
     null,
     length,
+#endif
     elem,
     maximum,
     minimum,
