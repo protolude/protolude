@@ -1,0 +1,9 @@
+- ignore: {name: Avoid lambda}
+- ignore: {name: Eta reduce}
+- ignore: {name: Redundant lambda}
+- ignore: {name: Collapse lambdas}
+- ignore: {name: Use String}
+- ignore: {name: Use putStr, within: Protolude.Show}
+- ignore: {name: Use putStrLn, within: Protolude.Show}
+# CPP preprocessor oddities
+- ignore: {name: Unused LANGUAGE pragma, within: [Protolude.Base, Protolude.CallStack, Protolude.Conv, Protolude.Error]}
