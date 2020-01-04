@@ -37,24 +37,24 @@ Source-Repository head
 library
   exposed-modules:     
     Protolude
-    Protolude.Unsafe
-    Protolude.Debug
-    Protolude.Exceptions
     Protolude.Base
-    Protolude.Applicative
-    Protolude.Bool
-    Protolude.List
     Protolude.Monad
+    Protolude.Safe
+    Protolude.List
+    Protolude.Bool
     Protolude.Show
     Protolude.Conv
     Protolude.Either
     Protolude.Functor
     Protolude.Semiring
     Protolude.Bifunctor
-    Protolude.CallStack
+    Protolude.Applicative
     Protolude.Error
     Protolude.Panic
-    Protolude.Safe
+    Protolude.CallStack
+    Protolude.Exceptions
+    Protolude.Debug
+    Protolude.Unsafe
 
   default-extensions:
     NoImplicitPrelude
@@ -64,6 +64,7 @@ library
 
   ghc-options:
     -Wall
+    -Werror
     -fwarn-implicit-prelude
 
   build-depends:       
