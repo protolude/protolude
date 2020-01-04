@@ -23,10 +23,28 @@ jobs:
         ghc-version: ${{ matrix.ghc }}
         cabal-version: ${{ matrix.cabal }}
 
+    - uses: actions/cache@v1
+      name: Cache ~/.cabal/packages
+      with:
+        path: ~/.cabal/packages
+        key: cabal-packages
+
+    - uses: actions/cache@v1
+      name: Cache ~/.cabal/store
+      with:
+        path: ~/.cabal/store
+        key: cabal-store
+
+    - uses: actions/cache@v1
+      name: Cache dist-newstyle
+      with:
+        path: dist-newstyle
+        key: dist-newstyle
+
     - name: Install hlint
       run: |
         cabal update
-        cabal new-install hlint --installdir=/usr/bin/
+        sudo cabal new-install hlint --installdir=/usr/bin/
     - name: Run hlint
       run: |
         hlint -g
