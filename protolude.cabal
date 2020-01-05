@@ -54,6 +54,7 @@ library
     Protolude.Panic
     Protolude.CallStack
     Protolude.Exceptions
+    Protolude.Partial
     Protolude.Debug
     Protolude.Unsafe
 

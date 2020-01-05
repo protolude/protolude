@@ -178,6 +178,16 @@ business logic use well-typed checked exceptions of the ``ExceptT`` variety.
 It has been renamed to ``identity`` to reserve the ``id`` identifier for the
 more common use case of business logic.
 
+* **But what if I want the partial functions?**
+
+You if you need partial functions for backwards compatibility you can use the
+`Protolude.Partial` module and mask the safe definitions as needed.
+
+```haskell
+import Protolude hiding (head)
+import Protolude.Partial (head)
+```
+
 License
 -------
 
