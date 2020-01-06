@@ -73,7 +73,9 @@ import GHC.Real as Base (
   , toInteger
   , toRational
   , truncate
+#if MIN_VERSION_base(4,12,0)
   , underflowError
+#endif
   )
 import GHC.Float as Base (
     Float(..)
