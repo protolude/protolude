@@ -795,7 +795,9 @@ import Control.Concurrent.MVar as Concurrency (
   , tryPutMVar
   , isEmptyMVar
   , withMVar
+#if MIN_VERSION_base(4,7,0)
   , withMVarMasked
+#endif
   , modifyMVar_
   , modifyMVar
   , modifyMVarMasked_
