@@ -841,11 +841,15 @@ import Control.Concurrent as Concurrency (
   , threadDelay
   , threadWaitRead
   , threadWaitWrite
+#if MIN_VERSION_base(4,7,0)
   , threadWaitReadSTM
   , threadWaitWriteSTM
+#endif
   , rtsSupportsBoundThreads
   , forkOS
+#if MIN_VERSION_base(4,7,0)
   , forkOSWithUnmask
+#endif
   , isCurrentThreadBound
   , runInBoundThread
   , runInUnboundThread
