@@ -41,7 +41,9 @@ import GHC.Real as Base (
   , denominator
   , div
   , divMod
+#if MIN_VERSION_base(4,7,0)
   , divZeroError
+#endif
   , even
   , floor
   , fromIntegral
@@ -58,12 +60,16 @@ import GHC.Real as Base (
   , numericEnumFromThenTo
   , numericEnumFromTo
   , odd
+#if MIN_VERSION_base(4,7,0)
   , overflowError
+#endif
   , properFraction
   , quot
   , quotRem
   , ratioPrec
+#if MIN_VERSION_base(4,7,0)
   , ratioZeroDenominatorError
+#endif
   , realToFrac
   , recip
   , reduce
