@@ -47,6 +47,7 @@ Supports:
  * GHC 8.4.1
  * GHC 8.6.1
  * GHC 8.8.1
+ * GHC 8.10.1
 
 Stack LTS:
 

@@ -11,10 +11,10 @@ module Protolude (
   module Base,
   -- * Function functions
   module Function,
-  -- * Debug functions
-  module Debug,
   -- * List functions
   module List,
+  -- * Data Structures
+  module DataStructures,
   -- * Show functions
   module Show,
   -- * Bool functions
@@ -29,6 +29,8 @@ module Protolude (
   module Applicative,
   -- * String conversion
   module Conv,
+  -- * Debug functions
+  module Debug,
 
   -- * Panic functions
   module Panic,
@@ -59,8 +61,6 @@ module Protolude (
   module Bifunctor,
   -- * Bifunctor functions
   module Hashable,
-
-  -- XXX: data structures
 
   -- * Deepseq functions
   module DeepSeq,
@@ -356,11 +356,11 @@ import Data.Hashable as Hashable (
   , hashUsing
   )
 
-import Data.Map as X (Map)
-import Data.Set as X (Set)
-import Data.Sequence as X (Seq)
-import Data.IntMap as X (IntMap)
-import Data.IntSet as X (IntSet)
+import Data.Map as DataStructures (Map)
+import Data.Set as DataStructures (Set)
+import Data.Sequence as DataStructures (Seq)
+import Data.IntMap as DataStructures (IntMap)
+import Data.IntSet as DataStructures (IntSet)
 
 import Data.Typeable as Typeable (
     TypeRep
@@ -782,9 +782,35 @@ import Control.Monad.STM as STM (
   , throwSTM
   , catchSTM
   )
-import Control.Concurrent as Concurrency hiding (
-    throwTo
+import Control.Concurrent as Concurrency (
+    ThreadId
+  , MVar
+  , Chan
+  , QSem
+  , QSemN
+  -- XXX: export mvar,chan primitives
+  , forkIO
+  , forkFinally
+  , forkIOWithUnmask
+  , killThread
+  , forkOn
+  , forkOnWithUnmask
+  , getNumCapabilities
+  , setNumCapabilities
+  , threadCapability
   , yield
+  , threadDelay
+  , threadWaitRead
+  , threadWaitWrite
+  , threadWaitReadSTM
+  , threadWaitWriteSTM
+  , rtsSupportsBoundThreads
+  , forkOS
+  , forkOSWithUnmask
+  , isCurrentThreadBound
+  , runInBoundThread
+  , runInUnboundThread
+  , mkWeakThreadId
   )
 import Control.Concurrent.Async as Concurrency (
     Async(..)
@@ -842,6 +868,7 @@ infixl 1 &
 x & f = f x
 #endif
 
+-- | The identity function, returns the give value unchanged.
 identity :: a -> a
 identity x = x
 
@@ -859,15 +886,22 @@ unsnoc = Foldable.foldr go Nothing
        Nothing -> ([], x)
        Just (xs, e) -> (x:xs, e))
 
+-- | Apply a function n times to a given value
 applyN :: Int -> (a -> a) -> a -> a
 applyN n f = Foldable.foldr (.) identity (List.replicate n f)
 
+-- | The print function outputs a value of any printable type to the standard
+-- output device. Printable types are those that are instances of class Show;
+-- print converts values to strings for output using the show operation and adds
+-- a newline.
 print :: (Trans.MonadIO m, PBase.Show a) => a -> m ()
 print = liftIO . PBase.print
 
+-- | Lifted throwIO
 throwIO :: (Trans.MonadIO m, Exception e) => e -> m a
 throwIO = liftIO . PException.throwIO
 
+-- | Lifted throwTo
 throwTo :: (Trans.MonadIO m, Exception e) => ThreadId -> e -> m ()
 throwTo tid e = liftIO (PException.throwTo tid e)
 
@@ -889,6 +923,7 @@ liftIO1 = (.) liftIO
 liftIO2 :: MonadIO m => (a -> b -> IO c) -> a -> b -> m c
 liftIO2 = ((.).(.)) liftIO
 
+-- | Convert a value to a readable String.
 show :: (Show a, Conv.StringConv String b) => a -> b
 show x = Conv.toS (PBase.show x)
 {-# SPECIALIZE show :: Show  a => a -> Text  #-}
@@ -898,9 +933,11 @@ show x = Conv.toS (PBase.show x)
 {-# SPECIALIZE show :: Show  a => a -> String  #-}
 
 #if MIN_VERSION_base(4,8,0)
+-- | Terminate main process with failure
 die :: Text -> IO a
 die err = System.Exit.die (Conv.toS err)
 #else
+-- | Terminate main process with failure
 die :: Text -> IO a
 die err = hPutStrLn stderr err >> exitFailure
 #endif
