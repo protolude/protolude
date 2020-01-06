@@ -782,13 +782,52 @@ import Control.Monad.STM as STM (
   , throwSTM
   , catchSTM
   )
+
+import Control.Concurrent.MVar as Concurrency (
+    MVar
+  , newEmptyMVar
+  , newMVar
+  , takeMVar
+  , putMVar
+  , readMVar
+  , swapMVar
+  , tryTakeMVar
+  , tryPutMVar
+  , isEmptyMVar
+  , withMVar
+  , withMVarMasked
+  , modifyMVar_
+  , modifyMVar
+  , modifyMVarMasked_
+  , modifyMVarMasked
+#if MIN_VERSION_base(4,7,0)
+  , tryReadMVar
+  , mkWeakMVar
+#endif
+  )
+import Control.Concurrent.Chan as Concurrency (
+    Chan
+  , newChan
+  , writeChan
+  , readChan
+  , dupChan
+  , getChanContents
+  , writeList2Chan
+  )
+import Control.Concurrent.QSem as Concurrency (
+    QSem
+  , newQSem
+  , waitQSem
+  , signalQSem
+  )
+import Control.Concurrent.QSemN as Concurrency (
+    QSemN
+  , newQSemN
+  , waitQSemN
+  , signalQSemN
+  )
 import Control.Concurrent as Concurrency (
     ThreadId
-  , MVar
-  , Chan
-  , QSem
-  , QSemN
-  -- XXX: export mvar,chan primitives
   , forkIO
   , forkFinally
   , forkIOWithUnmask

@@ -24,7 +24,57 @@ import GHC.Enum as Base (
   , boundedEnumFrom
   , boundedEnumFromThen
   )
-import GHC.Real as Base
+import GHC.Real as Base (
+    (%)
+  , (/)
+  , Fractional
+  , Integral
+  , Ratio(..)
+  , Rational
+  , Real
+  , RealFrac
+  , (^)
+  , (^%^)
+  , (^^)
+  , (^^%^^)
+  , ceiling
+  , denominator
+  , div
+  , divMod
+  , divZeroError
+  , even
+  , floor
+  , fromIntegral
+  , fromRational
+  , gcd
+  , integralEnumFromThenTo
+  , integralEnumFromTo
+  , lcm
+  , mod
+  , notANumber
+  , numerator
+  , numericEnumFrom
+  , numericEnumFromThen
+  , numericEnumFromThenTo
+  , numericEnumFromTo
+  , odd
+  , overflowError
+  , properFraction
+  , quot
+  , quotRem
+  , ratioPrec
+  , ratioZeroDenominatorError
+  , realToFrac
+  , recip
+  , reduce
+  , rem
+  , round
+  , showSigned
+  , toInteger
+  , toRational
+  , truncate
+  , underflowError
+  )
 import GHC.Float as Base (
     Float(..)
   , Double(..)
