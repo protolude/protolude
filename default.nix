@@ -1,7 +1,5 @@
-let
-  pkgs = import <nixpkgs> {};
-in
-pkgs.stdenv.mkDerivation {
+{ nixpkgs ? import <nixpkgs> {}, compiler ? "default" }:
+mkDerivation {
   pname = "protolude";
   version = "0.3.0";
   src = ./protolude;
