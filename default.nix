@@ -1,8 +1,7 @@
-{ mkDerivation, array, async, base, bytestring, containers, deepseq
-, ghc-prim, hashable, mtl, mtl-compat, stdenv, stm, text
-, transformers, transformers-compat
-}:
-mkDerivation {
+let
+  pkgs = import <nixpkgs> {};
+in
+pkgs.stdenv.mkDerivation {
   pname = "protolude";
   version = "0.3.0";
   src = ./protolude;
