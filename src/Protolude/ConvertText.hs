@@ -18,6 +18,8 @@ import Data.Function (id, (.))
 import Data.String (String)
 import Data.Text.Encoding (encodeUtf8)
 
+-- | Convert from one Unicode textual type to another. Not for serialization/deserialization,
+-- so doesn't have instances for bytestrings.
 class ConvertText a b where
   convertText :: a -> b
 
