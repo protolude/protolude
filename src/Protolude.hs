@@ -41,7 +41,7 @@ import Protolude.Monad as X
 import Protolude.Functor as X
 import Protolude.Either as X
 import Protolude.Applicative as X
-import Protolude.Conv as X
+import Protolude.ConvertText as X
 import Protolude.Panic as X
 import Protolude.Exceptions as X
 import Protolude.Semiring as X
@@ -615,17 +615,15 @@ liftIO1 = (.) liftIO
 liftIO2 :: MonadIO m => (a -> b -> IO c) -> a -> b -> m c
 liftIO2 = ((.).(.)) liftIO
 
-show :: (Show a, StringConv String b) => a -> b
-show x = toS (PBase.show x)
+show :: (Show a, ConvertText String b) => a -> b
+show x = convertText (PBase.show x)
 {-# SPECIALIZE show :: Show  a => a -> Text  #-}
 {-# SPECIALIZE show :: Show  a => a -> LText  #-}
-{-# SPECIALIZE show :: Show  a => a -> ByteString  #-}
-{-# SPECIALIZE show :: Show  a => a -> LByteString  #-}
 {-# SPECIALIZE show :: Show  a => a -> String  #-}
 
 #if MIN_VERSION_base(4,8,0)
 die :: Text -> IO a
-die err = System.Exit.die (toS err)
+die err = System.Exit.die (convertText err)
 #else
 die :: Text -> IO a
 die err = hPutStrLn stderr err >> exitFailure

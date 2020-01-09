@@ -47,6 +47,7 @@ library
     Protolude.Monad
     Protolude.Show
     Protolude.Conv
+    Protolude.ConvertText
     Protolude.Either
     Protolude.Functor
     Protolude.Semiring
