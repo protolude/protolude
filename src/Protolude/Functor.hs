@@ -20,6 +20,7 @@ import Data.Functor ((<&>))
 #if MIN_VERSION_base(4,7,0)
 import Data.Functor (
     Functor(fmap)
+  , (<$)
   , ($>)
   , (<$>)
   , void
@@ -27,6 +28,7 @@ import Data.Functor (
 #else
 import Data.Functor (
     Functor(fmap)
+  , (<$)
   , (<$>)
   )
 
