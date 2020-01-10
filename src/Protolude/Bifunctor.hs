@@ -6,7 +6,7 @@ module Protolude.Bifunctor (
 ) where
 
 import Data.Function (id, (.))
-import Data.Either (Either(..))
+import Data.Either (Either(Left,Right))
 import Control.Applicative ( Const(..) )
 
 class Bifunctor p where

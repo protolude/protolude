@@ -1,13 +1,5 @@
-{ nixpkgs ? import <nixpkgs> {}, compiler ? "default" }:
-mkDerivation {
-  pname = "protolude";
-  version = "0.3.0";
-  src = ./protolude;
-  libraryHaskellDepends = [
-    array async base bytestring containers deepseq ghc-prim hashable
-    mtl mtl-compat stm text transformers transformers-compat
-  ];
-  homepage = "https://github.com/sdiehl/protolude";
-  description = "A small prelude";
-  license = stdenv.lib.licenses.mit;
+{ pkgs ? import <nixpkgs> {}
+}:
+pkgs.haskellPackages.developPackage {
+  root = ./.;
 }

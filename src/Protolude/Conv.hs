@@ -18,8 +18,8 @@ import Data.Text.Lazy             as LT
 import Data.Text.Lazy.Encoding    as LT
 
 import Protolude.Base
-import Data.Eq (Eq(..))
-import Data.Ord (Ord(..))
+import Data.Eq (Eq)
+import Data.Ord (Ord)
 import Data.Function ((.), id)
 import Data.String (String)
 import Control.Applicative (pure)

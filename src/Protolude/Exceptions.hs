@@ -12,7 +12,7 @@ import Protolude.Base (IO)
 import Data.Function ((.))
 import Control.Monad.Trans (liftIO)
 import Control.Monad.IO.Class (MonadIO)
-import Control.Monad.Except (ExceptT(..), MonadError, throwError)
+import Control.Monad.Except (ExceptT(ExceptT), MonadError, throwError)
 import Control.Exception as Exception
 import Control.Applicative
 import Data.Maybe (Maybe, maybe)

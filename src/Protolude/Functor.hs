@@ -3,7 +3,7 @@
 {-# LANGUAGE NoImplicitPrelude #-}
 
 module Protolude.Functor (
-  Functor(..),
+  Functor(fmap),
   ($>),
   (<$>),
   (<<$>>),
@@ -19,14 +19,14 @@ import Data.Functor ((<&>))
 
 #if MIN_VERSION_base(4,7,0)
 import Data.Functor (
-    Functor(..)
+    Functor(fmap)
   , ($>)
   , (<$>)
   , void
   )
 #else
 import Data.Functor (
-    Functor(..)
+    Functor(fmap)
   , (<$>)
   )
 

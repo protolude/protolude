@@ -7,7 +7,7 @@
 #endif
 
 module Protolude.Panic (
-  FatalError(..),
+  FatalError(FatalError),
   panic,
 ) where
 
