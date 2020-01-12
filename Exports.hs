@@ -3,9 +3,11 @@ module Main
   )
 where
 
+import Control.Applicative ((<$>))
 import Control.Monad.Trans
 import qualified Data.List as List
 import Data.Maybe
+import Data.Ord (comparing)
 import DynFlags
 import GHC
 import GHC.Paths
@@ -31,16 +33,14 @@ autoModule mod = runGhc (Just GHC.Paths.libdir) $ do
   let modInfo = tm_checked_module_info t
   let exports = modInfoExports modInfo
   exportThings <- sequence <$> mapM lookupName exports
-  let sortedThings = List.sortOn getOccName (concat exportThings)
+  let sortedThings = List.sortBy (comparing getOccName) (concat exportThings)
   liftIO $ mapM_ (showThing) sortedThings
-  pure ()
 
 showNamed :: NamedThing a => a -> IO ()
 showNamed a = do
   let nm = showGhc (getOccName a)
   let mod = showGhc (nameModule (getName a))
   putStrLn (nm ++ " from " ++ mod)
-  pure ()
 
 showThing :: TyThing -> IO ()
 showThing (AnId a) = showNamed a
