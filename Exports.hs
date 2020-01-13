@@ -1,3 +1,4 @@
+{-# LANGUAGE CPP #-}
 module Main
   ( main,
   )
@@ -19,12 +20,11 @@ import Prelude hiding (concat, mod)
 autoModule :: FilePath -> IO ()
 autoModule mod = runGhc (Just GHC.Paths.libdir) $ do
   dflags <- GHC.getSessionDynFlags
-  _ <-
-    setSessionDynFlags
-      ( dflags `gopt_set` Opt_KeepRawTokenStream
-          `gopt_set` Opt_Haddock
-          `gopt_set` Opt_GhciSandbox
-      )
+#if (__GLASGOW_HASKELL__ > 706)
+  _ <- setSessionDynFlags ( dflags `gopt_set` Opt_GhciSandbox )
+#else
+  _ <- setSessionDynFlags ( dflags `dopt_set` Opt_GhciSandbox )
+#endif
   target <- guessTarget ("src" </> addExtension mod ".hs") Nothing
   setTargets [target]
   _ <- load LoadAllTargets
@@ -35,22 +35,24 @@ autoModule mod = runGhc (Just GHC.Paths.libdir) $ do
   let exports = modInfoExports modInfo
   exportThings <- sequence <$> mapM lookupName exports
   let sortedThings = List.sortBy (comparing getOccName) (concat exportThings)
-  liftIO $ mapM_ (showThing) sortedThings
+  liftIO $ mapM_ (showThing dflags) sortedThings
 
-showNamed :: NamedThing a => a -> IO ()
-showNamed a = do
-  let nm = showGhc (getOccName a)
-  let mod = showGhc (nameModule (getName a))
+showNamed :: NamedThing a => DynFlags -> a -> IO ()
+showNamed df a = do
+  let nm = showSDoc df (ppr (getOccName a))
+  let mod = showSDoc df (ppr (nameModule (getName a)))
   putStrLn (nm ++ " from " ++ mod)
 
-showThing :: TyThing -> IO ()
-showThing (AnId a) = showNamed a
-showThing (AConLike a) = showNamed a
-showThing (ATyCon a) = showNamed a
-showThing _ = error "Should never happen."
+showThing :: DynFlags -> TyThing -> IO ()
+showThing df (AnId a) = showNamed df a
+#if (__GLASGOW_HASKELL__ > 706)
+showThing df (AConLike a) = showNamed df a
+#endif
+showThing df (ATyCon a) = showNamed df a
+showThing _ _ = error "Should never happen."
 
-showGhc :: (Outputable a) => a -> String
-showGhc = showPpr unsafeGlobalDynFlags
+--showGhc :: (Outputable a) => a -> String
+--showGhc = showPpr unsafeGlobalDynFlags
 
 main :: IO ()
 main = autoModule "Protolude"
