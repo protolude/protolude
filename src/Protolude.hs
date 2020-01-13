@@ -243,6 +243,8 @@ import Data.Foldable as Foldable (
     mapM_,
     forM_,
     sequence_,
+    sequenceA_,
+    asum,
     msum,
     concat,
     concatMap,
@@ -251,6 +253,7 @@ import Data.Foldable as Foldable (
     any,
     all,
     maximumBy,
+    minimumBy,
     notElem,
     find,
   )
@@ -856,6 +859,7 @@ import Control.Concurrent as Concurrency (
   , runInBoundThread
   , runInUnboundThread
   , mkWeakThreadId
+  , myThreadId
   )
 import Control.Concurrent.Async as Concurrency (
     Async(..)

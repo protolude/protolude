@@ -49,6 +49,8 @@ import GHC.Real as Base (
   , fromIntegral
   , fromRational
   , gcd
+  , integralEnumFrom
+  , integralEnumFromThen
   , integralEnumFromThenTo
   , integralEnumFromTo
   , lcm
@@ -67,6 +69,7 @@ import GHC.Real as Base (
   , quot
   , quotRem
   , ratioPrec
+  , ratioPrec1
 #if MIN_VERSION_base(4,7,0)
   , ratioZeroDenominatorError
 #endif
