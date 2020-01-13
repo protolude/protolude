@@ -746,7 +746,11 @@ import Control.Exception as Exception (
   , RecConError(RecConError)
   , RecSelError(RecSelError)
   , RecUpdError(RecUpdError)
+#if MIN_VERSION_base(4,9,0)
   , ErrorCall(ErrorCall, ErrorCallWithLocation)
+#else
+  , ErrorCall(ErrorCall)
+#endif
 #if MIN_VERSION_base(4,9,0)
   , TypeError(TypeError)
 #endif

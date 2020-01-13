@@ -2,24 +2,25 @@
 =====
 
 * GHC 8.10.1 support
-* Migrated `Debug` and Unsafe to `Protolude.Debug` and `Protolude.Unsafe`.
+* Migrated `Debug` and `Unsafe` to `Protolude.Debug` and `Protolude.Unsafe`.
 * Export Unicode functions:
-  - intToDigit
-  - isAlpha
-  - isAlphaNum
-  - isAscii
-  - isControl
-  - isDigit
-  - isHexDigit
-  - isLetter
-  - isLower
-  - isPrint
-  - isSpace
-  - isUpper
-* Export MonadFail class.
-* Export gcast from Data.Typeable.
-* Export typeOf from Data.Typeable.
-* Export Handler from Control.Exception.
+  - `intToDigit`
+  - `isAlpha`
+  - `isAlphaNum`
+  - `isAscii`
+  - `isControl`
+  - `isDigit`
+  - `isHexDigit`
+  - `isLetter`
+  - `isLower`
+  - `isPrint`
+  - `isSpace`
+  - `isUpper`
+* Export `MonadFail` class.
+* Export `gcast` from Data.Typeable.
+* Export `typeOf` from Data.Typeable.
+* Export `Handler` from Control.Exception.
+* Export `yield` from Control.Concurrency.
 
 0.2.4
 =====
