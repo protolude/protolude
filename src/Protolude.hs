@@ -757,7 +757,7 @@ import Control.Exception as Exception (
   , ioError
   , catch
   , catches
-  , Handler(..)
+  , Handler(Handler)
   , catchJust
   , handle
   , handleJust
