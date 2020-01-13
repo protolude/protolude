@@ -12,6 +12,7 @@ import Data.Maybe
 import Data.Ord (comparing)
 import DynFlags
 import GHC
+import GhcMonad
 import GHC.Paths
 import Outputable
 import System.FilePath.Posix
@@ -35,7 +36,7 @@ autoModule mod = runGhc (Just GHC.Paths.libdir) $ do
   let exports = modInfoExports modInfo
   exportThings <- sequence <$> mapM lookupName exports
   let sortedThings = List.sortBy (comparing getOccName) (concat exportThings)
-  liftIO $ mapM_ (showThing dflags) sortedThings
+  GhcMonad.liftIO (mapM_ (showThing dflags) sortedThings)
 
 showNamed :: NamedThing a => DynFlags -> a -> IO ()
 showNamed df a = do
