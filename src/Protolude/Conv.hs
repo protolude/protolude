@@ -3,10 +3,11 @@
 {-# LANGUAGE TypeSynonymInstances #-}
 
 module Protolude.Conv (
-  StringConv (..)
+  StringConv
+, strConv
 , toS
 , toSL
-, Leniency (..)
+, Leniency (Lenient, Strict)
 ) where
 
 import Data.ByteString.Char8      as B

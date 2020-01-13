@@ -200,8 +200,8 @@ import Protolude.Safe as Safe (
 import Control.Applicative as Applicative (
     Applicative(..)
   , Alternative(..)
-  , Const(..)
-  , ZipList(..)
+  , Const(Const,getConst)
+  , ZipList(ZipList,getZipList)
   , (<**>)
   , liftA
   , liftA2
@@ -215,8 +215,8 @@ import Data.Eq as Eq (
   )
 import Data.Ord as Ord (
     Ord(..)
-  , Ordering(..)
-  , Down(..)
+  , Ordering(LT,EQ,GT)
+  , Down(Down)
   , comparing
   )
 import Data.Traversable as Traversable
@@ -258,7 +258,7 @@ import Data.Foldable as Foldable (
     find,
   )
 import Data.Functor.Identity as Functor (
-    Identity(..)
+    Identity(Identity)
   )
 
 #if MIN_VERSION_base(4,9,0)
@@ -283,9 +283,9 @@ import Data.Semigroup as Semigroup (
 import Data.Monoid as Monoid
 
 #if !MIN_VERSION_base(4,8,0)
-import Protolude.Bifunctor as Bifunctor (Bifunctor(..))
+import Protolude.Bifunctor as Bifunctor (Bifunctor(bimap, first, second))
 #else
-import Data.Bifunctor as Bifunctor (Bifunctor(..))
+import Data.Bifunctor as Bifunctor (Bifunctor(bimap, first, second))
 #endif
 
 -- Deepseq
@@ -530,7 +530,7 @@ import Data.Word as Bits (
   )
 
 import Data.Either as Either (
-    Either(..)
+    Either(Left,Right)
   , either
   , lefts
   , rights
@@ -542,7 +542,7 @@ import Data.Either as Either (
   )
 
 import Data.Complex as Complex (
-    Complex(..)
+    Complex((:+))
   , realPart
   , imagPart
   , mkPolar

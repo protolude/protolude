@@ -100,7 +100,7 @@ import GHC.Float as Base (
   , showSignedFloat
   )
 import GHC.Show as Base (
-    Show(..)
+    Show(showsPrec, show, showList)
   )
 import GHC.Exts as Base (
     Constraint
@@ -142,7 +142,7 @@ import GHC.StaticPtr as Base (StaticPtr)
 
 #if ( __GLASGOW_HASKELL__ >= 800 )
 import GHC.OverloadedLabels as Base (
-    IsLabel(..)
+    IsLabel(fromLabel)
   )
 
 import GHC.ExecutionStack as Base (
@@ -167,9 +167,9 @@ import GHC.Stack as Base (
 #if ( __GLASGOW_HASKELL__ >= 710 )
 import GHC.TypeLits as Base (
     Symbol
-  , SomeSymbol(..)
+  , SomeSymbol(SomeSymbol)
   , Nat
-  , SomeNat(..)
+  , SomeNat(SomeNat)
   , CmpNat
   , KnownSymbol
   , KnownNat

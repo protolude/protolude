@@ -26,7 +26,7 @@ module Protolude.Safe (
 ) where
 
 
-import Data.Ord (Ord(..))
+import Data.Ord (Ord, (<))
 import Data.Int (Int)
 import Data.Char (Char)
 import Data.Bool (Bool, otherwise)
