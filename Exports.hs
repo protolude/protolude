@@ -5,6 +5,7 @@ where
 
 import Control.Applicative ((<$>))
 import Control.Monad.Trans
+import Data.Foldable (concat)
 import qualified Data.List as List
 import Data.Maybe
 import Data.Ord (comparing)
@@ -13,7 +14,7 @@ import GHC
 import GHC.Paths
 import Outputable
 import System.FilePath.Posix
-import Prelude hiding (mod)
+import Prelude hiding (concat, mod)
 
 autoModule :: FilePath -> IO ()
 autoModule mod = runGhc (Just GHC.Paths.libdir) $ do
