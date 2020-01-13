@@ -49,6 +49,9 @@ import GHC.Real as Base (
   , fromIntegral
   , fromRational
   , gcd
+  , gcdInt'
+  , gcdWord'
+  , infinity
   , integralEnumFrom
   , integralEnumFromThen
   , integralEnumFromThenTo

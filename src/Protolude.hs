@@ -712,36 +712,43 @@ import Control.Exception as Exception (
 #if MIN_VERSION_base(4,8,0)
     displayException,
 #endif
-    SomeException(..)
+    SomeException(SomeException)
   , IOException
-  , ArithException
-  , ArrayException
-  , AssertionFailed
+  , ArithException(
+    Overflow,
+    Underflow,
+    LossOfPrecision,
+    DivideByZero,
+    Denormal,
+    RatioZeroDenominator
+    )
+  , ArrayException(IndexOutOfBounds, UndefinedElement)
+  , AssertionFailed(AssertionFailed)
 #if MIN_VERSION_base(4,7,0)
-  , SomeAsyncException
+  , SomeAsyncException(SomeAsyncException)
   , asyncExceptionToException
   , asyncExceptionFromException
 #endif
-  , AsyncException
-  , NonTermination
-  , NestedAtomically
-  , BlockedIndefinitelyOnMVar
-  , BlockedIndefinitelyOnSTM
+  , AsyncException(StackOverflow, HeapOverflow, ThreadKilled, UserInterrupt)
+  , NonTermination(NonTermination)
+  , NestedAtomically(NestedAtomically)
+  , BlockedIndefinitelyOnMVar(BlockedIndefinitelyOnMVar)
+  , BlockedIndefinitelyOnSTM(BlockedIndefinitelyOnSTM)
 #if MIN_VERSION_base(4,8,0)
-  , AllocationLimitExceeded
+  , AllocationLimitExceeded(AllocationLimitExceeded)
 #endif
 #if MIN_VERSION_base(4,10,0)
-  , CompactionFailed
+  , CompactionFailed(CompactionFailed)
 #endif
-  , Deadlock
-  , NoMethodError
-  , PatternMatchFail
-  , RecConError
-  , RecSelError
-  , RecUpdError
-  , ErrorCall
+  , Deadlock(Deadlock)
+  , NoMethodError(NoMethodError)
+  , PatternMatchFail(PatternMatchFail)
+  , RecConError(RecConError)
+  , RecSelError(RecSelError)
+  , RecUpdError(RecUpdError)
+  , ErrorCall(ErrorCall, ErrorCallWithLocation)
 #if MIN_VERSION_base(4,9,0)
-  , TypeError
+  , TypeError(TypeError)
 #endif
   , ioError
   , catch
@@ -809,6 +816,7 @@ import Control.Concurrent.MVar as Concurrency (
   , tryReadMVar
   , mkWeakMVar
 #endif
+  , addMVarFinalizer
   )
 import Control.Concurrent.Chan as Concurrency (
     Chan

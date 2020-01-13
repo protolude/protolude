@@ -5,6 +5,7 @@
 module Protolude.Functor (
   Functor(fmap),
   ($>),
+  (<$),
   (<$>),
   (<<$>>),
   (<&>),

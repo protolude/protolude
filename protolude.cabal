@@ -29,7 +29,7 @@ tested-with:
   GHC == 8.6.1,
   GHC == 8.8.1
   GHC == 8.10.1
-extra-source-files: README.md CHANGES.md
+extra-source-files: README.md ChangeLog.md
 
 Source-Repository head
     type: git

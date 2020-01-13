@@ -1,5 +1,5 @@
-{-# LANGUAGE NoImplicitPrelude #-}
 {-# LANGUAGE Safe #-}
+{-# LANGUAGE NoImplicitPrelude #-}
 
 module Protolude.Applicative
   ( orAlt,
