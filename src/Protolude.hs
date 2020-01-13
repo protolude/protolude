@@ -616,14 +616,14 @@ liftIO2 :: MonadIO m => (a -> b -> IO c) -> a -> b -> m c
 liftIO2 = ((.).(.)) liftIO
 
 show :: (Show a, ConvertText String b) => a -> b
-show x = convertText (PBase.show x)
+show x = toS (PBase.show x)
 {-# SPECIALIZE show :: Show  a => a -> Text  #-}
 {-# SPECIALIZE show :: Show  a => a -> LText  #-}
 {-# SPECIALIZE show :: Show  a => a -> String  #-}
 
 #if MIN_VERSION_base(4,8,0)
 die :: Text -> IO a
-die err = System.Exit.die (convertText err)
+die err = System.Exit.die (toS err)
 #else
 die :: Text -> IO a
 die err = hPutStrLn stderr err >> exitFailure
