@@ -8,5 +8,6 @@
 - ignore: {name: Use putStrLn, within: Protolude.Show}
 - ignore: {name: Use bimap, within: Protolude.Bifunctor}
 - ignore: {name: Use first, within: Protolude.Bifunctor}
+- ignore: {name: Use sortOn}
 # CPP preprocessor oddities
 - ignore: {name: Unused LANGUAGE pragma, within: [Protolude.Base, Protolude.CallStack, Protolude.Conv, Protolude.Error]}
