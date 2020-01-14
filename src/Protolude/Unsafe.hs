@@ -9,9 +9,12 @@ module Protolude.Unsafe (
   unsafeFromJust,
   unsafeIndex,
   unsafeThrow,
+  unsafeRead,
 ) where
 
 import Protolude.Base (Int)
+import Data.Char (Char)
+import Text.Read (Read, read)
 import qualified Data.List as List
 import qualified Data.Maybe as Maybe
 import qualified Control.Exception as Exc
@@ -36,3 +39,6 @@ unsafeIndex = (List.!!)
 
 unsafeThrow :: Exc.Exception e => e -> a
 unsafeThrow = Exc.throw
+
+unsafeRead :: Read a => [Char] -> a
+unsafeRead = Text.Read.read
