@@ -25,7 +25,6 @@ Design points:
 * Unsafe functions are prefixed with "unsafe" in separate module.
 * Compiler agnostic, GHC internal modules are abstracted out into Base.
 * ``sum`` and ``product`` are strict by default.
-* Compatibility with GHC 8.0.
 * Includes Semiring for GHC >= 7.6.
 * Includes Bifunctor for GHC >= 7.6.
 * Includes Semigroup for GHC >= 7.6.
@@ -108,16 +107,17 @@ tracks Stack LTS resolver.
 | -----------         |   -------- |  -------- |
 | array               |        0.4 |       0.6 |
 | async               |        2.0 |       2.3 |
-| base                |        4.6 |      4.13 |
+| base                |        4.6 |      4.14 |
 | bytestring          |       0.10 |      0.11 |
 | containers          |        0.5 |       0.7 |
 | deepseq             |        1.3 |       1.5 |
 | ghc-prim            |        0.3 |       0.6 |
-| hashable            |        1.2 |       1.3 |
+| hashable            |        1.2 |       1.4 |
 | mtl                 |        2.1 |       2.3 |
 | stm                 |        2.4 |       2.6 |
 | text                |        1.2 |       1.3 |
 | transformers        |        0.4 |       0.6 |
+| fail                |        4.9 |      4.10 |
 
 Structure
 ---------
