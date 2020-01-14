@@ -44,7 +44,7 @@ jobs:
     - name: Install hlint
       run: |
         cabal update
-        cabal new-install hlint --installdir=dist-newstyle
+        cabal new-install hlint --installdir=dist-newstyle --overwrite-policy=always
     - name: Run hlint
       run: |
         dist-newstyle/hlint -g

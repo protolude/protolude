@@ -3,8 +3,9 @@
 {-# LANGUAGE NoImplicitPrelude #-}
 
 module Protolude.Functor (
-  Functor(..),
+  Functor(fmap),
   ($>),
+  (<$),
   (<$>),
   (<<$>>),
   (<&>),
@@ -12,23 +13,23 @@ module Protolude.Functor (
   foreach,
 ) where
 
-import Data.Function ((.))
-import Data.Function (flip)
-
+import Data.Function ((.), flip)
 #if MIN_VERSION_base(4,11,0)
 import Data.Functor ((<&>))
 #endif
 
 #if MIN_VERSION_base(4,7,0)
 import Data.Functor (
-    Functor(..)
+    Functor(fmap)
+  , (<$)
   , ($>)
   , (<$>)
   , void
   )
 #else
 import Data.Functor (
-    Functor(..)
+    Functor(fmap)
+  , (<$)
   , (<$>)
   )
 

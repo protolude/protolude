@@ -1,7 +1,7 @@
 {-# LANGUAGE Unsafe #-}
 {-# LANGUAGE NoImplicitPrelude #-}
 
-module Unsafe (
+module Protolude.Unsafe (
   unsafeHead,
   unsafeTail,
   unsafeInit,

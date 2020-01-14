@@ -1,10 +1,13 @@
 {-# LANGUAGE Safe #-}
 {-# LANGUAGE NoImplicitPrelude #-}
 
-module Protolude.Semiring (
-  Semiring(..),
-  zero,
-) where
+module Protolude.Semiring
+  ( Semiring,
+    one,
+    (<.>),
+    zero,
+  )
+where
 
 import Data.Monoid
 

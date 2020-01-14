@@ -48,6 +48,21 @@ Supports:
  * GHC 8.4.1
  * GHC 8.6.1
  * GHC 8.8.1
+ * GHC 8.10.1
+
+Stack LTS:
+
+* lts-4.x
+* lts-5.x
+* lts-6.x
+* lts-7.x
+* lts-8.x
+* lts-9.x
+* lts-10.x
+* lts-11.x
+* lts-12.x
+* lts-13.x
+* lts-14.x
 
 Usage
 -----
@@ -56,7 +71,7 @@ To try out standalone prelude at the interactive shell, from the Protolude
 project directory run.
 
 ```haskell
-$ stack exec ghci
+$ stack repl
 > import Protolude
 ```
 
@@ -81,11 +96,6 @@ Then in your modules:
 import Protolude
 ```
 
-Exported Functions
-------------------
-
-The list of exports can be browsed [here](http://hackage.haskell.org/package/protolude-0.2.3/docs/Protolude.html).
-
 Dependencies
 ------------
 
@@ -108,7 +118,6 @@ tracks Stack LTS resolver.
 | stm                 |        2.4 |       2.6 |
 | text                |        1.2 |       1.3 |
 | transformers        |        0.4 |       0.6 |
-|                     |            |           |
 
 Structure
 ---------
@@ -171,8 +180,18 @@ business logic use well-typed checked exceptions of the ``ExceptT`` variety.
 It has been renamed to ``identity`` to reserve the ``id`` identifier for the
 more common use case of business logic.
 
+* **But what if I want the partial functions?**
+
+You if you need partial functions for backwards compatibility you can use the
+`Protolude.Partial` module and mask the safe definitions as needed.
+
+```haskell
+import Protolude hiding (head)
+import Protolude.Partial (head)
+```
+
 License
 -------
 
 Released under the MIT License.
-Copyright (c) 2016-2019, Stephen Diehl
+Copyright (c) 2016-2020, Stephen Diehl

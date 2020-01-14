@@ -1,35 +1,35 @@
-{-# LANGUAGE Trustworthy #-}
+{-# LANGUAGE ExtendedDefaultRules #-}
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE Trustworthy #-}
 {-# LANGUAGE NoImplicitPrelude #-}
-{-# LANGUAGE TypeSynonymInstances #-}
-{-# LANGUAGE ExtendedDefaultRules #-}
 
-module Protolude.Show (
-  Print(..),
-  putText,
-  putErrText,
-  putLText,
-  putByteString,
-  putLByteString,
-) where
-
-import qualified System.IO as Base
-import qualified Protolude.Base as Base
-import Data.Function ((.))
+module Protolude.Show
+  ( Print,
+    hPutStr,
+    putStr,
+    hPutStrLn,
+    putStrLn,
+    putErrLn,
+    putText,
+    putErrText,
+    putLText,
+    putByteString,
+    putLByteString,
+  )
+where
 
 import Control.Monad.IO.Class (MonadIO, liftIO)
 import qualified Data.ByteString.Char8 as BS
 import qualified Data.ByteString.Lazy.Char8 as BL
-
+import Data.Function ((.))
 import qualified Data.Text as T
 import qualified Data.Text.IO as T
-
 import qualified Data.Text.Lazy as TL
 import qualified Data.Text.Lazy.IO as TL
-
-import System.IO (Handle, stdout, stderr)
-
+import qualified Protolude.Base as Base
+import qualified System.IO as Base
+import System.IO (Handle, stderr, stdout)
 
 class Print a where
   hPutStr :: MonadIO m => Handle -> a -> m ()
@@ -38,7 +38,7 @@ class Print a where
   hPutStrLn :: MonadIO m => Handle -> a -> m ()
   putStrLn :: MonadIO m => a -> m ()
   putStrLn = hPutStrLn stdout
-  putErrLn ::  MonadIO m => a -> m ()
+  putErrLn :: MonadIO m => a -> m ()
   putErrLn = hPutStrLn stderr
 
 instance Print T.Text where

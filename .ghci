@@ -1,3 +1,4 @@
 :set -XNoImplicitPrelude
 :set -XOverloadedStrings
-import Prelude ()
+:set -isrc
+:load Protolude

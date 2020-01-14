@@ -12,11 +12,11 @@ import Protolude.Base (IO)
 import Data.Function ((.))
 import Control.Monad.Trans (liftIO)
 import Control.Monad.IO.Class (MonadIO)
-import Control.Monad.Except (ExceptT(..), MonadError, throwError)
+import Control.Monad.Except (ExceptT(ExceptT), MonadError, throwError)
 import Control.Exception as Exception
 import Control.Applicative
 import Data.Maybe (Maybe, maybe)
-import Data.Either (Either(..))
+import Data.Either (Either(Left,Right))
 
 hush :: Alternative m => Either e a -> m a
 hush (Left _)  = empty

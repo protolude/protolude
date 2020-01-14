@@ -1,20 +1,21 @@
 {-# LANGUAGE Safe #-}
 {-# LANGUAGE NoImplicitPrelude #-}
 
-module Protolude.Applicative (
-  orAlt,
-  orEmpty,
-  eitherA,
-  purer,
-  liftAA2,
-  (<<*>>),
-) where
+module Protolude.Applicative
+  ( orAlt,
+    orEmpty,
+    eitherA,
+    purer,
+    liftAA2,
+    (<<*>>),
+  )
+where
 
-import Data.Bool (Bool)
-import Data.Function ((.))
-import Data.Either (Either(..))
-import Data.Monoid (Monoid(..))
 import Control.Applicative
+import Data.Bool (Bool)
+import Data.Either (Either (Left, Right))
+import Data.Function ((.))
+import Data.Monoid (Monoid (mempty))
 
 orAlt :: (Alternative f, Monoid a) => f a -> f a
 orAlt f = f <|> pure mempty
@@ -33,5 +34,5 @@ liftAA2 = liftA2 . liftA2
 
 infixl 4 <<*>>
 
-(<<*>>) :: (Applicative f, Applicative g)  => f (g (a -> b)) -> f (g a) -> f (g b)
+(<<*>>) :: (Applicative f, Applicative g) => f (g (a -> b)) -> f (g a) -> f (g b)
 (<<*>>) = liftA2 (<*>)

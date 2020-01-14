@@ -1,25 +1,26 @@
-{-# LANGUAGE Safe #-}
 {-# LANGUAGE NoImplicitPrelude #-}
+{-# LANGUAGE Safe #-}
 
-module Protolude.List (
-  head,
-  ordNub,
-  sortOn,
-  list,
-  product,
-  sum,
-  groupBy,
-) where
+module Protolude.List
+  ( head,
+    ordNub,
+    sortOn,
+    list,
+    product,
+    sum,
+    groupBy,
+  )
+where
 
-import Data.List (sortBy, groupBy)
-import Data.Maybe (Maybe(..))
-import Data.Ord (Ord, comparing)
-import Data.Foldable (Foldable, foldr, foldl')
+import Control.Applicative (pure)
+import Data.Foldable (Foldable, foldl', foldr)
 import Data.Function ((.))
 import Data.Functor (fmap)
-import Control.Applicative (pure)
+import Data.List (groupBy, sortBy)
+import Data.Maybe (Maybe (Nothing))
+import Data.Ord (Ord, comparing)
 import qualified Data.Set as Set
-import GHC.Num (Num, (+), (*))
+import GHC.Num ((*), (+), Num)
 
 head :: (Foldable f) => f a -> Maybe a
 head = foldr (\x _ -> pure x) Nothing
@@ -31,16 +32,16 @@ sortOn = sortBy . comparing
 ordNub :: (Ord a) => [a] -> [a]
 ordNub l = go Set.empty l
   where
-    go _ []     = []
-    go s (x:xs) =
+    go _ [] = []
+    go s (x : xs) =
       if x `Set.member` s
-      then go s xs
-      else x : go (Set.insert x s) xs
+        then go s xs
+        else x : go (Set.insert x s) xs
 
 list :: [b] -> (a -> b) -> [a] -> [b]
 list def f xs = case xs of
   [] -> def
-  _  -> fmap f xs
+  _ -> fmap f xs
 
 {-# INLINE product #-}
 product :: (Foldable f, Num a) => f a -> a
