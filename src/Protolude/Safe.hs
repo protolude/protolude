@@ -26,12 +26,12 @@ module Protolude.Safe (
 ) where
 
 
-import Data.Ord (Ord(..))
+import Data.Ord (Ord, (<))
 import Data.Int (Int)
 import Data.Char (Char)
 import Data.Bool (Bool, otherwise)
-import Data.Maybe (Maybe(..), fromMaybe)
-import Data.Either (Either(..))
+import Data.Maybe (Maybe(Nothing, Just), fromMaybe)
+import Data.Either (Either(Left, Right))
 import Data.Function ((.))
 import Data.List (null, head, last, tail, init, maximum, minimum, foldr1, foldl1, foldl1', (++))
 

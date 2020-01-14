@@ -2,7 +2,7 @@
 {-# LANGUAGE NoImplicitPrelude #-}
 {-# OPTIONS_GHC -fno-warn-warnings-deprecations #-}
 
-module Debug (
+module Protolude.Debug (
   undefined,
   trace,
   traceM,

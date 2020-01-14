@@ -7,7 +7,7 @@
 #endif
 
 module Protolude.Panic (
-  FatalError(..),
+  FatalError(FatalError, fatalErrorMessage),
   panic,
 ) where
 
@@ -18,7 +18,7 @@ import Data.Typeable (Typeable)
 import Control.Exception as X
 
 -- | Uncatchable exceptions thrown and never caught.
-data FatalError = FatalError { fatalErrorMessage :: Text }
+newtype FatalError = FatalError { fatalErrorMessage :: Text }
   deriving (Show, Typeable)
 
 instance Exception FatalError

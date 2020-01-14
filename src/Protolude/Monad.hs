@@ -4,7 +4,7 @@
 
 module Protolude.Monad (
     Monad((>>=), return)
-  , MonadPlus(..)
+  , MonadPlus(mzero, mplus)
 
   , (=<<)
   , (>=>)
