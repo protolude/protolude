@@ -28,7 +28,7 @@ module Protolude (
   -- * Applicative functions
   module Applicative,
   -- * String conversion
-  module Conv,
+  module ConvertText,
   -- * Debug functions
   module Debug,
 
@@ -151,7 +151,7 @@ import Protolude.Monad as Monad
 import Protolude.Functor as Functor
 import Protolude.Either as Either
 import Protolude.Applicative as Applicative
-import Protolude.Conv as Conv
+import Protolude.ConvertText as ConvertText
 import Protolude.Panic as Panic
 import Protolude.Exceptions as Exception
 import Protolude.Semiring as Semiring
@@ -984,19 +984,16 @@ liftIO1 = (.) liftIO
 liftIO2 :: MonadIO m => (a -> b -> IO c) -> a -> b -> m c
 liftIO2 = ((.).(.)) liftIO
 
--- | Convert a value to a readable String.
-show :: (Show a, Conv.StringConv String b) => a -> b
-show x = Conv.toS (PBase.show x)
+show :: (Show a, ConvertText String b) => a -> b
+show x = ConvertText.toS (PBase.show x)
 {-# SPECIALIZE show :: Show  a => a -> Text  #-}
 {-# SPECIALIZE show :: Show  a => a -> LText  #-}
-{-# SPECIALIZE show :: Show  a => a -> ByteString  #-}
-{-# SPECIALIZE show :: Show  a => a -> LByteString  #-}
 {-# SPECIALIZE show :: Show  a => a -> String  #-}
 
 #if MIN_VERSION_base(4,8,0)
 -- | Terminate main process with failure
 die :: Text -> IO a
-die err = System.Exit.die (Conv.toS err)
+die err = System.Exit.die (ConvertText.toS err)
 #else
 -- | Terminate main process with failure
 die :: Text -> IO a

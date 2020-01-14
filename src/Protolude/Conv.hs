@@ -2,6 +2,8 @@
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE TypeSynonymInstances #-}
 
+-- | An alternative to 'Protolude.ConvertText' that includes
+-- partial conversions. Not re-exported by 'Protolude'.
 module Protolude.Conv (
   StringConv
 , strConv
