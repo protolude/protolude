@@ -258,12 +258,12 @@ import Data.Foldable as Foldable (
     find,
   )
 import Data.Functor.Identity as Functor (
-    Identity(Identity)
+    Identity(Identity, runIdentity)
   )
 
 #if MIN_VERSION_base(4,9,0)
 import Data.List.NonEmpty as List (
-    NonEmpty(..)
+    NonEmpty((:|))
   , nonEmpty
   )
 import Data.Semigroup as Semigroup (

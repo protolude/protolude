@@ -4,7 +4,7 @@
 -- | Non-partial text conversion typeclass and functions.
 -- For an alternative with partial conversions import 'Protolude.Conv'.
 module Protolude.ConvertText (
-  ConvertText (..)
+  ConvertText (toS)
 , toUtf8
 , toUtf8Lazy
 ) where

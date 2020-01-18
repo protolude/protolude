@@ -1,4 +1,5 @@
 {-# LANGUAGE CPP #-}
+{-# LANGUAGE MagicHash #-}
 {-# LANGUAGE Unsafe #-}
 {-# LANGUAGE BangPatterns #-}
 {-# LANGUAGE NoImplicitPrelude #-}
@@ -14,13 +15,30 @@ module Protolude.Base (
 
 -- Base GHC types
 import GHC.Num as Base (
-    Num(..)
+    Num(
+      (+),
+      (-),
+      (*),
+      negate,
+      abs,
+      signum,
+      fromInteger
+    )
   , Integer
   , subtract
   )
 import GHC.Enum as Base (
-    Bounded(..)
-  , Enum(..)
+    Bounded(minBound, maxBound)
+  , Enum(
+      succ,
+      pred,
+      toEnum,
+      fromEnum,
+      enumFrom,
+      enumFromThen,
+      enumFromTo,
+      enumFromThenTo
+    )
   , boundedEnumFrom
   , boundedEnumFromThen
   )
@@ -29,7 +47,7 @@ import GHC.Real as Base (
   , (/)
   , Fractional
   , Integral
-  , Ratio(..)
+  , Ratio
   , Rational
   , Real
   , RealFrac
@@ -92,8 +110,8 @@ import GHC.Real as Base (
 #endif
   )
 import GHC.Float as Base (
-    Float(..)
-  , Double(..)
+    Float(F#)
+  , Double(D#)
   , Floating (..)
   , RealFloat(..)
   , showFloat
@@ -146,8 +164,8 @@ import GHC.OverloadedLabels as Base (
   )
 
 import GHC.ExecutionStack as Base (
-    Location(..)
-  , SrcLoc(..)
+    Location(Location, srcLoc, objectName, functionName)
+  , SrcLoc(SrcLoc, sourceColumn, sourceLine, sourceColumn)
   , getStackTrace
   , showStackTrace
   )
@@ -182,7 +200,7 @@ import GHC.TypeLits as Base (
 
 #if ( __GLASGOW_HASKELL__ >= 802 )
 import GHC.Records as Base (
-    HasField(..)
+    HasField(getField)
   )
 #endif
 
