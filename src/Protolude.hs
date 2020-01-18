@@ -1,6 +1,6 @@
-{-# LANGUAGE BangPatterns #-}
 {-# LANGUAGE CPP #-}
 {-# LANGUAGE Trustworthy #-}
+{-# LANGUAGE BangPatterns #-}
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE NoImplicitPrelude #-}
 {-# LANGUAGE ExplicitNamespaces #-}
@@ -9,24 +9,40 @@
 module Protolude (
   -- * Base functions
   module Base,
+  identity,
+  pass,
+#if !MIN_VERSION_base(4,8,0)
+  (&),
+  scanl',
+#endif
   -- * Function functions
   module Function,
+  applyN,
   -- * List functions
   module List,
+  map,
+  uncons,
+  unsnoc,
   -- * Data Structures
   module DataStructures,
   -- * Show functions
   module Show,
+  show,
+  print,
   -- * Bool functions
   module Bool,
   -- * Monad functions
   module Monad,
+  liftIO1,
+  liftIO2,
   -- * Functor functions
   module Functor,
   -- * Either functions
   module Either,
   -- * Applicative functions
   module Applicative,
+  guarded,
+  guardedA,
   -- * String conversion
   module ConvertText,
   -- * Debug functions
@@ -36,6 +52,8 @@ module Protolude (
   module Panic,
   -- * Exception functions
   module Exception,
+  Protolude.throwIO,
+  Protolude.throwTo,
   -- * Semiring functions
   module Semiring,
 
@@ -108,38 +126,18 @@ module Protolude (
   module Text,
   LText,
 
+  -- * Read functions
+  module Read,
+
   -- * System functions
   module System,
+  die,
 
   -- * Concurrency functions
   module Concurrency,
 
   -- * Foreign functions
   module Foreign,
-
-  -- * Foreign functions
-  module Read,
-
-  -- * Misc
-  identity,
-  map,
-  uncons,
-  unsnoc,
-  applyN,
-  print,
-  Protolude.throwIO,
-  Protolude.throwTo,
-  show,
-  pass,
-  guarded,
-  guardedA,
-  liftIO1,
-  liftIO2,
-#if !MIN_VERSION_base(4,8,0)
-  (&),
-  scanl',
-#endif
-  die,
 ) where
 
 -- Protolude module exports.
