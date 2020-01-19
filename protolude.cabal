@@ -31,6 +31,11 @@ tested-with:
   GHC == 8.10.1
 extra-source-files: README.md ChangeLog.md
 
+flag dev
+  description: Build development tools
+  manual: True
+  default: False
+
 Source-Repository head
     type: git
     location: git@github.com:protolude/protolude.git
@@ -93,6 +98,10 @@ library
 executable exports
   main-is: Exports.hs
   default-language:    Haskell2010
+  if flag(dev)
+    buildable: True
+  else
+    buildable: False
   build-depends:
     protolude,
     base >= 4.6  && <4.14,

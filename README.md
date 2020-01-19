@@ -190,6 +190,31 @@ import Protolude hiding (head)
 import Protolude.Partial (head)
 ```
 
+Development Tools
+-----------------
+
+**GHC Magic**
+
+To build the `exports` management tool use:
+
+```bash
+$ cabal new-build exports --flag dev
+$ cabal run exports
+```
+
+This tool uses GHC's internal compile symbol table to generate a list of exports
+and keep the export list of protolude stable across different versions of GHC
+and base.
+
+**Continious Integration**
+
+There is a massive test suite that tests all versions of GHC 7.6 - GHC HEAD
+alongside all Stack resolvers to ensure no regressions. Any pull requests or
+patch has to pass the 40 integrity checks before being considered. Any pull
+request must keep the export list consistent across GHC and Base version and not
+have any accidental symbol dropping or drift without updating the export golden
+tests.
+
 License
 -------
 
