@@ -15,8 +15,8 @@ module Protolude.Either (
 
 import Data.Function (const)
 import Data.Monoid (Monoid, mempty)
-import Data.Maybe (Maybe(..), maybe)
-import Data.Either (Either(..), either)
+import Data.Maybe (Maybe(Nothing, Just), maybe)
+import Data.Either (Either(Left, Right), either)
 #if MIN_VERSION_base(4,10,0)
 import Data.Either (fromLeft, fromRight)
 #else

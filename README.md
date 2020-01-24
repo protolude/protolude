@@ -25,7 +25,6 @@ Design points:
 * Unsafe functions are prefixed with "unsafe" in separate module.
 * Compiler agnostic, GHC internal modules are abstracted out into Base.
 * ``sum`` and ``product`` are strict by default.
-* Compatibility with GHC 8.0.
 * Includes Semiring for GHC >= 7.6.
 * Includes Bifunctor for GHC >= 7.6.
 * Includes Semigroup for GHC >= 7.6.
@@ -48,6 +47,21 @@ Supports:
  * GHC 8.4.1
  * GHC 8.6.1
  * GHC 8.8.1
+ * GHC 8.10.1
+
+Stack LTS:
+
+* lts-4.x
+* lts-5.x
+* lts-6.x
+* lts-7.x
+* lts-8.x
+* lts-9.x
+* lts-10.x
+* lts-11.x
+* lts-12.x
+* lts-13.x
+* lts-14.x
 
 Usage
 -----
@@ -56,7 +70,7 @@ To try out standalone prelude at the interactive shell, from the Protolude
 project directory run.
 
 ```haskell
-$ stack exec ghci
+$ stack repl
 > import Protolude
 ```
 
@@ -81,11 +95,6 @@ Then in your modules:
 import Protolude
 ```
 
-Exported Functions
-------------------
-
-The list of exports can be browsed [here](http://hackage.haskell.org/package/protolude-0.2.3/docs/Protolude.html).
-
 Dependencies
 ------------
 
@@ -98,17 +107,17 @@ tracks Stack LTS resolver.
 | -----------         |   -------- |  -------- |
 | array               |        0.4 |       0.6 |
 | async               |        2.0 |       2.3 |
-| base                |        4.6 |      4.13 |
+| base                |        4.6 |      4.14 |
 | bytestring          |       0.10 |      0.11 |
 | containers          |        0.5 |       0.7 |
 | deepseq             |        1.3 |       1.5 |
 | ghc-prim            |        0.3 |       0.6 |
-| hashable            |        1.2 |       1.3 |
+| hashable            |        1.2 |       1.4 |
 | mtl                 |        2.1 |       2.3 |
 | stm                 |        2.4 |       2.6 |
 | text                |        1.2 |       1.3 |
 | transformers        |        0.4 |       0.6 |
-|                     |            |           |
+| fail                |        4.9 |      4.10 |
 
 Structure
 ---------
@@ -171,8 +180,43 @@ business logic use well-typed checked exceptions of the ``ExceptT`` variety.
 It has been renamed to ``identity`` to reserve the ``id`` identifier for the
 more common use case of business logic.
 
+* **But what if I want the partial functions?**
+
+You if you need partial functions for backwards compatibility you can use the
+`Protolude.Partial` module and mask the safe definitions as needed.
+
+```haskell
+import Protolude hiding (head)
+import Protolude.Partial (head)
+```
+
+Development Tools
+-----------------
+
+**GHC Magic**
+
+To build the `exports` management tool use:
+
+```bash
+$ cabal new-build exports --flag dev
+$ cabal run exports
+```
+
+This tool uses GHC's internal compile symbol table to generate a list of exports
+and keep the export list of protolude stable across different versions of GHC
+and base.
+
+**Continious Integration**
+
+There is a massive test suite that tests all versions of GHC 7.6 - GHC HEAD
+alongside all Stack resolvers to ensure no regressions. Any pull requests or
+patch has to pass the 40 integrity checks before being considered. Any pull
+request must keep the export list consistent across GHC and Base version and not
+have any accidental symbol dropping or drift without updating the export golden
+tests.
+
 License
 -------
 
 Released under the MIT License.
-Copyright (c) 2016-2019, Stephen Diehl
+Copyright (c) 2016-2020, Stephen Diehl

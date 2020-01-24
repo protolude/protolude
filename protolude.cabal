@@ -1,5 +1,5 @@
 name:                protolude
-version:             0.2.4
+version:             0.3.0
 synopsis:            A small prelude.
 description:         A sensible set of defaults for writing custom Preludes.
 homepage:            https://github.com/sdiehl/protolude
@@ -7,7 +7,7 @@ license:             MIT
 license-file:        LICENSE
 author:              Stephen Diehl
 maintainer:          stephen.m.diehl@gmail.com
-copyright:           2016-2019 Stephen Diehl
+copyright:           2016-2020 Stephen Diehl
 category:            Prelude
 build-type:          Simple
 cabal-version:       >=1.10
@@ -28,33 +28,41 @@ tested-with:
   GHC == 8.4.1,
   GHC == 8.6.1,
   GHC == 8.8.1
-extra-source-files: README.md CHANGES.md
+  GHC == 8.10.1
+extra-source-files: README.md ChangeLog.md
+
+flag dev
+  description: Build development tools
+  manual: True
+  default: False
 
 Source-Repository head
     type: git
-    location: git@github.com:sdiehl/protolude.git
+    location: git@github.com:protolude/protolude.git
 
 library
   exposed-modules:     
     Protolude
-    Unsafe
-    Debug
-    Protolude.Exceptions
     Protolude.Base
-    Protolude.Applicative
-    Protolude.Bool
-    Protolude.List
     Protolude.Monad
+    Protolude.Safe
+    Protolude.List
+    Protolude.Bool
     Protolude.Show
     Protolude.Conv
+    Protolude.ConvertText
     Protolude.Either
     Protolude.Functor
     Protolude.Semiring
     Protolude.Bifunctor
-    Protolude.CallStack
+    Protolude.Applicative
     Protolude.Error
     Protolude.Panic
-    Protolude.Safe
+    Protolude.CallStack
+    Protolude.Exceptions
+    Protolude.Partial
+    Protolude.Debug
+    Protolude.Unsafe
 
   default-extensions:
     NoImplicitPrelude
@@ -81,6 +89,26 @@ library
     mtl                 >= 2.1  && <2.3,
     mtl-compat          >= 0.2  && <0.3,
     transformers-compat >= 0.4  && <0.7
+  if !impl(ghc >= 8.0)
+    Build-Depends: fail >= 4.9 && <4.10
 
   hs-source-dirs:      src
   default-language:    Haskell2010
+
+executable exports
+  main-is: Exports.hs
+  default-language:    Haskell2010
+  if flag(dev)
+    buildable: True
+  else
+    buildable: False
+  build-depends:
+    protolude,
+    base >= 4.6  && <4.14,
+    ghc,
+    ghc-paths,
+    directory,
+    process,
+    transformers,
+    mtl,
+    filepath

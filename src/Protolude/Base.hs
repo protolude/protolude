@@ -1,11 +1,12 @@
 {-# LANGUAGE CPP #-}
+{-# LANGUAGE MagicHash #-}
 {-# LANGUAGE Unsafe #-}
 {-# LANGUAGE BangPatterns #-}
 {-# LANGUAGE NoImplicitPrelude #-}
 {-# LANGUAGE ExplicitNamespaces #-}
 
 module Protolude.Base (
-  module X,
+  module Base,
   ($!),
 ) where
 
@@ -13,35 +14,118 @@ module Protolude.Base (
 #if defined(__GLASGOW_HASKELL__) && ( __GLASGOW_HASKELL__ >= 600 )
 
 -- Base GHC types
-import GHC.Num as X (
-    Num(..)
+import GHC.Num as Base (
+    Num(
+      (+),
+      (-),
+      (*),
+      negate,
+      abs,
+      signum,
+      fromInteger
+    )
   , Integer
   , subtract
   )
-import GHC.Enum as X (
-    Bounded(..)
-  , Enum(..)
+import GHC.Enum as Base (
+    Bounded(minBound, maxBound)
+  , Enum(
+      succ,
+      pred,
+      toEnum,
+      fromEnum,
+      enumFrom,
+      enumFromThen,
+      enumFromTo,
+      enumFromThenTo
+    )
   , boundedEnumFrom
   , boundedEnumFromThen
   )
-import GHC.Real as X
-import GHC.Float as X (
-    Float(..)
-  , Double(..)
+import GHC.Real as Base (
+    (%)
+  , (/)
+  , Fractional
+  , Integral
+  , Ratio
+  , Rational
+  , Real
+  , RealFrac
+  , (^)
+  , (^%^)
+  , (^^)
+  , (^^%^^)
+  , ceiling
+  , denominator
+  , div
+  , divMod
+#if MIN_VERSION_base(4,7,0)
+  , divZeroError
+#endif
+  , even
+  , floor
+  , fromIntegral
+  , fromRational
+  , gcd
+#if MIN_VERSION_base(4,9,0)
+  , gcdInt'
+  , gcdWord'
+#endif
+  , infinity
+  , integralEnumFrom
+  , integralEnumFromThen
+  , integralEnumFromThenTo
+  , integralEnumFromTo
+  , lcm
+  , mod
+  , notANumber
+  , numerator
+  , numericEnumFrom
+  , numericEnumFromThen
+  , numericEnumFromThenTo
+  , numericEnumFromTo
+  , odd
+#if MIN_VERSION_base(4,7,0)
+  , overflowError
+#endif
+  , properFraction
+  , quot
+  , quotRem
+  , ratioPrec
+  , ratioPrec1
+#if MIN_VERSION_base(4,7,0)
+  , ratioZeroDenominatorError
+#endif
+  , realToFrac
+  , recip
+  , reduce
+  , rem
+  , round
+  , showSigned
+  , toInteger
+  , toRational
+  , truncate
+#if MIN_VERSION_base(4,12,0)
+  , underflowError
+#endif
+  )
+import GHC.Float as Base (
+    Float(F#)
+  , Double(D#)
   , Floating (..)
   , RealFloat(..)
   , showFloat
   , showSignedFloat
   )
-import GHC.Show as X (
-    Show(..)
+import GHC.Show as Base (
+    Show(showsPrec, show, showList)
   )
-import GHC.Exts as X (
+import GHC.Exts as Base (
     Constraint
   , Ptr
   , FunPtr
   )
-import GHC.Base as X (
+import GHC.Base as Base (
     (++)
   , seq
   , asTypeOf
@@ -52,13 +136,13 @@ import GHC.Base as X (
   )
 
 -- Exported for lifting into new functions.
-import System.IO as X (
+import System.IO as Base (
     print
   , putStr
   , putStrLn
   )
 
-import GHC.Types as X (
+import GHC.Types as Base (
     Bool
   , Char
   , Int
@@ -71,22 +155,22 @@ import GHC.Types as X (
   )
 
 #if ( __GLASGOW_HASKELL__ >= 710 )
-import GHC.StaticPtr as X (StaticPtr)
+import GHC.StaticPtr as Base (StaticPtr)
 #endif
 
 #if ( __GLASGOW_HASKELL__ >= 800 )
-import GHC.OverloadedLabels as X (
-    IsLabel(..)
+import GHC.OverloadedLabels as Base (
+    IsLabel(fromLabel)
   )
 
-import GHC.ExecutionStack as X (
-    Location(..)
-  , SrcLoc(..)
+import GHC.ExecutionStack as Base (
+    Location(Location, srcLoc, objectName, functionName)
+  , SrcLoc(SrcLoc, sourceColumn, sourceLine, sourceColumn)
   , getStackTrace
   , showStackTrace
   )
 
-import GHC.Stack as X (
+import GHC.Stack as Base (
     CallStack
   , type HasCallStack
   , callStack
@@ -99,11 +183,11 @@ import GHC.Stack as X (
 #endif
 
 #if ( __GLASGOW_HASKELL__ >= 710 )
-import GHC.TypeLits as X (
+import GHC.TypeLits as Base (
     Symbol
-  , SomeSymbol(..)
+  , SomeSymbol(SomeSymbol)
   , Nat
-  , SomeNat(..)
+  , SomeNat(SomeNat)
   , CmpNat
   , KnownSymbol
   , KnownNat
@@ -115,13 +199,13 @@ import GHC.TypeLits as X (
 #endif
 
 #if ( __GLASGOW_HASKELL__ >= 802 )
-import GHC.Records as X (
-    HasField(..)
+import GHC.Records as Base (
+    HasField(getField)
   )
 #endif
 
 #if ( __GLASGOW_HASKELL__ >= 800 )
-import Data.Kind as X (
+import Data.Kind as Base (
   type Type
 #if ( __GLASGOW_HASKELL__ < 805 )
   , type (*)

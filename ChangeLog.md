@@ -1,3 +1,33 @@
+0.3.0
+=====
+
+* GHC 8.10.1 support
+* Use `Protolude.ConvertText` as the default string conversion class. This
+  removes partial functions when converting to/from ByteStrings.
+* Provide `Protolude.Conv` as a compatibility layer for old string conversion
+  interface.
+* Migrated `Debug` and `Unsafe` to `Protolude.Debug` and `Protolude.Unsafe`.
+* Export Unicode functions:
+  - `intToDigit`
+  - `isAlpha`
+  - `isAlphaNum`
+  - `isAscii`
+  - `isControl`
+  - `isDigit`
+  - `isHexDigit`
+  - `isLetter`
+  - `isLower`
+  - `isPrint`
+  - `isSpace`
+  - `isUpper`
+* Export `MonadFail` class.
+* Export `gcast` from Data.Typeable.
+* Export `typeOf` from Data.Typeable.
+* Export `Handler` from Control.Exception.
+* Export `yield` from Control.Concurrency.
+* Provide compatibility module `Protolude.Partial` as single export for unsafe
+  partial functions with the same naming conventions as Prelude.
+
 0.2.4
 =====
 
@@ -7,7 +37,7 @@
 =====
 
 * GHC 8.6.1 support
-* Expose `fromLeft` and `fromRight`.
+* Export `fromLeft` and `fromRight`.
 * Mask `always` and `alwaysSucceeds` from STM export for stm-2.5.
 
 0.2.2

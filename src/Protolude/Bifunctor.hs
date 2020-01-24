@@ -1,13 +1,17 @@
 {-# LANGUAGE Safe #-}
 {-# LANGUAGE NoImplicitPrelude #-}
 
-module Protolude.Bifunctor (
-  Bifunctor(..)
-) where
+module Protolude.Bifunctor
+  ( Bifunctor,
+    bimap,
+    first,
+    second,
+  )
+where
 
-import Data.Function (id, (.))
-import Data.Either (Either(..))
-import Control.Applicative ( Const(..) )
+import Control.Applicative (Const (Const))
+import Data.Either (Either (Left, Right))
+import Data.Function ((.), id)
 
 class Bifunctor p where
   {-# MINIMAL bimap | first, second #-}

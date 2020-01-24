@@ -13,7 +13,7 @@ module Protolude.Bool (
 , (<||>)
 ) where
 
-import Data.Bool (Bool(..), (&&), (||))
+import Data.Bool (Bool(True, False), (&&), (||))
 import Data.Function (flip)
 import Control.Applicative(Applicative, liftA2)
 import Control.Monad (Monad, MonadPlus, return, when, unless, guard, (>>=), (=<<))

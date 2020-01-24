@@ -2,11 +2,14 @@
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE TypeSynonymInstances #-}
 
+-- | An alternative to 'Protolude.ConvertText' that includes
+-- partial conversions. Not re-exported by 'Protolude'.
 module Protolude.Conv (
-  StringConv (..)
+  StringConv
+, strConv
 , toS
 , toSL
-, Leniency (..)
+, Leniency (Lenient, Strict)
 ) where
 
 import Data.ByteString.Char8      as B
@@ -18,8 +21,8 @@ import Data.Text.Lazy             as LT
 import Data.Text.Lazy.Encoding    as LT
 
 import Protolude.Base
-import Data.Eq (Eq(..))
-import Data.Ord (Ord(..))
+import Data.Eq (Eq)
+import Data.Ord (Ord)
 import Data.Function ((.), id)
 import Data.String (String)
 import Control.Applicative (pure)

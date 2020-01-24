@@ -1,6 +1,6 @@
 {-# LANGUAGE CPP #-}
-{-# LANGUAGE MagicHash #-}
 {-# LANGUAGE PolyKinds #-}
+{-# LANGUAGE MagicHash #-}
 {-# LANGUAGE ImplicitParams #-}
 {-# LANGUAGE ExistentialQuantification #-}
 #if ( __GLASGOW_HASKELL__ >= 800 )
@@ -15,12 +15,12 @@ module Protolude.Error
 ( error
 ) where
 
-import GHC.Prim
 import Data.Text (Text, unpack)
 
 #if MIN_VERSION_base(4,9,0)
 -- Full stack trace.
 
+import GHC.Prim (TYPE, raise#)
 import GHC.Types (RuntimeRep)
 import Protolude.CallStack (HasCallStack)
 import GHC.Exception (errorCallWithCallStackException)
@@ -32,6 +32,7 @@ error s = raise# (errorCallWithCallStackException (unpack s) ?callStack)
 #elif MIN_VERSION_base(4,7,0)
 -- Basic Call Stack with callsite.
 
+import GHC.Prim (raise#)
 import GHC.Exception (errorCallException)
 
 {-# WARNING error "'error' remains in code" #-}

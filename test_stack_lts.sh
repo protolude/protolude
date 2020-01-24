@@ -1,32 +1,14 @@
 #!/usr/bin/env bash
-set +e
+set -e
 
-echo -e "\e[92mLTS 7.8"
-STACK_YAML=stack-7.8.yaml  stack build  --no-terminal
-
-echo -e "\e[92mLTS 7.10"
-STACK_YAML=stack-7.10.yaml stack build  --no-terminal
-
-echo -e "\e[92mLTS 8.0"
-STACK_YAML=stack-8.0.yaml  stack build  --no-terminal
-
-echo -e "\e[92mLTS 9.0"
-STACK_YAML=stack-9.0.yaml  stack build  --no-terminal
-
-echo -e "\e[92mLTS 10.0"
-STACK_YAML=stack-10.0.yaml  stack build  --no-terminal
-
-echo -e "\e[92mLTS 11.0"
-STACK_YAML=stack-11.0.yaml  stack build  --no-terminal
-
-echo -e "\e[92mLTS 12.0"
-STACK_YAML=stack-12.0.yaml  stack build  --no-terminal
-
-echo -e "\e[92mLTS 13.0"
-STACK_YAML=stack-13.0.yaml  stack build  --no-terminal
-
-echo -e "\e[92mLTS 13.0"
-STACK_YAML=stack-14.0.yaml  stack build  --no-terminal
-
-echo -e "\e[92mLTS 14.0"
-STACK_YAML=stack-14.0.yaml  stack build  --no-terminal
+stack build --resolver lts-4.0
+stack build --resolver lts-5.0
+stack build --resolver lts-6.0
+stack build --resolver lts-7.0
+stack build --resolver lts-8.0
+stack build --resolver lts-9.0
+stack build --resolver lts-10.0
+stack build --resolver lts-11.0
+stack build --resolver lts-12.0
+stack build --resolver lts-13.0
+stack build --resolver lts-14.0
