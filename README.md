@@ -62,6 +62,7 @@ Stack LTS:
 * lts-12.x
 * lts-13.x
 * lts-14.x
+* lts-15.x
 
 Usage
 -----

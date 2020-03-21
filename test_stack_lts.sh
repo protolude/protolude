@@ -12,3 +12,4 @@ stack build --resolver lts-11.0
 stack build --resolver lts-12.0
 stack build --resolver lts-13.0
 stack build --resolver lts-14.0
+stack build --resolver lts-15.0
