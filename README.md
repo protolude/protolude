@@ -108,11 +108,11 @@ tracks Stack LTS resolver.
 | -----------         |   -------- |  -------- |
 | array               |        0.4 |       0.6 |
 | async               |        2.0 |       2.3 |
-| base                |        4.6 |      4.14 |
+| base                |        4.6 |      4.15 |
 | bytestring          |       0.10 |      0.11 |
 | containers          |        0.5 |       0.7 |
 | deepseq             |        1.3 |       1.5 |
-| ghc-prim            |        0.3 |       0.6 |
+| ghc-prim            |        0.3 |       0.7 |
 | hashable            |        1.2 |       1.4 |
 | mtl                 |        2.1 |       2.3 |
 | stm                 |        2.4 |       2.6 |
