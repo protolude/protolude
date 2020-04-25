@@ -153,6 +153,7 @@ import Protolude.ConvertText as ConvertText
 import Protolude.Panic as Panic
 import Protolude.Exceptions as Exception
 import Protolude.Semiring as Semiring
+import qualified Protolude.Conv as Conv
 
 import Protolude.Base as Base hiding (
     putStr           -- Overriden by Show.putStr
@@ -982,8 +983,8 @@ liftIO1 = (.) liftIO
 liftIO2 :: MonadIO m => (a -> b -> IO c) -> a -> b -> m c
 liftIO2 = ((.).(.)) liftIO
 
-show :: (Show a, ConvertText String b) => a -> b
-show x = ConvertText.toS (PBase.show x)
+show :: (Show a, Conv.StringConv String b) => a -> b
+show x = Conv.toS (PBase.show x)
 {-# SPECIALIZE show :: Show  a => a -> Text  #-}
 {-# SPECIALIZE show :: Show  a => a -> LText  #-}
 {-# SPECIALIZE show :: Show  a => a -> String  #-}
