@@ -35,6 +35,12 @@ instance ConvertText LT.Text String where toS = LT.unpack
 instance ConvertText LT.Text T.Text where toS = LT.toStrict
 instance ConvertText LT.Text LT.Text where toS = id
 
+instance ConvertText LB.ByteString B.ByteString where toS = LB.toStrict
+instance ConvertText LB.ByteString LB.ByteString where toS = id
+
+instance ConvertText B.ByteString B.ByteString where toS = id
+instance ConvertText B.ByteString LB.ByteString where toS = LB.fromStrict
+
 toUtf8 :: ConvertText a T.Text => a -> B.ByteString
 toUtf8 =
   encodeUtf8 . toS
