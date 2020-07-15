@@ -8,12 +8,12 @@ on:
 
 jobs:
   build:
-    name: cabal ${{ matrix.ghc }}
+    name: cabal-${{ matrix.cabal}} ${{ matrix.ghc }}
     runs-on: ubuntu-16.04
     strategy:
       matrix:
-        ghc: ["8.8.1", "8.6.5", "8.6.4", "8.6.3", "8.6.2", "8.4.4", "8.2.2", "8.0.2"]
-        cabal: ["3.0"]
+        ghc: ["8.10.1", "8.8.1", "8.6.5", "8.6.4", "8.6.3", "8.6.2", "8.4.4", "8.2.2", "8.0.2"]
+        cabal: ["3.0", "3.2"]
 
     steps:
     - uses: actions/checkout@v1
