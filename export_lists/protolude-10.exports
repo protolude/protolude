@@ -750,10 +750,10 @@ ratioPrec from GHC.Real
 ratioPrec1 from GHC.Real
 ratioZeroDenominatorError from GHC.Real
 readChan from Control.Concurrent.Chan
-readEither from Text.Read
+readEither from Protolude
 readFile from Data.Text.IO
 readMVar from GHC.MVar
-readMaybe from Text.Read
+readMaybe from Protolude
 reader from Control.Monad.Reader.Class
 reads from Text.Read
 realPart from Data.Complex

@@ -128,6 +128,8 @@ module Protolude (
 
   -- * Read functions
   module Read,
+  readMaybe,
+  readEither,
 
   -- * System functions
   module System,
@@ -909,11 +911,10 @@ import Foreign.Storable as Foreign (Storable)
 import Foreign.StablePtr as Foreign (StablePtr)
 
 -- Read instances hiding unsafe builtins (read)
+import qualified Text.Read as Read
 import Text.Read as Read (
     Read
   , reads
-  , readMaybe
-  , readEither
   )
 
 -- Type synonymss for lazy texts
@@ -949,6 +950,29 @@ unsnoc = Foldable.foldr go Nothing
 -- | Apply a function n times to a given value
 applyN :: Int -> (a -> a) -> a -> a
 applyN n f = Foldable.foldr (.) identity (List.replicate n f)
+
+-- | Parse a string using the 'Read' instance.
+-- Succeeds if there is exactly one valid result.
+--
+-- >>> readMaybe ("123" :: Text) :: Maybe Int
+-- Just 123
+--
+-- >>> readMaybe ("hello" :: Text) :: Maybe Int
+-- Nothing
+readMaybe :: (Read b, Conv.StringConv a String) => a -> Maybe b
+readMaybe = Read.readMaybe . Conv.toS
+
+-- | Parse a string using the 'Read' instance.
+-- Succeeds if there is exactly one valid result.
+-- A 'Left' value indicates a parse error.
+--
+-- >>> readEither "123" :: Either Text Int
+-- Right 123
+--
+-- >>> readEither "hello" :: Either Text Int
+-- Left "Prelude.read: no parse"
+readEither :: (Read a, Conv.StringConv String e, Conv.StringConv e String) => e -> Either e a
+readEither = first Conv.toS . Read.readEither . Conv.toS
 
 -- | The print function outputs a value of any printable type to the standard
 -- output device. Printable types are those that are instances of class Show;
