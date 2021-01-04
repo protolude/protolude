@@ -1,3 +1,8 @@
+Unreleased
+=====
+
+* Banish `String` on `readMaybe` and `readEither`.
+
 0.3.0
 =====
 
