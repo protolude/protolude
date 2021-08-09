@@ -23,6 +23,8 @@ env:
  - CABALVER=2.2  GHCVER=8.4.1
  - CABALVER=2.4  GHCVER=8.6.1
  - CABALVER=2.4  GHCVER=8.8.1
+ - CABALVER=2.4  GHCVER=8.10.1
+ - CABALVER=2.4  GHCVER=9.0.1
 
 # Note: the distinction between `before_install` and `install` is not
 #       important.
