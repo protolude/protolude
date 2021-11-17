@@ -1,7 +1,6 @@
 Protolude
 =========
 
-[![Build Status](https://travis-ci.org/protolude/protolude.svg?branch=master)](https://travis-ci.org/sdiehl/protolude)
 [![Build Status](https://github.com/protolude/protolude/workflows/Cabal%20CI/badge.svg)](https://github.com/protolude/protolude/actions)
 [![Build Status](https://github.com/protolude/protolude/workflows/Stack%20CI/badge.svg)](https://github.com/protolude/protolude/actions)
 [![Build Status](https://github.com/protolude/protolude/workflows/Nix%20CI/badge.svg)](https://github.com/protolude/protolude/actions)

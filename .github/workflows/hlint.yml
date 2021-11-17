@@ -5,46 +5,27 @@ on:
     branches:
       - master
   pull_request:
-
+    branches: [ master ]
+    paths:
+      - '.github/workflows/hlint.yml'
+      - 'app/**/*.hs'
+      - 'src/**/*.hs'
+      - 'test/**/*.hs'
 jobs:
-  build:
-    name: hlint
-    runs-on: ubuntu-16.04
-    strategy:
-      matrix:
-        ghc: ["8.8.1"]
-        cabal: ["3.0"]
-
+  hlint:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      HLINT_ACTION_LOG_LEVEL: debug
     steps:
-    - uses: actions/checkout@v1
-    - uses: actions/setup-haskell@v1
-      name: Setup Haskell
-      with:
-        ghc-version: ${{ matrix.ghc }}
-        cabal-version: ${{ matrix.cabal }}
+      - name: Check out
+        uses: actions/checkout@v2
 
-    - uses: actions/cache@v1
-      name: Cache ~/.cabal/packages
-      with:
-        path: ~/.cabal/packages
-        key: cabal-packages
+      - name: Set up HLint
+        uses: rwe/actions-hlint-setup@v1
 
-    - uses: actions/cache@v1
-      name: Cache ~/.cabal/store
-      with:
-        path: ~/.cabal/store
-        key: cabal-store
-
-    - uses: actions/cache@v1
-      name: Cache dist-newstyle
-      with:
-        path: dist-newstyle
-        key: dist-newstyle
-
-    - name: Install hlint
-      run: |
-        cabal update
-        cabal new-install hlint --installdir=dist-newstyle --overwrite-policy=always
-    - name: Run hlint
-      run: |
-        dist-newstyle/hlint -g
+      - name: Haskell Lint
+        uses: rwe/actions-hlint-run@v2
+        with:
+          path: '["src/"]'
+          fail-on: warning
