@@ -1,7 +1,6 @@
 name: Stack CI
 
 on:
-  push:
   pull_request:
   schedule:
   - cron: "0 0 * * 1"
@@ -22,7 +21,6 @@ jobs:
         - { build: stack, resolver: "lts-14"  }   # ghc-8.6.5
         - { build: stack, resolver: "lts-15"  }   # ghc-8.8.2
         - { build: stack, resolver: "lts-16"  }   # ghc-8.10.1
-        - { build: stack, resolver: "nightly" }
         # - { build: stack, resolver: ""                   }
         # use this to include any dependencies from OS package managers
         include: []
@@ -47,6 +45,8 @@ jobs:
 
     - name: Setup stack
       uses: mstksg/setup-stack@v1
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: true
 
     - name: Setup cabal-install
       uses: actions/setup-haskell@v1

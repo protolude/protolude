@@ -1,31 +1,36 @@
 name: Cabal CI
-
 on:
-  push:
-    branches:
-      - master
   pull_request:
-
+    types:
+      - opened
+      - synchronize
 jobs:
   build:
-    name: cabal-${{ matrix.cabal}} ${{ matrix.ghc }}
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         ghc: ["8.10.1", "8.8.1", "8.6.5", "8.6.4", "8.6.3", "8.6.2", "8.4.4", "8.2.2", "8.0.2"]
         cabal: ["3.0", "3.2"]
-
+    env:
+      CONFIG: "--enable-tests --enable-benchmarks"
     steps:
-    - uses: actions/checkout@v1
-    - uses: actions/setup-haskell@v1
-      name: Setup Haskell
-      with:
-        ghc-version: ${{ matrix.ghc }}
-        cabal-version: ${{ matrix.cabal }}
-
-    - name: Install dependencies
-      run: |
-        cabal update
-    - name: Build
-      run: |
-        cabal new-build
+      - uses: actions/checkout@v2
+      - uses: haskell/actions/setup@v1.2
+        id: setup-haskell-cabal
+        with:
+          ghc-version: ${{ matrix.ghc }}
+          cabal-version: ${{ matrix.cabal }}
+      - run: cabal v2-update
+      - run: cabal v2-freeze $CONFIG
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ${{ steps.setup-haskell-cabal.outputs.cabal-store }}
+            dist-newstyle
+          key: ${{ runner.os }}-${{ matrix.ghc }}-${{ hashFiles('cabal.project.freeze') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ matrix.ghc }}-
+      - run: cabal v2-build $CONFIG
+      - run: cabal v2-test $CONFIG
+      - run: cabal v2-haddock $CONFIG
+      - run: cabal v2-sdist
