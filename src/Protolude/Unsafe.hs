@@ -12,33 +12,33 @@ module Protolude.Unsafe (
   unsafeRead,
 ) where
 
-import Protolude.Base (Int)
+import Protolude.Base (Int, HasCallStack)
 import Data.Char (Char)
 import Text.Read (Read, read)
 import qualified Data.List as List
 import qualified Data.Maybe as Maybe
 import qualified Control.Exception as Exc
 
-unsafeHead :: [a] -> a
+unsafeHead :: HasCallStack => [a] -> a
 unsafeHead = List.head
 
-unsafeTail :: [a] -> [a]
+unsafeTail :: HasCallStack => [a] -> [a]
 unsafeTail = List.tail
 
-unsafeInit :: [a] -> [a]
+unsafeInit :: HasCallStack => [a] -> [a]
 unsafeInit = List.init
 
-unsafeLast :: [a] -> a
+unsafeLast :: HasCallStack => [a] -> a
 unsafeLast = List.last
 
-unsafeFromJust :: Maybe.Maybe a -> a
+unsafeFromJust :: HasCallStack => Maybe.Maybe a -> a
 unsafeFromJust = Maybe.fromJust
 
-unsafeIndex :: [a] -> Int -> a
+unsafeIndex :: HasCallStack => [a] -> Int -> a
 unsafeIndex = (List.!!)
 
 unsafeThrow :: Exc.Exception e => e -> a
 unsafeThrow = Exc.throw
 
-unsafeRead :: Read a => [Char] -> a
+unsafeRead :: (HasCallStack, Read a) => [Char] -> a
 unsafeRead = Text.Read.read
