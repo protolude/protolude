@@ -67,7 +67,7 @@ import GHC.Real as Base (
   , fromIntegral
   , fromRational
   , gcd
-#if MIN_VERSION_base(4,9,0)
+#if MIN_VERSION_base(4,9,0) && !MIN_VERSION_base(4,15,0)
 #if defined(MIN_VERSION_integer_gmp)
   , gcdInt'
   , gcdWord'
