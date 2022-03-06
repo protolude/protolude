@@ -311,6 +311,8 @@ import Data.List as List (
   , break
   , intercalate
   , isPrefixOf
+  , isInfixOf
+  , isSuffixOf
   , drop
   , filter
   , reverse
