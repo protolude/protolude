@@ -270,8 +270,10 @@ import Data.List.NonEmpty as List (
 import Data.Semigroup as Semigroup (
     Semigroup(sconcat, stimes)
   , WrappedMonoid
+#if !MIN_VERSION_base(4,16,0)
   , Option(..)
   , option
+#endif
   , diff
   , cycle1
   , stimesMonoid
