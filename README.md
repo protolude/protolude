@@ -30,31 +30,23 @@ Design points:
 
 Supports:
 
- * GHC 7.6.1
- * GHC 7.6.2
  * GHC 7.6.3
- * GHC 7.8.1
- * GHC 7.8.2
- * GHC 7.8.3
  * GHC 7.8.4
- * GHC 7.10.1
- * GHC 7.10.2
  * GHC 7.10.3
- * GHC 8.0.1
  * GHC 8.0.2
- * GHC 8.2.1
+ * GHC 8.2.2
  * GHC 8.4.1
+ * GHC 8.4.4
  * GHC 8.6.1
+ * GHC 8.6.4
+ * GHC 8.6.5
  * GHC 8.8.1
  * GHC 8.10.1
+ * GHC 9.0.1
+ * GHC 9.2.1
 
 Stack LTS:
 
-* lts-4.x
-* lts-5.x
-* lts-6.x
-* lts-7.x
-* lts-8.x
 * lts-9.x
 * lts-10.x
 * lts-11.x
@@ -63,6 +55,7 @@ Stack LTS:
 * lts-14.x
 * lts-15.x
 * lts-16.x
+* lts-17.x
 
 Usage
 -----
@@ -108,7 +101,7 @@ tracks Stack LTS resolver.
 | -----------         |   -------- |  -------- |
 | array               |        0.4 |       0.6 |
 | async               |        2.0 |       2.3 |
-| base                |        4.6 |      4.15 |
+| base                |        4.6 |      4.16 |
 | bytestring          |       0.10 |      0.11 |
 | containers          |        0.5 |       0.7 |
 | deepseq             |        1.3 |       1.5 |
@@ -210,7 +203,7 @@ and base.
 
 There is a massive test suite that tests all versions of GHC 7.6 - GHC HEAD
 alongside all Stack resolvers to ensure no regressions. Any pull requests or
-patch has to pass the 40 integrity checks before being considered. Any pull
+patch has to pass the 47 integrity checks before being considered. Any pull
 request must keep the export list consistent across GHC and Base version and not
 have any accidental symbol dropping or drift without updating the export golden
 tests.
@@ -219,4 +212,4 @@ License
 -------
 
 Released under the MIT License.
-Copyright (c) 2016-2020, Stephen Diehl
+Copyright (c) 2016-2022, Stephen Diehl

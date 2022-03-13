@@ -270,14 +270,19 @@ import Data.List.NonEmpty as List (
 import Data.Semigroup as Semigroup (
     Semigroup(sconcat, stimes)
   , WrappedMonoid
-  , Option(..)
-  , option
   , diff
   , cycle1
   , stimesMonoid
   , stimesIdempotent
   , stimesIdempotentMonoid
   , mtimesDefault
+  )
+#endif
+
+#if MIN_VERSION_base(4,9,0) && !MIN_VERSION_base(4,16,0)
+import Data.Semigroup as Semigroup (
+    Option(..)
+  , option
   )
 #endif
 

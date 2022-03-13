@@ -1,6 +1,7 @@
-Unreleased
+0.3.1
 =====
-
+* GHC 9.0.1 and 9.2.1 support
+* Add `HasCallStack` to unsafe* functions.
 * Banish `String` on `readMaybe` and `readEither`.
 
 0.3.0
