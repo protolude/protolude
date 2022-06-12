@@ -1,3 +1,8 @@
+0.3.2
+====
+* GHC 9.2.2 support
+* Drop export executable
+
 0.3.1
 =====
 * GHC 9.0.1 and 9.2.1 support
