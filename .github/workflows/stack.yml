@@ -22,6 +22,8 @@ jobs:
         - { build: stack, resolver: "lts-15"  }   # ghc-8.8.3
         - { build: stack, resolver: "lts-16"  }   # ghc-8.8.4
         - { build: stack, resolver: "lts-17"  }   # ghc-8.10.4
+        - { build: stack, resolver: "lts-18"  }   # ghc-8.10.7
+        - { build: stack, resolver: "lts-19"  }   # ghc-9.0.2
         # - { build: stack, resolver: ""                   }
         # use this to include any dependencies from OS package managers
         include: []
