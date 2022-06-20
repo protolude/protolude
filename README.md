@@ -47,6 +47,9 @@ Supports:
 
 Stack LTS:
 
+* lts-6.x
+* lts-7.x
+* lts-8.x
 * lts-9.x
 * lts-10.x
 * lts-11.x
@@ -56,6 +59,7 @@ Stack LTS:
 * lts-15.x
 * lts-16.x
 * lts-17.x
+* lts-18.x
 
 Usage
 -----
