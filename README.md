@@ -60,6 +60,7 @@ Stack LTS:
 * lts-16.x
 * lts-17.x
 * lts-18.x
+* lts-19.14 and higher
 
 Usage
 -----
