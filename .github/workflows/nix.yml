@@ -6,8 +6,11 @@ jobs:
     name: nix
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v4
+      - name Install Nix
       - uses: cachix/install-nix-action@v3
-        env:
-         ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+        with:
+        nix_path: nixpkgs=channel:nixos-22.11
+          env:
+           ACTIONS_ALLOW_UNSECURE_COMMANDS: true
       - run: nix-build

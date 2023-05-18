@@ -13,11 +13,6 @@ jobs:
         os: [ubuntu-latest, macOS-latest]
         # use this to specify what resolvers and ghc to use
         plan:
-        - { build: stack, resolver: "lts-9"  }    # ghc-8.0.2
-        - { build: stack, resolver: "lts-10"  }   # ghc-8.2.2
-        - { build: stack, resolver: "lts-11"  }   # ghc-8.2.2
-        - { build: stack, resolver: "lts-12"  }   # ghc-8.4.4
-        - { build: stack, resolver: "lts-13"  }   # ghc-8.6.4
         - { build: stack, resolver: "lts-14"  }   # ghc-8.6.5
         - { build: stack, resolver: "lts-15"  }   # ghc-8.8.2
         - { build: stack, resolver: "lts-16"  }   # ghc-8.8.4
@@ -25,6 +20,8 @@ jobs:
         - { build: stack, resolver: "lts-18"  }   # ghc-8.10.7
         - { build: stack, resolver: "lts-19"  }   # ghc-9.0.2
         - { build: stack, resolver: "lts-20"  }   # ghc-9.2.5
+        - { build: stack, resolver: "lts-21"  }
+        - { build: stack, resolver: "lts-22"  }
 
         # - { build: stack, resolver: ""                   }
         # use this to include any dependencies from OS package managers
