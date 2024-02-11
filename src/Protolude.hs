@@ -952,7 +952,7 @@ unsnoc = Foldable.foldr go Nothing
   where
     go x mxs = Just (case mxs of
        Nothing -> ([], x)
-       Just (xs, e) -> (x:xs, e))
+       Just ~(xs, e) -> (x:xs, e))
 
 -- | Apply a function n times to a given value
 applyN :: Int -> (a -> a) -> a -> a
