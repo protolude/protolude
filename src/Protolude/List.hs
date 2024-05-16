@@ -20,7 +20,7 @@ import Data.List (groupBy, sortBy)
 import Data.Maybe (Maybe (Nothing))
 import Data.Ord (Ord, comparing)
 import qualified Data.Set as Set
-import GHC.Num ((*), (+), Num)
+import Prelude ((*), (+), Num)
 
 head :: (Foldable f) => f a -> Maybe a
 head = foldr (\x _ -> pure x) Nothing
