@@ -35,7 +35,7 @@ import Data.Either (Either(Left, Right))
 import Data.Function ((.))
 import Data.List (null, head, last, tail, init, maximum, minimum, foldr1, foldl1, foldl1', (++))
 
-import GHC.Num ((-))
+import Prelude ((-))
 import GHC.Show (show)
 
 liftMay :: (a -> Bool) -> (a -> b) -> (a -> Maybe b)
